@@ -27,7 +27,7 @@ vector<tipo> V(n, value); //n elementos = value
 	V.clear(); // Remove todos os elementos do vector V
 	sort(V.begin(), V.end()); // Ordena o vector
 
-//upper_bound e lower_bound
+//upper_bound() e lower_bound()
 
 	vector<int>::iterator low,up;
 	low=lower_bound(v.begin(), v.end(), 20);
@@ -35,5 +35,34 @@ vector<tipo> V(n, value); //n elementos = value
 	cout << "lower_bound at position " << (low- v.begin()) << '\n';
 	cout << "upper_bound at position " << (up - v.begin()) << '\n';
 
-//binary_search
-		if(binary_search(vet.begin(), vet.end(), 15))
+//binary_search()
+
+	if(binary_search(vet.begin(), vet.end(), 15))
+
+//accumulate()
+	
+	cout << accumulate(first, last, sum, func) << endl;
+	//first - ponteiro para primeiro elemento
+	//last - ponteiro para último elemento
+	//sum - valor inicial
+	//func - função que acumula termo a termo (não obrigatória)
+
+	int func(int x, int y)  
+	{
+		//return x*y;
+		return x+y;
+	}
+
+//partial_sum()
+
+	partial_sum(first, last, vet, func);
+	//first - ponteiro para primeiro elemento
+	//last - ponteiro para último elemento
+	//vet - vetor onde será colocado os valores
+	//func - função que acumula termo a termo (não obrigatória)
+
+	int func(int x, int y)  
+	{
+		//return x*y;
+		return x+y;
+	}
