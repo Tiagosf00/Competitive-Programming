@@ -1,8 +1,12 @@
 // Dijkstra - Shortest Path
 
-vii grafo[MAX];
-int distancia[MAX];
-bool visitado[MAX];
+#define pii pair<int, int>
+#define vi vector<int>
+#define vii vector< pair<int,int> >
+#define INF 0x3f3f3f3f
+
+vector<vii> grafo;
+vi distancia;
 priority_queue< pii, vii, greater<pii> > fila;
 
 void dijkstra(int k)
@@ -10,26 +14,35 @@ void dijkstra(int k)
 	int dist, vert, aux;
 	distancia[k]=0;
 
-	fila.push(mp(0,k));
+	fila.push(mp(k, 0));
 
 	while(!fila.empty())
 	{
-		aux=fila.top().s;
+		aux=fila.top().f;
 		fila.pop();
 
-		if(!visitado[aux])
+		for(int i=0; i<grafo[aux].size(); i++)
 		{
-			visitado[aux]=true;
-			forn(i, grafo[aux].size())
+			vert=grafo[aux][i].f;
+			dist=grafo[aux][i].s;
+			if(distancia[vert]>distancia[aux]+dist)
 			{
-				dist=grafo[aux][i].f;
-				vert=grafo[aux][i].s;
-				if(distancia[vert]>distancia[aux]+dist)
-				{
-					distancia[vert]=distancia[aux]+dist;
-					fila.push(mp(distancia[vert], vert));	
-				}
+				distancia[vert]=distancia[aux]+dist;
+				fila.push(mp(vert, distancia[vert]));	
 			}
 		}
+	}
+}
+
+int main()
+{
+	dist.assign(N+1, INF);
+	grafo.assign(N+1, vii());
+
+	for(int i=0; i<M; i++)
+	{
+		cin >> a >> b >> p;
+		grafo[a].pb(mp(b, p));
+		grafo[b].pb(mp(a, p));
 	}
 }
