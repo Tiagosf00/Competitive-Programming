@@ -17,6 +17,7 @@ vector<tipo> V(n, value); //n elementos = value
 
 	V.resize(10); // Muda o tamanho do vector para 10
 				 //  Caso seja maior que o vector original, os novos elementos adicionados são nulos
+	V.resize(n, k); // Muda o tamanho do vetor para n, e para cada elemento novo no vector é atribuido o valor de k
 
 //pop_back()
 
@@ -66,3 +67,12 @@ vector<tipo> V(n, value); //n elementos = value
 		//return x*y;
 		return x+y;
 	}
+
+//assign()
+	//Diferente do resize() por mudar o valor de todos os elementos do vector
+
+	vector<int> vet;
+	vet.assign(N, x); //Atribui o valor das N variáveis a x
+
+	vector< vector<int> > vet;
+	vet.assign(N, vector<int>());
