@@ -76,3 +76,13 @@ vector<tipo> V(n, value); //n elementos = value
 
 	vector< vector<int> > vet;
 	vet.assign(N, vector<int>());
+
+//sort()
+
+	sort(vet, vet+N, func); // Ordena o vetor com parâmetros, vetor inicial e vetor final
+							// e função de comparação (opcional)
+	bool func(Aluno a, Aluno b)
+	{	//Função para compara Alunos
+		return a.nota < b.nota; // True caso a venha antes de b, False caso contrário
+		//Aluno a vem antes do Aluno b se a nota do aluno a é menor que a nota do aluno b
+	}
