@@ -1,4 +1,4 @@
-// Segment Tree - Range maximum query with node update
+// Segment Tree Recursiva - Range maximum query
 
 vector<long> val(MAX, 0);
  
