@@ -1,6 +1,6 @@
 # Programação Competitiva
 
-Repositório com resumos e algoritmos utilizados no âmbito competitivo
+Repositório com resumos e algoritmos utilizados no âmbito competitivo.
 
 Resumos
 ------------

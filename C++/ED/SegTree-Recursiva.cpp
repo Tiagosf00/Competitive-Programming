@@ -1,6 +1,25 @@
 // Segment Tree Recursiva - Range maximum query
 
-vector<long> val(MAX, 0);
+vector<int> val(MAX, 0);
+vector<int> vet(N);
+
+void monta(int i, int j, int no)
+{
+	if(i==j)
+	{
+		val[no]=vet[i];
+		return;
+	}
+
+	int esq = 2*no;
+	int dir = 2*no+1;
+	int meio = (i+j)/2;
+
+	monta(i, meio, esq);
+	monta(meio+1, j, dir);
+
+	val[no]=max(val[esq], val[dir]);
+}
  
 void atualiza(int no, int i, int j, int pos, int novo_valor)
 {
@@ -52,6 +71,8 @@ int consulta(int no, int i, int j, int A, int B)
 
 int main()
 {
+	monta(1, N, 1);
 	atualiza(1, 1, N, pos, valor);
 	x = consulta(1, 1, N, inicio, fim);
+
 }
