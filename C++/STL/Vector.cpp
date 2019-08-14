@@ -9,6 +9,11 @@ vector<tipo> V(n, value); //n elementos = value
 	V.push_back(2); // Adiciona o valor 2 ao final do vector V
 	V.push_front(2);// Adiciona o valor 2 ao início do vector V
 
+// front() back()
+
+	cout << V.front() << endl; // Mostra o primeiro elemento do vector
+	cout << V.back() << endl; // Mostra o último elemento do vector
+
 //size()
 
 	tamanho = V.size(); // Retorna um valor que representa o nº do vector
