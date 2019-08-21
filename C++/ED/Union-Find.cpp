@@ -12,8 +12,8 @@ int find(int aux)
 
 void join(int x, int y)
 {
-	x = find(x, pai);
-	y = find(y, pai);
+	x = find(x);
+	y = find(y);
 			
 	if(pesos[x]<pesos[y])
 		pai[x] = y;
