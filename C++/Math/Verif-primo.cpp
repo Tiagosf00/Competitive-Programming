@@ -1,4 +1,4 @@
-// Verificação em sqrt(N)
+// prime verrification sqrt(N)
 		
 long long eh_primo(long long N)
 {

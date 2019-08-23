@@ -1,4 +1,4 @@
-// Retorna o número de digitos de n! em O(1)
+// Number of digits in n! O(1)
 
 #define Pi 3.14159265358979311599796346854
 #define Eul 2.71828182845904509079559829842

@@ -1,0 +1,56 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\usepackage[top=2cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{ballblue}{rgb}{0.13, 0.67, 1}
+
+\lstset{
+    language=c++,
+    tabsize=4,
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{ballblue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+}
+
+\newcommand\includes[2]{ % Thanks to joseleite19 icpc notebook on github
+   \subsection{#1}
+   \lstinputlisting{#2}
+}
+
+\title{Notebook - Maratona de Programação}
+\author{Tiago de Souza Fernandes}
+\date{}
+
+\begin{document}
+\begin{figure}[t]
+\includegraphics[scale=0.4]{unb.jpg}
+\centering
+\end{figure}
+\maketitle
+\begin{multicols}{2}
+\tableofcontents
+\newpage
+
+
