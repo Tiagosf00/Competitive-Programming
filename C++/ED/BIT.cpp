@@ -1,6 +1,4 @@
-// Árvore de Indexação Binária (BIT) Árvore de Fenwick
-
-//Exemplo - Soma em intervalo
+// (BIT) Fenwick Tree
 
 int bit[MAX];
 
@@ -25,7 +23,7 @@ int query(int L, R)
 	return soma(R)-soma(L);
 }
 
-void atualiza(int x, int v) // adiciona v no indice x
+void update(int x, int v)
 {
     // for(;x<=n;x+=x&-x)
     //       bit[x] += v;

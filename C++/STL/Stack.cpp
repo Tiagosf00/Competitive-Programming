@@ -1,19 +1,19 @@
-// Stack - Pilha - Adiciona no fim e retira ao fim
+// Stack
 
 stack<int> pilha;
 
 //pilha.push()
 
-	pilha.push(N); // Adiciona o elemento no topo da pilha
+	pilha.push(N);
 
 //pilha.empty()
 
-	if(pilha.empty()==true/false) // Verifica se a pilha está vazia 
+	if(pilha.empty()==true/false)
 
 //pilha.pop()
 
-	pilha.pop(); // Remove o elemento do topo da pilha
+	pilha.pop();
 
 //pilha.front()
 
-	p = pilha.top(); // Retorna o elemento do topo da pilha
+	p = pilha.top();

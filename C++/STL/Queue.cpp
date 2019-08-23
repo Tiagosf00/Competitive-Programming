@@ -1,20 +1,20 @@
-// Queue - Fila - Adiciona no fim e retira do início
+// Queue
 
-queue<int> fila; // Consegue retirar o 1º elemento do vetor em tempo constante
-				//  Contudo, possui tempo linear para acessar um elemento no meio do vetor
+queue<int> fila;
 
 //fila.push()
 
-	fila.push(N); // Adiciona o elemento no final da fila
+	fila.push(N);
 
 //fila.empty()
 
-	if(fila.empty()==true/false) // Verifica se a fila está vazia 
+	if(fila.empty()==true/false)
 
 //fila.pop()
 
-	fila.pop(); // Remove o elemento da frente da fila
+	fila.pop();
 
 //fila.front()
 
-	p = fila.front(); // Retorna o elemento da frente da fila
+	p = fila.front();
+	

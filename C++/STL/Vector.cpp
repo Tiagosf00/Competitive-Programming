@@ -1,37 +1,36 @@
 // Vector - Vetor
 
-vector<int> V; // Vector de inteiros
+vector<int> V;
 vector<tipo> nome;
-vector<tipo> V(n, value); //n elementos = value
+vector<tipo> V(n, value);
 
 //push_back()
 
-	V.push_back(2); // Adiciona o valor 2 ao final do vector V
-	V.push_front(2);// Adiciona o valor 2 ao início do vector V
+	V.push_back(2);
+	V.push_front(2);
 
 // front() back()
 
-	cout << V.front() << endl; // Mostra o primeiro elemento do vector
-	cout << V.back() << endl; // Mostra o último elemento do vector
+	cout << V.front() << endl;
+	cout << V.back() << endl;
 
 //size()
 
-	tamanho = V.size(); // Retorna um valor que representa o nº do vector
+	tamanho = V.size();
 
 //resize()
 
-	V.resize(10); // Muda o tamanho do vector para 10
-				 //  Caso seja maior que o vector original, os novos elementos adicionados são nulos
-	V.resize(n, k); // Muda o tamanho do vetor para n, e para cada elemento novo no vector é atribuido o valor de k
+	V.resize(10);
+	V.resize(n, k);
 
 //pop_back()
 
-	V.pop_back(); // Apaga o último elemento do vector V
+	V.pop_back();
 
 //clear()
 
-	V.clear(); // Remove todos os elementos do vector V
-	sort(V.begin(), V.end()); // Ordena o vector
+	V.clear();
+	sort(V.begin(), V.end());
 
 //upper_bound() e lower_bound()
 
@@ -48,10 +47,10 @@ vector<tipo> V(n, value); //n elementos = value
 //accumulate()
 	
 	cout << accumulate(first, last, sum, func) << endl;
-	//first - ponteiro para primeiro elemento
-	//last - ponteiro para último elemento
-	//sum - valor inicial
-	//func - função que acumula termo a termo (não obrigatória)
+	//first - pointer to the first element
+	//last - last element
+	//sum - inicial value
+	//func
 
 	int func(int x, int y)  
 	{
@@ -62,10 +61,6 @@ vector<tipo> V(n, value); //n elementos = value
 //partial_sum()
 
 	partial_sum(first, last, vet, func);
-	//first - ponteiro para primeiro elemento
-	//last - ponteiro para último elemento
-	//vet - vetor onde será colocado os valores
-	//func - função que acumula termo a termo (não obrigatória)
 
 	int func(int x, int y)  
 	{
@@ -77,17 +72,16 @@ vector<tipo> V(n, value); //n elementos = value
 	//Diferente do resize() por mudar o valor de todos os elementos do vector
 
 	vector<int> vet;
-	vet.assign(N, x); //Atribui o valor das N variáveis a x
+	vet.assign(N, x);
 
 	vector< vector<int> > vet;
 	vet.assign(N, vector<int>());
 
 //sort()
 
-	sort(vet, vet+N, func); // Ordena o vetor com parâmetros, vetor inicial e vetor final
-							// e função de comparação (opcional)
+	sort(vet, vet+N, func);
+
 	bool func(Aluno a, Aluno b)
-	{	//Função para compara Alunos
-		return a.nota < b.nota; // True caso a venha antes de b, False caso contrário
-		//Aluno a vem antes do Aluno b se a nota do aluno a é menor que a nota do aluno b
+	{
+		return a.nota < b.nota; // True caso a venha antes de b, False caso contrario
 	}
