@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 
 def cpy_template():
@@ -25,7 +26,7 @@ def create_notebook(section):
         for (item, subsection) in section:
             aux += '\\section{%s}\n' % item
             for file in subsection:
-                aux += '\\includes{%s}{C++/%s/%s}\n' % (file, item, file)
+                aux += '\\includes{%s}{C++/%s/%s}\n' % (file[:-4], item, file)
 
         aux += '\n\\end{multicols}\n\\end{document}\n'
         texfile.write(aux)
@@ -34,3 +35,7 @@ def create_notebook(section):
 cpy_template()
 section = get_dir()
 create_notebook(section)
+subprocess.call(['latexmk', '-pdf', 'notebook.tex'])
+
+subprocess.call(['rm', 'notebook.aux', 'notebook.fdb_latexmk',
+                 'notebook.fls', 'notebook.log'])
