@@ -85,3 +85,9 @@ vector<tipo> V(n, value);
 	{
 		return a.nota < b.nota; // True caso a venha antes de b, False caso contrario
 	}
+
+//fill()
+	
+	vector<int> vet(5); // 0 0 0 0 0
+
+	fill(vet.begin(), vet.begin()+2, 8); // 8 8 0 0 0

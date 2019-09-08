@@ -23,7 +23,7 @@ map<string, int> M;
 
 	if(S.count(N))
 
-//Outher
+//Other
 
 	M.clear();
 	M.size();
