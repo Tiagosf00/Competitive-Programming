@@ -28,7 +28,7 @@
 \contentsline {section}{\numberline {6}Math}{7}% 
 \contentsline {subsection}{\numberline {6.1}Verif-primo}{7}% 
 \contentsline {subsection}{\numberline {6.2}Crivo}{7}% 
-\contentsline {subsection}{\numberline {6.3}Kamenetsky}{7}% 
+\contentsline {subsection}{\numberline {6.3}Kamenetsky}{8}% 
 \contentsline {section}{\numberline {7}Misc}{8}% 
 \contentsline {subsection}{\numberline {7.1}Bitwise}{8}% 
 \contentsline {subsection}{\numberline {7.2}Complexity}{8}% 
