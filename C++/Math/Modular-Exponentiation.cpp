@@ -1,15 +1,16 @@
-// Modular exponentiaion - (x^y)%p in O(log y)
-int power(int x, unsigned int y, int p) 
+// Modular exponentiaion - (x^y)%mod in O(log y)
+ll power(ll x, ll y, ll mod) 
 {
-    int res = 1;
-    x%=p;
+    ll res = 1;
+    x%=mod;
 
-    while(y>0)
+    while(y)
     { 
         if(y&1)
-            res=(res*x)%p;
+            res=(res*x)%mod;
   
         y=y>>1;
-        x=(x*x)%p;
+        x=(x*x)%mod;
     }
+    return res;
 }
