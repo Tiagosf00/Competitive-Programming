@@ -1,16 +1,31 @@
-// Miller Habin Algorithm
-
 #include <bits/stdc++.h>
+#define mod 1000000007
+#define Pi 3.14159265358979311599796346854
+#define INF 0x3f3f3f3f
+#define MAX 1000010
+#define f first
+#define s second
 #define ll long long
-
+#define pb push_back
+#define mp make_pair
+#define pii pair<int, int>
+#define vi vector<int>
+#define vii vector< pii >
+#define sws ios_base::sync_with_stdio(false);cin.tie(NULL)
+#define forn(i, n) for(int i=0; i<(int)(n); i++)
+#define mdc(a, b) (__gcd((a), (b)))
+#define mmc(a, b) (((a)/__gcd(a, b)) * b)
+#define endl '\n'
+#define teto(a, b) (a+b-1)/b
+ 
 using namespace std;
-
+ 
 ll llrand()
 {
 	ll tmp = rand();
 	return (tmp << 31) | rand();
 }
-
+ 
 ll add(ll a, ll b, ll c)
 {
 	return (a + b)%c;
@@ -29,6 +44,31 @@ ll mul(ll a, ll b, ll c)
 	return ans;
 }
  
+ll rho(ll n)
+{
+	ll x, c, y, d, k;
+	int i;
+	do{
+		i = 1;
+		x = llrand()%n;
+		c = llrand()%n;
+		y = x, k = 4;
+		do{
+			if(++i == k)
+			{
+				y = x;
+				k *= 2;
+			}
+			x = add(mul(x, x, n), c, n);
+			d = __gcd(abs(x - y), n);
+		}
+		while(d == 1);
+	}
+	while(d == n);
+	
+	return d;
+}
+ 
 ll fexp(ll a, ll b, ll c)
 {
 	ll ans = 1;
@@ -41,14 +81,14 @@ ll fexp(ll a, ll b, ll c)
 	}
 	return ans;
 }
-
+ 
 bool rabin(ll n)
 {
 	if(n <= 1)
 		return 1;
 	if(n <= 3)
 		return 1;
-
+ 
 	ll s=0, d=n-1;
 	while(d%2==0)
 	{
@@ -77,18 +117,43 @@ bool rabin(ll n)
  
 	return 1;
 }
-
-
+ 
+ 
 int main()
 {
-	srand(time(0));
-
-	ll N;
+	//sws;
+	//freopen("input.txt", "r", stdin);
+	//freopen("output.txt", "w", stdout);
+ 
+	ll N, resp;
+	vector<ll> div;
+ 
 	cin >> N;
+	resp = N;
+ 
+	while(N>1 and !rabin(N))
+	{
+		ll d = rho(N);
+		if(!rabin(d))
+			continue;
+		div.pb(d);
+		while(N%d==0)
+			N/=d;
+	}
+	if(N!=resp and N!=1)
+		div.pb(N);
+	
 
-	if(rabin(N))
-		cout << "Eh primo\n";
-
+	if(div.empty())
+		cout << resp << endl;
+	else
+	{
+		for(int i=0;i<(int)div.size();i++)
+			resp = __gcd(resp, div[i]);
+ 
+		cout << resp << endl;
+	}
+ 
 	return 0;
-
+ 
 }
