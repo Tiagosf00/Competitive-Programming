@@ -1,6 +1,6 @@
 // (BIT) Fenwick Tree
 
-int bit[MAX];
+int N, bit[MAX];
 
 int soma(int x)
 {
@@ -18,12 +18,12 @@ int soma(int x)
     return resp;
 }
 
-int query(int L, R)
+int query(int L, int R)
 {
-	return soma(R)-soma(L);
+	return soma(R)-soma(L-1);
 }
 
-void update(int x, int v)
+void update(int x, int v) // add v in x
 {
     // for(;x<=n;x+=x&-x)
     //       bit[x] += v;
