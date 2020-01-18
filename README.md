@@ -9,8 +9,9 @@ Resumos
 - [Estruturas de Dados](C++/ED/)
 - [Grafos](C++/Grafos/)
 - [Matemática](C++/Math/)
+- [Geometria](C++/Geometria/)
 - [Strings](C++/Strings/)
-- [STL](C++/STL/)
+- [Misc](C++/Misc)
 
 Gerando notebook
 ----------------------
