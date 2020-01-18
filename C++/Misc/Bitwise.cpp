@@ -42,6 +42,13 @@
 
         T = S & (1<<j); // T = 0
 
+    // Least significant bit (lsb)
+
+        int lsb(int x)
+        {
+            return x&-x;
+        }
+
     // Exchange o j-th element
 
         S ^= (1<<j)

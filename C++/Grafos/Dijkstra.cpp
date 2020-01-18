@@ -5,8 +5,8 @@
 #define vii vector< pair<int,int> >
 #define INF 0x3f3f3f3f
 
-vector<vii> grafo;
-vi distancia;
+vector<vii> grafo(N+1, vii());
+vi distancia(N+1, INF);
 priority_queue< pii, vii, greater<pii> > fila;
 
 void dijkstra(int k)
@@ -21,10 +21,10 @@ void dijkstra(int k)
 		aux=fila.top().f;
 		fila.pop();
 
-		for(int i=0; i<grafo[aux].size(); i++)
+		for(auto v: grafo[aux])
 		{
-			vert=grafo[aux][i].f;
-			dist=grafo[aux][i].s;
+			vert=v.f;
+			dist=v.s;
 			if(distancia[vert]>distancia[aux]+dist)
 			{
 				distancia[vert]=distancia[aux]+dist;
@@ -36,9 +36,6 @@ void dijkstra(int k)
 
 int main()
 {
-	dist.assign(N+1, INF);
-	grafo.assign(N+1, vii());
-
 	for(int i=0; i<M; i++)
 	{
 		cin >> a >> b >> p;
