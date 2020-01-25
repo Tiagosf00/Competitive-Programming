@@ -1,43 +1,35 @@
-typedef struct Point
+struct point
 {
     double x, y;
-    Point(int _x=0, int _y=0)
-    {
+    point(double _x=0, double _y=0){
         x=_x;y=_y;
     }
 
-    void show()
-    {
+    void show(){
         cout << "x = " << x << endl;
         cout << "y = " << y << endl;
     }
 
-} point;
+    point operator+(const point &o) const{
+        return {x + o.x, y + o.y};
+    }
+    point operator-(const point &o) const{
+        return {x - o.x, y - o.y};
+    }
+    bool operator==(const point &o) const{
+        return (x == o.x and y == o.y);
+    }
 
-typedef struct Line
+};
+
+struct line
 {
     point fp, sp;
-    Line(point _fp=0, point _sp=0)
-    {
+    line(point _fp=0, point _sp=0){
         fp=_fp;sp=_sp;
     }
 
-} line;
-
-point sum(point A, point B)
-{
-    return point(A.x+B.x, A.y+B.y);
-}
-
-point sub(point A, point B)
-{
-    return point(A.x-B.x, A.y-B.y);
-}
-
-point neg(point A)
-{
-    return point(-A.x, -A.y);
-}
+};
 
 // Produto Escalar
 double dot(point a, point b){
@@ -51,13 +43,18 @@ double cross(point a, point b){
 
 // Dist entre dois pontos
 double dist(point a, point b){
-    point c = sub(a, b);
+    point c = a - b;
     return sqrt(c.x*c.x + c.y*c.y);
 }
 
+// Colinearidade entre 3 pontos
+bool collinear(point a, point b, point c){ 
+    return ((c.y - b.y)*(b.x - a.x)==(b.y - a.y)*(c.x-b.x));
+} 
+
 // Dist entre ponto e reta
-double dist(point a, line b){
-    double crs = cross(point(sub(a, b.fp)), point(sub(b.sp, b.fp)));
+double distr(point a, line b){
+    double crs = cross(point(a - b.fp), point(b.sp - b.fp));
     return abs(crs/dist(b.fp, b.sp));
 }
 
@@ -65,6 +62,11 @@ double dist(point a, line b){
 double area(vector <point> p){
   double ret = 0;
   for(int i=2;i<(int)p.size();i++)
-    ret += cross(sub(p[i], p[0]), sub(p[i-1], p[0]))/2;
+    ret += cross(p[i] - p[0], p[i-1] - p[0])/2;
   return abs(ret);
+}
+// Concavo ou Convexo
+double ccw(point a, point b, point c){
+  double ret = cross(b - a, c - b);
+  return ret < 0;
 }
