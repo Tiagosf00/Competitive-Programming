@@ -1,36 +1,25 @@
-// (BIT) Fenwick Tree
+struct FT {
+    vector<int> bit;  // indexado em 1
+    int n;
 
-int N, bit[MAX];
-
-int soma(int x)
-{
-    int resp=0;
-
-    // for(int i=x;i>0;i-=i&-i)
-    //     resp+=bit[i];
-
-    while(x > 0)
-    {
-        resp += bit[x];
-        x -= (x & -x);
+    FT(int n) {
+        this->n = n + 1;
+        bit.assign(n + 1, 0);
     }
 
-    return resp;
-}
-
-int query(int L, int R)
-{
-	return soma(R)-soma(L-1);
-}
-
-void update(int x, int v) // add v in x
-{
-    // for(;x<=n;x+=x&-x)
-    //       bit[x] += v;
-
-    while(x <= N)
-    {
-        bit[x] += v;
-        x += (x & -x);
+    int sum(int idx) {
+        int ret = 0;
+        for (++idx; idx > 0; idx -= idx & -idx)
+            ret += bit[idx];
+        return ret;
     }
-}
+
+    int sum(int l, int r) {
+        return sum(r) - sum(l - 1);
+    }
+
+    void add(int idx, int delta) {
+        for (++idx; idx <= n; idx += idx & -idx)
+            bit[idx] += delta;
+    }
+};
