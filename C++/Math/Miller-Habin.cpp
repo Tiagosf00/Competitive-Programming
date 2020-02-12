@@ -44,31 +44,6 @@ ll mul(ll a, ll b, ll c)
 	return ans;
 }
  
-ll rho(ll n)
-{
-	ll x, c, y, d, k;
-	int i;
-	do{
-		i = 1;
-		x = llrand()%n;
-		c = llrand()%n;
-		y = x, k = 4;
-		do{
-			if(++i == k)
-			{
-				y = x;
-				k *= 2;
-			}
-			x = add(mul(x, x, n), c, n);
-			d = __gcd(abs(x - y), n);
-		}
-		while(d == 1);
-	}
-	while(d == n);
-	
-	return d;
-}
- 
 ll fexp(ll a, ll b, ll c)
 {
 	ll ans = 1;
@@ -125,34 +100,10 @@ int main()
 	//freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
  
-	ll N, resp;
-	vector<ll> div;
- 
+	ll N;
 	cin >> N;
-	resp = N;
  
-	while(N>1 and !rabin(N))
-	{
-		ll d = rho(N);
-		if(!rabin(d))
-			continue;
-		div.pb(d);
-		while(N%d==0)
-			N/=d;
-	}
-	if(N!=resp and N!=1)
-		div.pb(N);
-	
-
-	if(div.empty())
-		cout << resp << endl;
-	else
-	{
-		for(int i=0;i<(int)div.size();i++)
-			resp = __gcd(resp, div[i]);
- 
-		cout << resp << endl;
-	}
+	cout << rabin(N) << endl;
  
 	return 0;
  

@@ -72,13 +72,11 @@ int main()
 	while(N>1 and !rabin(N))
 	{
 		ll d = rho(N);
-		if(!rabin(d))
-			continue;
 		div.pb(d);
 		while(N%d==0)
 			N/=d;
 	}
-	if(N!=resp and N!=1)
+	if(N!=1)
 		div.pb(N);
 
 	return 0;
