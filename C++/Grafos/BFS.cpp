@@ -6,6 +6,7 @@ int s; // source vertex
 
 queue<int> q;
 vector<int> d(n, INF);
+d[s]=0;
 
 q.push(s);
 used[s] = true;
