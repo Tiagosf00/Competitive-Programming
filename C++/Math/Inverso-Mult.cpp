@@ -1,11 +1,12 @@
-// ax + my = 1, e gcd(a, m) = 1 para existir solucao
-// outra forma de escrever: a*x = 1 (mod m)
-int x, y;
-int g = gcd(a, m, x, y);
-if (g != 1)
-    cout << "No solution!";
-else
-{
-    x = (x%m + m) % m;
-    cout << x << endl;
+// gcd(a, m) = 1 para existir solucao
+// ax + my = 1, ou a*x = 1 (mod m)
+ll inv(ll a, ll m) { // com gcd
+  ll x, y;
+  gcd(a, m, x, y);
+  return (((x % m) +m) %m);
+}
+
+ll inv(ll a, ll phim) { // com phi(m), se m for primo então phi(m) = p-1
+  ll e = phim-1;
+  return fexp(a, e);
 }
