@@ -1,3 +1,5 @@
+const int BLK = 500; // tamanho do bloco, algo entre 300 e 500 e nice
+
 struct Query {
   int l, r, idx;
   bool operator<(Query other) const
@@ -7,7 +9,7 @@ struct Query {
   }
 };
 
-void add(); void remove() // implementar operações de acordo com o problema
+void add(); void remove() // implementar operacoes de acordo com o problema
 
 vector<pair<int,ll>> mo() {
   vector<pair<int,ll>> res;
