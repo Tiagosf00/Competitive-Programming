@@ -10,20 +10,26 @@
 
 \usepackage[top=2cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
 
+\definecolor{gray}{rgb}{0.6,0.6,0.6}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
 
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-\definecolor{ballblue}{rgb}{0.13, 0.67, 1}
+% \definecolor{codegreen}{rgb}{0,0.6,0}
+% \definecolor{codegray}{rgb}{0.5,0.5,0.5}
+% \definecolor{codepurple}{rgb}{0.58,0,0.82}
+% \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+% \definecolor{ballblue}{rgb}{0.13, 0.67, 1}
 
 \lstset{
     language=c++,
     tabsize=4,
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{ballblue},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
+    % commentstyle=\color{codegreen},
+    commentstyle=\color{gray},
+    % keywordstyle=\color{ballblue},
+    numberstyle=\tiny\color{gray},
+    % numberstyle=\tiny\color{codegray},
+    % stringstyle=\color{codepurple},
+    stringstyle=\color{mauve},
     basicstyle=\ttfamily\footnotesize,
     breakatwhitespace=false,         
     breaklines=true,                 
@@ -60,18 +66,23 @@
 
 \section{Algoritmos}
 \includes{Mochila}{C++/Algoritmos/Mochila.cpp}
+\includes{Kadane-DP}{C++/Algoritmos/Kadane-DP.cpp}
 \includes{Iterative-BS}{C++/Algoritmos/Iterative-BS.cpp}
 \section{Grafos}
 \includes{BFS}{C++/Grafos/BFS.cpp}
 \includes{Find-bridges}{C++/Grafos/Find-bridges.cpp}
 \includes{Dijkstra}{C++/Grafos/Dijkstra.cpp}
+\includes{LCA}{C++/Grafos/LCA.cpp}
 \includes{Floyd-Warshall}{C++/Grafos/Floyd-Warshall.cpp}
 \includes{Kruskal}{C++/Grafos/Kruskal.cpp}
 \includes{DFS}{C++/Grafos/DFS.cpp}
+\includes{Kosaraju}{C++/Grafos/Kosaraju.cpp}
 \includes{Represent}{C++/Grafos/Represent.cpp}
+\includes{Centroid}{C++/Grafos/Centroid.cpp}
 \includes{Prim}{C++/Grafos/Prim.cpp}
 \section{Geometria}
 \includes{Inter-Retas}{C++/Geometria/Inter-Retas.cpp}
+\includes{Rotation}{C++/Geometria/Rotation.cpp}
 \includes{Inter-Retangulos}{C++/Geometria/Inter-Retangulos.cpp}
 \includes{Analytic-Geometry}{C++/Geometria/Analytic-Geometry.cpp}
 \section{ED}
@@ -84,7 +95,9 @@
 \includes{BIT}{C++/ED/BIT.cpp}
 \includes{Sparse-Table}{C++/ED/Sparse-Table.cpp}
 \includes{Union-Find}{C++/ED/Union-Find.cpp}
+\includes{Mo}{C++/ED/Mo.cpp}
 \section{Math}
+\includes{Totient}{C++/Math/Totient.cpp}
 \includes{Linear-Diophantine-Equation}{C++/Math/Linear-Diophantine-Equation.cpp}
 \includes{Factorization-sqrt}{C++/Math/Factorization-sqrt.cpp}
 \includes{Modular-Exponentiation}{C++/Math/Modular-Exponentiation.cpp}
@@ -96,14 +109,17 @@
 \includes{Formulas}{C++/Math/Formulas.cpp}
 \includes{FFT-golfbot}{C++/Math/FFT-golfbot.cpp}
 \includes{Modular-Factorial}{C++/Math/Modular-Factorial.cpp}
+\includes{Recursao-linear}{C++/Math/Recursao-linear.cpp}
 \includes{Kamenetsky}{C++/Math/Kamenetsky.cpp}
 \section{Misc}
 \includes{LIS}{C++/Misc/LIS.cpp}
 \includes{Bitwise}{C++/Misc/Bitwise.cpp}
 \section{Strings}
 \includes{KMP}{C++/Strings/KMP.cpp}
+\includes{LCS}{C++/Strings/LCS.cpp}
 \includes{Pal-int}{C++/Strings/Pal-int.cpp}
 \includes{Z-Func}{C++/Strings/Z-Func.cpp}
+\includes{Hash}{C++/Strings/Hash.cpp}
 
 \end{multicols}
 \end{document}

@@ -47,7 +47,7 @@ vector<vl> fexp(vector<vl> b, ll e, int n) {
   return res;
 }
 
-// k = tamanho da recorrência/matriz, n = n-ésimo termo
+// k = tamanho da recorrencia/matriz, n = n-esimo termo
 // f(n) = c1*f(n-1) + c2*f(n-2) + ... + ck*f(n-k)
 // base -> [f(k-1), f(k-2), ..., f(0)]
 // coeficientes -> [c1, c2, ..., ck]
