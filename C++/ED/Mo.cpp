@@ -9,7 +9,7 @@ struct Query {
   }
 };
 
-void add(); void remove() // implementar operacoes de acordo com o problema
+void add(); void remove() // implementar operacoes de acordo com o problema, cuidado com TLE ao utilizar MAP
 
 vector<pair<int,ll>> mo() {
   vector<pair<int,ll>> res;
