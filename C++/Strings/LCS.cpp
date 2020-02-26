@@ -30,13 +30,3 @@ string LCSubStr(string X, string Y)
   
     return X.substr(end - result + 1, result);
 }
-
-int main() 
-{ 
-    string X = "GeeksforGeeks"; 
-    string Y = "GeeksQuiz"; 
-
-    cout << LCSubStr(X, Y) << endl;
-
-    return 0; 
-} 
