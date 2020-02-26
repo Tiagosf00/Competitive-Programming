@@ -29,6 +29,10 @@ struct line
         fp=_fp;sp=_sp;
     }
 
+    //a=y1-y2;
+    //b=x2-x1;
+    //c=x2*y1-y2*x1;
+
 };
 
 // Produto Escalar
@@ -49,13 +53,23 @@ double dist(point a, point b){
 
 // Colinearidade entre 3 pontos
 bool collinear(point a, point b, point c){ 
-    return ((c.y - b.y)*(b.x - a.x)==(b.y - a.y)*(c.x-b.x));
+    return ((c.y-b.y)*(b.x-a.x)==(b.y-a.y)*(c.x-b.x));
+    // return (a.x*(b.y-c.y)+b.x*(c.y-a.y)+c.x*(a.y-b.y)); // Triangle area
+    // No caso de pontos tridimensionais, usar produto vetorial.
 } 
 
 // Dist entre ponto e reta
 double distr(point a, line b){
     double crs = cross(point(a - b.fp), point(b.sp - b.fp));
     return abs(crs/dist(b.fp, b.sp));
+}
+
+void esq(point a, point b, point ext)
+{ // Esquerda = 1; Direita = -1; Collinear = 0;
+    ll v = a.x*b.y+b.x*ext.y+ext.x*a.y - (a.y*b.x+b.y*ext.x+ext.y*a.x);
+    if(v>0) return 1;
+    if(v==0) return 0;
+    return -1;
 }
 
 // Area de um poligono (pontos ordenados por adjacencia)
