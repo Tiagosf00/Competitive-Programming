@@ -69,6 +69,9 @@ bool collinear(point a, point b, point c){
 } 
 
 
+point rot90cw(point a) { return {a.y, -a.x} };
+point rot90ccw(point a) { return {-a.y, a.x} };
+
 
 
 
