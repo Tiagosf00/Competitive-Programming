@@ -1,6 +1,7 @@
 typedef ld cod;
 
-bool eq(cod a, cod b){ return abs(a - b) <= EPS; }
+// bool eq(cod a, cod b){ return (a==b); }
+bool eq(cod a, cod b){ return fabsl(a - b) <= EPS; }
 
 struct point
 {
@@ -57,29 +58,24 @@ ld proj(point a, point b){ // a sobre b
 ld angle(point a, point b){ // em radianos
     return acos(dot(a, b) / norm(a) / norm(b));
 }
-cod dist(point a, point b){
-    return norm(a-b); // Dist euclidiana
-}
 int ccw(point a, point b){ // -1=cw; 0=parallel; 1=ccw;
     cod tmp = cross(a, b); // from a to b.
     return (tmp > EPS) - (tmp < -EPS);
 }
 bool collinear(point a, point b, point c){ 
     return eq(cross(a-c, b-c), 0);
-} 
+}
 
+point rotccw(point p, ld a) // em radianos
+{
+    //a = a*acos(0.0)/90; // graus
+    return point((p.x*cos(a)-p.y*sin(a)), (p.y*cos(a)+p.x*sin(a)));
+}
 
 point rot90cw(point a) { return {a.y, -a.x} };
 point rot90ccw(point a) { return {-a.y, a.x} };
 
 
-
-
-// Dist entre ponto e reta
-cod distr(point a, line b){
-    cod crs = cross(point(a - b.fp), point(b.sp - b.fp));
-    return norm(crs/dist(b.fp, b.sp));
-}
 
 int esq(point a, point b, point e)
 { // From a to b: Esquerda = 1; Direita = -1; Collinear = 0;
@@ -90,9 +86,16 @@ int esq(point a, point b, point e)
 }
 
 // Area de um poligono (pontos ordenados por adjacencia)
-cod area(vector <point> p){
-  cod ret = 0;
+ld area(vector <point> p){
+  ld ret = 0;
   for(int i=2;i<(int)p.size();i++)
-    ret += cross(p[i] - p[0], p[i-1] - p[0])/2;
-  return norm(ret);
+    ret += cross(p[i] - p[0], p[i-1] - p[0]);
+  return fabsl(ret/2);
+  //return abs(ret/2);
+}
+
+// Dist entre ponto e reta
+cod distr(point a, line b){
+    cod crs = cross(point(a - b.fp), point(b.sp - b.fp));
+    return norm(crs/dist(b.fp, b.sp));
 }
