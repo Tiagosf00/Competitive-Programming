@@ -1,5 +1,4 @@
-bool ehpalindromo(ll n) 
-{
+bool ehpalindromo(ll n) {
     if(n<0)
         return false;
 
@@ -7,8 +6,7 @@ bool ehpalindromo(ll n)
     while(n/divisor >= 10) 
         divisor *= 10; 
   
-    while(n != 0) 
-    { 
+    while(n != 0) { 
         int leading = n / divisor;
         int trailing = n % 10;
 
