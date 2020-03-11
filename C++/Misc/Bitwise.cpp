@@ -1,5 +1,5 @@
 // Bitwise 
-
+    #pragma GCC target("popcnt")
     unsigned char a = 5, b = 9; // a = (00000101), b = (00001001)
 
     AND -          a&b   // The result is 00000001 (1)
