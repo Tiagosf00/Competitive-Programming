@@ -1,30 +1,32 @@
-// Union-Find Functions
+struct DSU {
+    int n;
+    vector<int> parent, size;
 
-int pai[MAX], peso[MAX];
+    DSU(int n) {
+        this->n = n;
+        parent.assign(n+1, 0);
+        size.assign(n+1, 1);
 
-int find(int aux){
-	if(pai[aux]==aux)
-		return aux;
-	else
-		return pai[aux]=find(pai[aux], pai);
-}
+        for(int i = 0; i <= n; i++)
+            parent[i] = i;
+    }
 
-void join(int x, int y){
-	x = find(x);
-	y = find(y);
-			
-	if(pesos[x]<pesos[y])
-		pai[x] = y;
-	else if(pesos[x]>pesos[y])
-		pai[y] = x;
-	else if(pesos[x]==pesos[y])
-	{
-		pai[x] = y;
-		pesos[y]++;
-	}
-}
+    int find(int v) {
+        if(v == parent[v])
+            return v;
+        return find(parent[v]);
+    }
 
-int main(){
-	for(int i=1;i<=N;i++)
-		pai[i]=i;
-}
+    void join(int a, int b) {
+        a = find(a);
+        b = find(b);
+
+        if(a != b) {
+            if(size[a] < size[b])
+                swap(a, b);
+
+            parent[b] = a;
+            size[a] += b;
+        }
+    }
+};
