@@ -58,10 +58,12 @@ ld proj(point a, point b){ // a sobre b
 ld angle(point a, point b){ // em radianos
     return acos(dot(a, b) / norm(a) / norm(b));
 }
-int ccw(point a, point b){ // -1=cw; 0=parallel; 1=ccw;
-    cod tmp = cross(a, b); // from a to b.
+int ccw(point a, point b, point e) //-1=esq; 0=collinear; 1=dir;
+{
+    cod tmp = cross(b-a, e-a); // from a to b
     return (tmp > EPS) - (tmp < -EPS);
 }
+
 bool collinear(point a, point b, point c){ 
     return eq(cross(a-c, b-c), 0);
 }
@@ -74,16 +76,6 @@ point rotccw(point p, ld a) // em radianos
 
 point rot90cw(point a) { return {a.y, -a.x} };
 point rot90ccw(point a) { return {-a.y, a.x} };
-
-
-
-int esq(point a, point b, point e)
-{ // From a to b: Esquerda = 1; Direita = -1; Collinear = 0;
-    ll v = a.x*b.y + b.x*e.y + e.x*a.y - (a.y*b.x + b.y*e.x + e.y*a.x);
-    if(v>0) return 1;
-    if(v==0) return 0;
-    return -1;
-}
 
 // Area de um poligono (pontos ordenados por adjacencia)
 ld area(vector <point> p){
