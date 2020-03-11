@@ -5,19 +5,16 @@ vector<bool> visited;
 vi t, low;
 int timer=0;
 
-void find_bridges(int v, int p=-1)
-{
+void find_bridges(int v, int p=-1){
 	visited[v] = true;
 	t[v] = low[v] = timer++;
-	for(int i=0;i<(int)grafo[v].size();i++)
-	{
+	for(int i=0;i<(int)grafo[v].size();i++){
 		int vert = grafo[v][i];
 		if(vert == p)
 			continue;
 		if(visited[vert])
 			low[v] = min(low[v], t[vert]);
-		else
-		{
+		else{
 			find_bridges(vert, v);
 			low[v] = min(low[v], low[vert]);
 			if(low[to] > t[v])

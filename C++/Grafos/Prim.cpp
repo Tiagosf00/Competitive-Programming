@@ -15,17 +15,14 @@ int Prim()
     priority_queue< pii, vector<pii>, greater<pii> > fila;
     fila.push( pii(distancia[1], 1) );
 
-    while(1)
-    {
+    while(1){
         int davez = -1;
 
-        while(!fila.empty())
-        {
+        while(!fila.empty()){
             int atual = fila.top().second;
             fila.pop();
 
-            if(!processado[atual])
-            {
+            if(!processado[atual]){
                 davez = atual;
                 break;
             }
@@ -36,9 +33,7 @@ int Prim()
 
         processado[davez] = true;
 
-        for(int i = 0;i < (int)vizinhos[davez].size();i++)
-        {
-
+        for(int i = 0;i < (int)vizinhos[davez].size();i++){
             int dist  = vizinhos[davez][i].first;
             int atual = vizinhos[davez][i].second;
 
