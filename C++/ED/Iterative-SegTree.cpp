@@ -2,18 +2,15 @@
 
 #define N 100010
 
-struct Segtree
-{
+struct Segtree{
 	int t[2*N]={0};
 
-	void build()
-	{
+	void build(){
 		for(int i=N-1; i>0; i--)
 			t[i]=max(t[i<<1], t[1<<1|1]);
 	}
 
-	int query(int l, int r)
-	{
+	int query(int l, int r){
 		int ans=0;
 		for(i+=N, r+=N; l<r; l>>=1, r>>=1)
 		{
@@ -26,8 +23,7 @@ struct Segtree
 		return ans;
 	}
 
-	void update(int p, int value)
-	{
+	void update(int p, int value){
 		for(t[p+=n]=value; p>1; p>>=1)
 			t[p>>1]= max(t[p], t[p^1]);
 	}
@@ -38,8 +34,7 @@ int main()
 {
 	Segtree st;
 
-	for(int i=0;i<n;i++)
-	{
+	for(int i=0;i<n;i++){
 		cin >> aux;
 		st.t[N+i]=aux; //Leaves are stored in continuous nodes with indices starting with N
 	}

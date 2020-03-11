@@ -5,7 +5,7 @@ using namespace std;
 
 // Structure which will store both 
 // array elements and queries. 
-struct node { 
+struct node{ 
 	int pos; 
 	int l; 
 	int r; 
@@ -14,8 +14,7 @@ struct node {
 
 // Boolean comparator that will be used 
 // for sorting the structural array. 
-bool comp(node a, node b) 
-{ 
+bool comp(node a, node b){ 
 	// If 2 values are equal the query will 
 	// occur first then array element 
 	if (a.val == b.val) 
@@ -27,19 +26,17 @@ bool comp(node a, node b)
 
 // Updates the node of BIT array by adding 
 // 1 to it and its ancestors. 
-void update(int* BIT, int n, int idx) 
-{ 
-	while (idx <= n) { 
+void update(int* BIT, int n, int idx){ 
+	while (idx <= n){ 
 		BIT[idx]++; 
 		idx += idx & (-idx); 
 	} 
 } 
 // Returns the count of numbers of elements 
 // present from starting till idx. 
-int query(int* BIT, int idx) 
-{ 
+int query(int* BIT, int idx){ 
 	int ans = 0; 
-	while (idx) { 
+	while (idx){ 
 		ans += BIT[idx]; 
 
 		idx -= idx & (-idx); 
@@ -49,15 +46,14 @@ int query(int* BIT, int idx)
 
 // Function to solve the queries offline 
 void solveQuery(int arr[], int n, int QueryL[], 
-				int QueryR[], int QueryK[], int q) 
-{ 
+				int QueryR[], int QueryK[], int q){ 
 	// create node to store the elements 
 	// and the queries 
 	node a[n + q + 1]; 
 	// 1-based indexing. 
 
 	// traverse for all array numbers 
-	for (int i = 1; i <= n; ++i) { 
+	for(int i = 1; i <= n; ++i){ 
 		a[i].val = arr[i - 1]; 
 		a[i].pos = 0; 
 		a[i].l = 0; 
@@ -65,7 +61,7 @@ void solveQuery(int arr[], int n, int QueryL[],
 	} 
 
 	// iterate for all queries 
-	for (int i = n + 1; i <= n + q; ++i) { 
+	for(int i = n + 1; i <= n + q; ++i){ 
 		a[i].pos = i - n; 
 		a[i].val = QueryK[i - n - 1]; 
 		a[i].l = QueryL[i - n - 1]; 
@@ -87,7 +83,7 @@ void solveQuery(int arr[], int n, int QueryL[],
 	int ans[q + 1]; 
 
 	// traverse for numbers and query 
-	for (int i = 1; i <= n + q; ++i) { 
+	for (int i = 1; i <= n + q; ++i){ 
 		if (a[i].pos != 0) { 
 
 			// call function to returns answer for each query 
@@ -97,14 +93,14 @@ void solveQuery(int arr[], int n, int QueryL[],
 			// are stored in order it was initially asked. 
 			ans[a[i].pos] = cnt; 
 		} 
-		else { 
+		else{ 
 			// a[i].r contains the position of the 
 			// element in the original array. 
 			update(BIT, n, a[i].r); 
 		} 
 	} 
 	// Output the answer array 
-	for (int i = 1; i <= q; ++i) { 
+	for (int i = 1; i <= q; ++i){ 
 		cout << ans[i] << endl; 
 	} 
 } 

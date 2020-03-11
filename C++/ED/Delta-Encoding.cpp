@@ -1,7 +1,6 @@
 // Delta encoding
 
-for(int i=0;i<q;i++)
-{
+for(int i=0;i<q;i++){
     int l,r,x;
     cin >> l >> r >> x;
     delta[l] += x;
@@ -10,8 +9,7 @@ for(int i=0;i<q;i++)
 
 int atual = 0;
 	
-for(int i=0;i<n;i++)
-{
+for(int i=0;i<n;i++){
     atual += delta[i];
     v[i] += atual;
 }

@@ -2,16 +2,14 @@
 
 int pai[MAX], peso[MAX];
 
-int find(int aux)
-{
+int find(int aux){
 	if(pai[aux]==aux)
 		return aux;
 	else
 		return pai[aux]=find(pai[aux], pai);
 }
 
-void join(int x, int y)
-{
+void join(int x, int y){
 	x = find(x);
 	y = find(y);
 			
@@ -26,8 +24,7 @@ void join(int x, int y)
 	}
 }
 
-int main()
-{
+int main(){
 	for(int i=1;i<=N;i++)
 		pai[i]=i;
 }

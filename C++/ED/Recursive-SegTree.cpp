@@ -3,10 +3,8 @@
 vector<int> val(MAX, 0);
 vector<int> vet(N);
 
-void monta(int i, int j, int no)
-{
-	if(i==j)
-	{
+void monta(int i, int j, int no){
+	if(i==j){
 		val[no]=vet[i];
 		return;
 	}
@@ -21,13 +19,10 @@ void monta(int i, int j, int no)
 	val[no]=max(val[esq], val[dir]);
 }
  
-void atualiza(int no, int i, int j, int pos, int novo_valor)
-{
-	if(i==j)
-	{
+void atualiza(int no, int i, int j, int pos, int novo_valor){
+	if(i==j){
 		val[no]=novo_valor;
-	}else
-	{
+	}else{
 		int esq = 2*no;
 		int dir = 2*no+1;
 		int meio = (i+j)/2;
@@ -44,8 +39,7 @@ void atualiza(int no, int i, int j, int pos, int novo_valor)
 	}
 }
  
-int consulta(int no, int i, int j, int A, int B)
-{
+int consulta(int no, int i, int j, int A, int B){
 	if(i>B || j<A)
 		return -1;
 	if(i>=A and j<=B)
@@ -74,5 +68,4 @@ int main()
 	monta(1, N, 1);
 	atualiza(1, 1, N, pos, valor);
 	x = consulta(1, 1, N, inicio, fim);
-
 }
