@@ -1,16 +1,9 @@
-// Modular exponentiaion - (x^y)%mod in O(log y)
-ll power(ll x, ll y, ll mod) 
-{
-    ll res = 1;
-    x%=mod;
+ll fexp(ll b, ll e, ll mod) {
+    if(e == 0) return 1LL;
+    ll res = fexp(b, e/2LL, mod);
+    res = (res*res)%mod;
+    if(e%2LL)
+        res = (res*b)%mod;
 
-    while(y)
-    { 
-        if(y&1)
-            res=(res*x)%mod;
-  
-        y=y>>1;
-        x=(x*x)%mod;
-    }
-    return res;
+    return res%mod;
 }
