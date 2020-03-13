@@ -6,24 +6,24 @@ void make_log() {
 }
 
 struct Sparse {
-    int n, k;
+    int n;
     vector<vector<int>> st;
 
     Sparse(int n, vi array) {
         this->n = n;
+        int k = logv[n];
         st.assign(n+1, vector<int>(k+1, 0));
 
         for (int i = 0; i < n; i++)
             st[i][0] = array[i];
 
-        int k = logv[n];
         for (int j = 1; j <= k; j++)
             for (int i = 0; i + (1 << j) <= n; i++)
                 st[i][j] = f(st[i][j-1], st[i + (1 << (j - 1))][j - 1]);
     }
 
     int f(int a, int b) {
-        return max(a, b);
+        return min(a, b);
     }
 
     int query(int L, int R) {
