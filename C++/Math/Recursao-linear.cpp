@@ -1,18 +1,18 @@
+vector<vl> id(int n) {
+    vector<vl> res(n, vl(n, 0));
+    for(int i = 0; i < n; i++) res[i][i] = 1;
+    return res;
+}
+
 vector<vl> mult(vector<vl> a, vector<vl> b, int n) {
-    vector<vl> res;
-    for(int i = 0; i < n; i++) {
-        vl tmp;
-        for(int j = 0; j < n; j++) {
-            tmp.pb(0);
-        }
-        res.pb(tmp);
-    }
+    vector<vl> res(n, vl(n, 0));
 
     for(int row = 0; row < n; row++) {
         for(int col = 0; col < n; col++) {
             ll val = 0;
             for(int k = 0; k < n; k++) {
-                val += (a[row][k]*b[k][col]);
+                ll delta = (a[row][k] * b[k][col]) % MOD;
+                val = (val + delta) % MOD;
             }
             res[row][col] = val;
         }
@@ -23,19 +23,7 @@ vector<vl> mult(vector<vl> a, vector<vl> b, int n) {
 
 vector<vl> fexp(vector<vl> b, ll e, int n) {
     if(e == 0) {
-        vector<vl> id;
-        for(int i = 0; i < n; i++) {
-            vl tmp;
-            for(int j = 0; j < n; j++) {
-                if(i == j)
-                    tmp.pb(1);
-                else
-                    tmp.pb(0);
-            }
-            id.pb(tmp);
-        }
-
-        return id;
+        return id(n);
     }
 
     vector<vl> res = fexp(b, e/2, n);
