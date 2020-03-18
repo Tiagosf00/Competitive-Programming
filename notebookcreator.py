@@ -1,9 +1,19 @@
 import os
 import subprocess
+import shutil
 
 
 def cpy_template():
-    os.system('cp template.tex notebook.tex')
+    shutil.copyfile('template.tex', 'notebook.tex')
+
+
+def remove_aux():
+    if os.path.exists('notebook.aux'):
+        os.remove('notebook.aux')
+    if os.path.exists('notebook.log'):
+        os.remove('notebook.log')
+    if os.path.exists('texput.log'):
+        os.remove('texput.log')
 
 
 def get_dir():
@@ -44,7 +54,16 @@ def create_notebook(section):
 cpy_template()
 section = get_dir()
 create_notebook(section)
-subprocess.call(['latexmk', '-pdf', 'notebook.tex'])
+# cmd = ['latexmk', '-pdf', '-silent', 'notebook.tex']
+cmd = ['pdflatex', '-interaction=nonstopmode', '-halt-on-error',
+       'notebook.tex']
+with open(os.devnull, 'w') as DEVNULL:
+    try:
+        subprocess.check_call(cmd, stdout=DEVNULL)
+    except Exception:
+        print("Erro na transformação de LaTex para pdf.")
+        exit(1)
 
-subprocess.call(['rm', 'notebook.aux', 'notebook.fdb_latexmk',
-                 'notebook.fls', 'notebook.log'])
+remove_aux()
+
+print("O PDF foi gerado com sucesso!")
