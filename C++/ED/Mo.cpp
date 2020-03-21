@@ -2,18 +2,23 @@ const int BLK = 500; // tamanho do bloco, algo entre 300 e 500 e nice
 
 struct Query {
     int l, r, idx;
-    bool operator<(Query other) const
-    {
+    Query(int l, int r, int idx) {
+        this->l = l;
+        this->r = r;
+        this->idx = idx;
+    }
+    bool operator<(Query other) const {
         return make_pair(l / BLK, r) <
         make_pair(other.l / BLK, other.r);
     }
 };
 
-void add(); void remove() // implementar operacoes de acordo com o problema, cuidado com TLE ao utilizar MAP
+void add() void remove() // implementar operacoes de acordo com o problema, cuidado com TLE ao utilizar MAP
 
-vector<pair<int,ll>> mo() {
-    vector<pair<int,ll>> res;
+vector<int> mo(vector<Query> queries) {
+    vector<int> res(queries.size());
     sort(queries.begin(), queries.end());
+    resposta = 0;
 
     int l = 0, r = -1;
     for(Query q : queries) {
@@ -33,7 +38,7 @@ vector<pair<int,ll>> mo() {
                 remove(r);
                 r--;
         }
-        res.pb(mp(q.idx, RESPOSTA)); // adicionar resposta de acordo com o problema
+        res[q.idx] = resposta; // adicionar resposta de acordo com o problema
      }
      return res; // ordernar o vetor pelo indice e responder queries na ordem
 }
