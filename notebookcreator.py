@@ -12,8 +12,8 @@ def remove_aux():
         os.remove('notebook.aux')
     if os.path.exists('notebook.log'):
         os.remove('notebook.log')
-    if os.path.exists('notebook.toc'):
-        os.remove('notebook.toc')
+    # if os.path.exists('notebook.toc'):
+    #     os.remove('notebook.toc')
     if os.path.exists('texput.log'):
         os.remove('texput.log')
 
