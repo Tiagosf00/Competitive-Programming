@@ -1,7 +1,8 @@
 typedef ld cod;
-
-// bool eq(cod a, cod b){ return (a==b); }
 bool eq(cod a, cod b){ return fabsl(a - b) <= EPS; }
+
+// typedef int cod;
+// bool eq(cod a, cod b){ return (a==b); }
 
 struct point
 {
@@ -21,6 +22,10 @@ struct point
     }
     point operator/(cod t) const{
         return {x/t, y/t};
+    }
+    bool operator<(const point &o) const{
+        if(!eq(x, o.x)) return x < o.x;
+        return y < o.y;
     }
     bool operator==(const point &o) const{
         return eq(x, o.x) and eq(y, o.y);
