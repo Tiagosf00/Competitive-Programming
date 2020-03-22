@@ -6,12 +6,17 @@ int quarter(point a)
     return 3;
 }
 
-bool comp(point a, point b)
+point c;
+bool comp(point a, point b) //ccw
 {
+    a=a-c;b=b-c;
     int qa = quarter(a);
     int qb = quarter(b);
     if(qa==qb)
         return cross(a,b)>0;
     else
-        return quarter(a)<quarter(b);
+        return qa<qb;
 }
+
+c = center(A);
+sort(A.begin(), A.end(), comp);

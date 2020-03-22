@@ -63,7 +63,7 @@ ld proj(point a, point b){ // a sobre b
 ld angle(point a, point b){ // em radianos
     return acos(dot(a, b) / norm(a) / norm(b));
 }
-int ccw(point a, point b, point e) //-1=esq; 0=collinear; 1=dir;
+int ccw(point a, point b, point e) //-1=dir; 0=collinear; 1=esq;
 {
     cod tmp = cross(b-a, e-a); // from a to b
     return (tmp > EPS) - (tmp < -EPS);
