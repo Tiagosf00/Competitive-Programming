@@ -1,3 +1,6 @@
+ld max(ld a, ld b){ return(a>b ? a:b);}
+ld min(ld a, ld b){ return(a<b ? a:b);}
+
 typedef ld cod;
 bool eq(cod a, cod b){ return fabsl(a - b) <= EPS; }
 
@@ -61,7 +64,13 @@ ld proj(point a, point b){ // a sobre b
     return dot(a, b)/norm(b);
 }
 ld angle(point a, point b){ // em radianos
-    return acos(dot(a, b) / norm(a) / norm(b));
+    ld ang = dot(a, b) / norm(a) / norm(b);
+    return acos(max(min(ang, 1), -1));
+}
+ld order_angle(point a, point b) // from a to b ccw (a in front of b)
+{
+    ld aux = angle(a,b)*180/PI;
+    return (cross(a,b)<=0 ? aux:360-aux);
 }
 int ccw(point a, point b, point e) //-1=dir; 0=collinear; 1=esq;
 {
