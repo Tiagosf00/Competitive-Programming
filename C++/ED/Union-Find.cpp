@@ -26,7 +26,7 @@ struct DSU {
                 swap(a, b);
 
             parent[b] = a;
-            size[a] += b;
+            size[a] += size[b];
         }
     }
 };
