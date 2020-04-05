@@ -7,7 +7,7 @@ struct Segtree{
 
 	void build(){
 		for(int i=N-1; i>0; i--)
-			t[i]=max(t[i<<1], t[1<<1|1]);
+			t[i]=max(t[i<<1], t[i<<1|1]);
 	}
 
 	int query(int l, int r){
@@ -25,7 +25,7 @@ struct Segtree{
 
 	void update(int p, int value){
 		for(t[p+=n]=value; p>1; p>>=1)
-			t[p>>1]= max(t[p], t[p^1]);
+			t[p>>1]=max(t[p], t[p^1]);
 	}
 
 };
