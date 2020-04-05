@@ -63,19 +63,21 @@ ld norm(point a){ // Modulo
 ld proj(point a, point b){ // a sobre b
     return dot(a, b)/norm(b);
 }
+ld max(ld a, ld b){ return (a>b ? a:b); }
+ld min(ld a, ld b){ return (a<b ? a:b); }
 ld angle(point a, point b){ // em radianos
     ld ang = dot(a, b) / norm(a) / norm(b);
     return acos(max(min(ang, 1), -1));
-}
-ld order_angle(point a, point b) // from a to b ccw (a in front of b)
-{
-    ld aux = angle(a,b)*180/PI;
-    return (cross(a,b)<=0 ? aux:360-aux);
 }
 int ccw(point a, point b, point e) //-1=dir; 0=collinear; 1=esq;
 {
     cod tmp = cross(b-a, e-a); // from a to b
     return (tmp > EPS) - (tmp < -EPS);
+}
+ld order_angle(point a, point b) // from a to b ccw (a in front of b)
+{
+    ld aux = angle(a,b)*180/PI;
+    return (cross(a,b)<=0 ? aux:360-aux);
 }
 
 bool collinear(point a, point b, point c){ 
@@ -93,11 +95,10 @@ point rot90ccw(point a) { return {-a.y, a.x} };
 
 // Area de um poligono (pontos ordenados por adjacencia)
 ld area(vector <point> p){
-  ld ret = 0;
-  for(int i=2;i<(int)p.size();i++)
-    ret += cross(p[i] - p[0], p[i-1] - p[0]);
-  return fabsl(ret/2);
-  //return abs(ret/2);
+    ld ret = 0;
+    for(int i=2;i<(int)p.size();i++)
+        ret += cross(p[i] - p[0], p[i-1] - p[0]);
+    return fabsl(ret/2);
 }
 
 // Dist entre ponto e reta
