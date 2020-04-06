@@ -1,7 +1,7 @@
 // Segment Tree Recursiva - Range maximum query
 
-vector<int> val(MAX, 0);
-vector<int> vet(N);
+int val[4*MAX];
+int vet[MAX];
 
 void monta(int i, int j, int no){
 	if(i==j){
