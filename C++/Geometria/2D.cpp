@@ -38,12 +38,16 @@ struct point
 
 struct line
 {
-    point fp, sp;
-    point(point fp=0, point sp=0): fp(fp), sp(sp){}
+    point p1, p2;
+    point(point p1=0, point p2=0): p1(p1), p2(p2){}
 
-    //a=y1-y2;
-    //b=x2-x1;
-    //c=x2*y1-y2*x1;
+    cod a = p1.y-p2.y;
+    cod b = p2.x-p1.y;
+    cod c = p2.x*p1.y - p2.y*p1.x;
+    // ax+by+c = 0;
+    // a=y1-y2;
+    // b=x2-x1;
+    // c=x2*y1-y2*x1;
 
 };
 
