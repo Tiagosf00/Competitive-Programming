@@ -1,6 +1,3 @@
-ld max(ld a, ld b){ return(a>b ? a:b);}
-ld min(ld a, ld b){ return(a<b ? a:b);}
-
 typedef ld cod;
 bool eq(cod a, cod b){ return fabsl(a - b) <= EPS; }
 
@@ -73,7 +70,7 @@ ld angle(point a, point b){ // em radianos
     ld ang = dot(a, b) / norm(a) / norm(b);
     return acos(max(min(ang, 1), -1));
 }
-int ccw(point a, point b, point e) //-1=dir; 0=collinear; 1=esq;
+int ccw(point &a, point &b, point &e) //-1=dir; 0=collinear; 1=esq;
 {
     cod tmp = cross(b-a, e-a); // from a to b
     return (tmp > EPS) - (tmp < -EPS);
@@ -98,7 +95,7 @@ point rot90cw(point a) { return {a.y, -a.x} };
 point rot90ccw(point a) { return {-a.y, a.x} };
 
 // Area de um poligono (pontos ordenados por adjacencia)
-ld area(vector <point> p){
+ld area(vector <point> &p){
     ld ret = 0;
     for(int i=2;i<(int)p.size();i++)
         ret += cross(p[i] - p[0], p[i-1] - p[0]);
@@ -107,6 +104,6 @@ ld area(vector <point> p){
 
 // Dist entre ponto e reta
 cod distr(point a, line b){
-    cod crs = cross(point(a - b.fp), point(b.sp - b.fp));
-    return norm(crs/dist(b.fp, b.sp));
+    cod crs = cross(point(a - b.p1), point(b.p2 - b.p1));
+    return norm(crs/dist(b.p1, b.p2));
 }
