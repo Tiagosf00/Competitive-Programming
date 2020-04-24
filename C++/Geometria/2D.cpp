@@ -1,8 +1,8 @@
-typedef ld cod;
-bool eq(cod a, cod b){ return fabsl(a - b) <= EPS; }
-
 // typedef int cod;
 // bool eq(cod a, cod b){ return (a==b); }
+
+typedef ld cod;
+bool eq(cod a, cod b){ return fabsl(a - b) <= EPS; }
 
 struct point
 {
@@ -36,10 +36,10 @@ struct point
 struct line
 {
     point p1, p2;
-    point(point p1=0, point p2=0): p1(p1), p2(p2){}
+    line(point p1=0, point p2=0): p1(p1), p2(p2){}
 
     cod a = p1.y-p2.y;
-    cod b = p2.x-p1.y;
+    cod b = p2.x-p1.x;
     cod c = p2.x*p1.y - p2.y*p1.x;
     // ax+by+c = 0;
     // a=y1-y2;
@@ -102,8 +102,17 @@ ld area(vector <point> &p){
     return fabsl(ret/2);
 }
 
-// Dist entre ponto e reta
-cod distr(point a, line b){
-    cod crs = cross(point(a - b.p1), point(b.p2 - b.p1));
-    return norm(crs/dist(b.p1, b.p2));
+// Dist entre ponto e segmento de reta
+cod distr(point p, point a, point b){
+    point u,v,w,z;
+    u = b-a;
+    v = p-a;
+    w = p-b;
+    z = a-x;
+ 
+    if(dot(u,w) > 0)
+        return norm(p-b);
+    if(dot(z,v) > 0)
+        return norm(p-a);
+    return fabs(cross(u,v))/norm(a-b);
 }
