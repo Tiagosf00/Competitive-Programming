@@ -12,7 +12,7 @@ struct Segtree{
 
 	int query(int l, int r){
 		int ans=0;
-		for(i+=N, r+=N; l<r; l>>=1, r>>=1)
+		for(l+=N, r+=N; l<r; l>>=1, r>>=1)
 		{
 			if(l&1)
 				ans=max(ans, t[l++]);

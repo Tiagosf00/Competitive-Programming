@@ -33,22 +33,6 @@ struct point
 
 };
 
-struct line
-{
-    point p1, p2;
-    line(point p1=0, point p2=0): p1(p1), p2(p2){}
-
-    cod a = p1.y-p2.y;
-    cod b = p2.x-p1.x;
-    cod c = p2.x*p1.y - p2.y*p1.x;
-    // ax+by+c = 0;
-    // a=y1-y2;
-    // b=x2-x1;
-    // c=x2*y1-y2*x1;
-
-};
-
-
 // Produto Escalar
 cod dot(point a, point b){
     return a.x*b.x + a.y*b.y;
@@ -70,6 +54,10 @@ ld angle(point a, point b){ // em radianos
     ld ang = dot(a, b) / norm(a) / norm(b);
     return acos(max(min(ang, 1), -1));
 }
+ld angle_vec(point v){
+    // return 180/PI*atan2(vx, vy);
+    return atan2(v.x, v.y);
+}
 int ccw(point &a, point &b, point &e) //-1=dir; 0=collinear; 1=esq;
 {
     cod tmp = cross(b-a, e-a); // from a to b
@@ -87,12 +75,12 @@ bool collinear(point a, point b, point c){
 
 point rotccw(point p, ld a) // em radianos
 {
-    //a = a*acos(0.0)/90; // graus
+    // a = 180*a/PI; // graus
     return point((p.x*cos(a)-p.y*sin(a)), (p.y*cos(a)+p.x*sin(a)));
 }
 
-point rot90cw(point a) { return {a.y, -a.x} };
-point rot90ccw(point a) { return {-a.y, a.x} };
+point rot90cw(point a) { return point(a.y, -a.x) };
+point rot90ccw(point a) { return point(-a.y, a.x) };
 
 // Area de um poligono (pontos ordenados por adjacencia)
 ld area(vector <point> &p){
@@ -102,17 +90,33 @@ ld area(vector <point> &p){
     return fabsl(ret/2);
 }
 
+
+
+
+struct line
+{
+    point p1, p2;
+    line(point p1=0, point p2=0): p1(p1), p2(p2){}
+
+    cod a = p1.y-p2.y;
+    cod b = p2.x-p1.x;
+    cod c = p2.x*p1.y - p2.y*p1.x;
+    // ax+by+c = 0;
+};
+
 // Dist entre ponto e segmento de reta
 cod distr(point p, point a, point b){
-    point u,v,w,z;
-    u = b-a;
-    v = p-a;
-    w = p-b;
-    z = a-x;
- 
-    if(dot(u,w) > 0)
+
+    if(dot(b-a,p-b) > 0)
         return norm(p-b);
-    if(dot(z,v) > 0)
+    if(dot(a-b,p-a) > 0)
         return norm(p-a);
-    return fabs(cross(u,v))/norm(a-b);
+    return fabs(cross(b-a,p-a))/norm(a-b);
 }
+
+struct circle
+{
+    point c;
+    cod r;
+    point(point c=0, cod r=0): c(c), r(r){}
+};
