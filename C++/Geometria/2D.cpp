@@ -4,8 +4,7 @@
 typedef ld cod;
 bool eq(cod a, cod b){ return fabsl(a - b) <= EPS; }
 
-struct point
-{
+struct point{
     cod x, y;
     int id;
     point(cod x=0, cod y=0): x(x), y(y){}
@@ -75,7 +74,7 @@ bool collinear(point a, point b, point c){
 
 point rotccw(point p, ld a) // em radianos
 {
-    // a = 180*a/PI; // graus
+    // a = PI*a/180; // graus
     return point((p.x*cos(a)-p.y*sin(a)), (p.y*cos(a)+p.x*sin(a)));
 }
 
@@ -93,8 +92,7 @@ ld area(vector <point> &p){
 
 
 
-struct line
-{
+struct line{
     point p1, p2;
     line(point p1=0, point p2=0): p1(p1), p2(p2){}
 
@@ -114,8 +112,7 @@ cod distr(point p, point a, point b){
     return fabs(cross(b-a,p-a))/norm(a-b);
 }
 
-struct circle
-{
+struct circle{
     point c;
     cod r;
     point(point c=0, cod r=0): c(c), r(r){}

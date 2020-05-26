@@ -1,23 +1,13 @@
 // Factorization of a number in sqrt(n)
 
-int main()
-{
-	ll N;
+vi fact(ll n){
 	vector<int> div;
-
-	cin >> N;
-
-	for(ll i=2;i*i<=N;i++)
-	{
-		if(N%i==0)
-		{
+	for(ll i=2;i*i<=n;i++)
+		if(n%i==0){
 			vet.pb(i);
-			while(N%i==0)
-				N/=i;
+			while(n%i==0)
+				n/=i;
 		}
-	}
-	if(N!=1)
-		vet.pb(N);
-
-	return 0;
+	if(n!=1) vet.pb(n);
+	return div;
 }

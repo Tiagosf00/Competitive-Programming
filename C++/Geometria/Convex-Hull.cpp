@@ -5,7 +5,7 @@ vector<point> convex_hull(const vector<point> points)
     vector<point> lower, upper;
     for(const auto& p: P){
         int n = int(lower.size());
-        while(n>=2 and ccw(lower[n-2], lower[n-1], p)){
+        while(n>=2 and ccw(lower[n-2], lower[n-1], p)!=-1){
             lower.pop_back();
             n = int(lower.size());
         }
@@ -14,7 +14,7 @@ vector<point> convex_hull(const vector<point> points)
     reverse(P.begin(), P.end());
     for(const auto& p: P){
         int n = int(upper.size());
-        while(n>=2 and ccw(upper[n-2], upper[n-1], p)){
+        while(n>=2 and ccw(upper[n-2], upper[n-1], p)!=-1){
             upper.pop_back();
             n = int(upper.size());
         }
