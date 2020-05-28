@@ -4,6 +4,11 @@
 
 struct Segtree{
 	int t[2*N]={0};
+	int n;
+
+	Segtree(int n){
+        this->n = n;
+    }
 
 	void build(){
 		for(int i=N-1; i>0; i--)
@@ -12,8 +17,7 @@ struct Segtree{
 
 	int query(int l, int r){
 		int ans=0;
-		for(l+=N, r+=N; l<r; l>>=1, r>>=1)
-		{
+		for(l+=N, r+=N; l<r; l>>=1, r>>=1){
 			if(l&1)
 				ans=max(ans, t[l++]);
 			if(r&1)
@@ -32,14 +36,14 @@ struct Segtree{
 
 int main()
 {
-	Segtree st;
+	Segtree st(n);
 
 	for(int i=0;i<n;i++){
 		cin >> aux;
 		st.t[N+i]=aux; //Leaves are stored in continuous nodes with indices starting with N
 	}
 
-	st.build();
+	st.build(n);
 	x = st.query(inicio, fim);
 	st.update(ind, value);
 
