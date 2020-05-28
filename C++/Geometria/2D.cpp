@@ -22,6 +22,12 @@ struct point{
     point operator/(cod t) const{
         return {x/t, y/t};
     }
+    cod operator*(const point &o) const{ // dot
+        return x * o.x + y * o.y;
+    }
+    cod operator^(const point &o) const{ // cross
+        return x * o.y - y * o.x;
+    }
     bool operator<(const point &o) const{
         if(!eq(x, o.x)) return x < o.x;
         return y < o.y;
@@ -32,25 +38,16 @@ struct point{
 
 };
 
-// Produto Escalar
-cod dot(point a, point b){
-    return a.x*b.x + a.y*b.y;
-}
-// Produto Vetorial
-cod cross(point a, point b){
-    return a.x*b.y - a.y*b.x;
-}
-
 ld norm(point a){ // Modulo
-    return sqrt(dot(a, a));
+    return sqrt(a*a);
 }
 ld proj(point a, point b){ // a sobre b
-    return dot(a, b)/norm(b);
+    return a*b/norm(b);
 }
 ld max(ld a, ld b){ return (a>b ? a:b); }
 ld min(ld a, ld b){ return (a<b ? a:b); }
 ld angle(point a, point b){ // em radianos
-    ld ang = dot(a, b) / norm(a) / norm(b);
+    ld ang = a*b / norm(a) / norm(b);
     return acos(max(min(ang, 1), -1));
 }
 ld angle_vec(point v){
@@ -59,17 +56,17 @@ ld angle_vec(point v){
 }
 int ccw(point &a, point &b, point &e) //-1=dir; 0=collinear; 1=esq;
 {
-    cod tmp = cross(b-a, e-a); // from a to b
+    cod tmp = (b-a)^(e-a); // from a to b
     return (tmp > EPS) - (tmp < -EPS);
 }
 ld order_angle(point a, point b) // from a to b ccw (a in front of b)
 {
     ld aux = angle(a,b)*180/PI;
-    return (cross(a,b)<=0 ? aux:360-aux);
+    return ((a^b)<=0 ? aux:360-aux);
 }
 
 bool collinear(point a, point b, point c){ 
-    return eq(cross(a-c, b-c), 0);
+    return eq((a-c)^(b-c), 0);
 }
 
 point rotccw(point p, ld a) // em radianos
@@ -78,14 +75,14 @@ point rotccw(point p, ld a) // em radianos
     return point((p.x*cos(a)-p.y*sin(a)), (p.y*cos(a)+p.x*sin(a)));
 }
 
-point rot90cw(point a) { return point(a.y, -a.x) };
-point rot90ccw(point a) { return point(-a.y, a.x) };
+point rot90cw(point a) { return point(a.y, -a.x); };
+point rot90ccw(point a) { return point(-a.y, a.x); };
 
 // Area de um poligono (pontos ordenados por adjacencia)
 ld area(vector <point> &p){
     ld ret = 0;
     for(int i=2;i<(int)p.size();i++)
-        ret += cross(p[i] - p[0], p[i-1] - p[0]);
+        ret += (p[i]-p[0])^(p[i-1]-p[0]);
     return fabsl(ret/2);
 }
 
@@ -104,16 +101,15 @@ struct line{
 
 // Dist entre ponto e segmento de reta
 cod distr(point p, point a, point b){
-
-    if(dot(b-a,p-b) > 0)
+    if(((b-a)^(p-b)) > 0)
         return norm(p-b);
-    if(dot(a-b,p-a) > 0)
+    if(((a-b)^(p-a)) > 0)
         return norm(p-a);
-    return fabs(cross(b-a,p-a))/norm(a-b);
+    return fabs((b-a)^(p-a))/norm(a-b);
 }
 
 struct circle{
     point c;
     cod r;
-    point(point c=0, cod r=0): c(c), r(r){}
+    circle(point c=0, cod r=0): c(c), r(r){}
 };
