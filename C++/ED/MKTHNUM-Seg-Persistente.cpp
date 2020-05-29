@@ -1,3 +1,4 @@
+// kth number in range [l, r] if it was ordered
 struct node{
     int val;
     int l, r;

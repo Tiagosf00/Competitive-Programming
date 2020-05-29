@@ -1,6 +1,8 @@
-typedef ld cod;
+// typedef int cod;
+// bool eq(cod a, cod b){ return (a==b); }
 
-bool eq(cod a, cod b){ return abs(a - b) <= EPS; }
+typedef ld cod;
+bool eq(cod a, cod b){ return fabs(a - b) <= EPS; }
 
 struct point
 {
@@ -49,3 +51,14 @@ ld angle(point a, point b){ // em radianos
 cod triple(point a, point b, point c){
     return dot(a, cross(b, c)); // Area do paralelepipedo
 }
+
+
+struct plane{
+    point p1, p2, p3;
+    plane(point p1=0, point p2=0, point p3=0): p1(p1), p2(p2), p3(p3){}
+
+    point aux = cross(p1-p3, p2-p3);
+    cod a = aux.x, b = aux.y, c = aux.z;
+    cod d = -a*p1.x - b*p1.y - c*p1.z;
+    // ax+by+cz+d = 0;
+};

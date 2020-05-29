@@ -1,3 +1,4 @@
+// distinct elements in the range [l, r]
 struct node{
     int val;
     int l, r;
