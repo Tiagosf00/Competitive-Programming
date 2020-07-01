@@ -38,6 +38,10 @@ point cross(point a, point b){
                    a.x*b.y - a.y*b.x);
 }
 
+ld dist(point a, point b){
+    return sqrt(dot(a-b, a-b));
+}
+
 ld abs(point a){ // Modulo
     return sqrt(dot(a, a));
 }
@@ -62,3 +66,7 @@ struct plane{
     cod d = -a*p1.x - b*p1.y - c*p1.z;
     // ax+by+cz+d = 0;
 };
+
+cod dist(plane pl, point p){
+    return fabs(pl.a*p.x + pl.b*p.y + pl.c*p.z + pl.d) / sqrt(pl.a*pl.a + pl.b*pl.b + pl.c*pl.c);
+}
