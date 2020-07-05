@@ -1,6 +1,7 @@
 // typedef int cod;
 // bool eq(cod a, cod b){ return (a==b); }
 
+#define vp vector<point>
 typedef ld cod;
 bool eq(cod a, cod b){ return fabsl(a - b) <= EPS; }
 
@@ -38,6 +39,9 @@ struct point{
 
 };
 
+bool nulo(point a){
+    return (eq(a.x, 0) and eq(a.y, 0));
+}
 ld norm(point a){ // Modulo
     return sqrt(a*a);
 }
@@ -79,7 +83,7 @@ point rot90cw(point a) { return point(a.y, -a.x); };
 point rot90ccw(point a) { return point(-a.y, a.x); };
 
 // Area de um poligono (pontos ordenados por adjacencia)
-ld area(vector <point> &p){
+ld area(vp &p){
     ld ret = 0;
     for(int i=2;i<(int)p.size();i++)
         ret += (p[i]-p[0])^(p[i-1]-p[0]);

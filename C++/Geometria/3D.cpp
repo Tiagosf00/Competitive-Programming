@@ -1,6 +1,7 @@
 // typedef int cod;
 // bool eq(cod a, cod b){ return (a==b); }
 
+#define vp vector<point>
 typedef ld cod;
 bool eq(cod a, cod b){ return fabs(a - b) <= EPS; }
 
@@ -24,36 +25,35 @@ struct point
     bool operator==(const point &o) const{
         return eq(x, o.x) and eq(y, o.y) and eq(z, o.z);
     }
+    cod operator*(const point &o) const{ // dot
+        return x*o.x + y*o.y + z*o.z;
+    }
+    point operator^(const point &o) const{ // cross
+        return point(y*o.z - z*o.y,
+                     z*o.x - x*o.z,
+                     x*o.y - y*o.x);
+    }
 };
 
-// Produto Escalar
-cod dot(point a, point b){
-    return a.x*b.x + a.y*b.y + a.z*b.z;
-}
-
-// Produto Vetorial
-point cross(point a, point b){
-    return point(a.y*b.z - a.z*b.y,
-                   a.z*b.x - a.x*b.z,
-                   a.x*b.y - a.y*b.x);
-}
-
 ld dist(point a, point b){
-    return sqrt(dot(a-b, a-b));
+    return sqrt((a-b)*(a-b));
+}
+bool nulo(point a){
+    return (eq(a.x, 0) and eq(a.y, 0) and eq(a.z, 0));
 }
 
-ld abs(point a){ // Modulo
-    return sqrt(dot(a, a));
+ld norm(point a){ // Modulo
+    return sqrt(a*a);
 }
 ld proj(point a, point b){ // a sobre b
-    return dot(a, b)/abs(b);
+    return (a*b)/norm(b);
 }
 ld angle(point a, point b){ // em radianos
-    return acos(dot(a, b) / abs(a) / abs(b));
+    return acos((a*b) / norm(a) / norm(b));
 }
 
 cod triple(point a, point b, point c){
-    return dot(a, cross(b, c)); // Area do paralelepipedo
+    return dot(a, b^c); // Area do paralelepipedo
 }
 
 
@@ -61,7 +61,7 @@ struct plane{
     point p1, p2, p3;
     plane(point p1=0, point p2=0, point p3=0): p1(p1), p2(p2), p3(p3){}
 
-    point aux = cross(p1-p3, p2-p3);
+    point aux = (p1-p3)^(p2-p3);
     cod a = aux.x, b = aux.y, c = aux.z;
     cod d = -a*p1.x - b*p1.y - c*p1.z;
     // ax+by+cz+d = 0;
