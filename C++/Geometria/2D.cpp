@@ -55,16 +55,14 @@ ld angle(point a, point b){ // em radianos
     return acos(max(min(ang, 1), -1));
 }
 ld angle_vec(point v){
-    // return 180/PI*atan2(vx, vy);
+    // return 180/PI*atan2(v.x, v.y);
     return atan2(v.x, v.y);
 }
-int ccw(point &a, point &b, point &e) //-1=dir; 0=collinear; 1=esq;
-{
+int ccw(point &a, point &b, point &e){ //-1=dir; 0=collinear; 1=esq;
     cod tmp = (b-a)^(e-a); // from a to b
     return (tmp > EPS) - (tmp < -EPS);
 }
-ld order_angle(point a, point b) // from a to b ccw (a in front of b)
-{
+ld order_angle(point a, point b){ // from a to b ccw (a in front of b)
     ld aux = angle(a,b)*180/PI;
     return ((a^b)<=0 ? aux:360-aux);
 }
@@ -73,8 +71,7 @@ bool collinear(point a, point b, point c){
     return eq((a-c)^(b-c), 0);
 }
 
-point rotccw(point p, ld a) // em radianos
-{
+point rotccw(point p, ld a){
     // a = PI*a/180; // graus
     return point((p.x*cos(a)-p.y*sin(a)), (p.y*cos(a)+p.x*sin(a)));
 }
@@ -99,9 +96,21 @@ struct line{
 
     cod a = p1.y-p2.y;
     cod b = p2.x-p1.x;
-    cod c = p2.x*p1.y - p2.y*p1.x;
+    cod c = -(a*p1.x + b*p1.y);
     // ax+by+c = 0;
+
+    bool inside(point p){
+        return eq(norm(p1-p)+norm(p2-p) - norm(p2-p1), 0);
+    }
 };
+
+point intersection(line l1, line l2){
+    ld det = l1.a*l2.b - l1.b*l2.a;
+    if(det==0) return point(INF, INF);
+    ld x = (l1.b*l2.c - l1.c*l2.b)/det;
+    ld y = (l1.c*l2.a - l1.a*l2.c)/det;
+    return point(x, y);
+}
 
 // Dist entre ponto e segmento de reta
 cod distr(point p, point a, point b){

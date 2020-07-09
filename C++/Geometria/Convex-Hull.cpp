@@ -1,8 +1,8 @@
-vector<point> convex_hull(const vector<point> points)
+vp convex_hull(const vp points)
 {
-    vector<point> P(points);
+    vp P(points);
     sort(P.begin(), P.end());
-    vector<point> lower, upper;
+    vp lower, upper;
     for(const auto& p: P){
         int n = int(lower.size());
         while(n>=2 and ccw(lower[n-2], lower[n-1], p)!=-1){
