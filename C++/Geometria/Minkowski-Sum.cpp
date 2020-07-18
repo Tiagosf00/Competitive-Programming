@@ -1,11 +1,11 @@
-vector<point> mk(const vector<point> &a,const vector<point> &b){
+vp mk(const vp &a,const vp &b){
     int i = 0, j = 0;
     for(int k = 0; k < (int)a.size(); k++)if(a[k]<a[i])
         i = k;
     for(int k = 0; k < (int)b.size(); k++)if(b[k]<b[j])
         j = k;
 
-    vector<point> c;
+    vp c;
     c.reserve(a.size() + b.size());
     for(int k = 0; k < int(a.size()+b.size()); k++){
         point pt{a[i] + b[j]};
