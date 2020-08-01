@@ -1,10 +1,9 @@
 vector<vi> grafo(MAX, vi());
 int grau[MAX]; // Quantas arestas chegam no indice i
 
-vi topological_sort(int N)
-{
-	vi resp;
-    for(int i=0;i<N;i++)
+vi topological_sort(int n){
+    vi resp;
+    for(int i=1;i<=n;i++)
         if(!grau[i])
             resp.push_back(i);
  
@@ -18,5 +17,9 @@ vi topological_sort(int N)
                 resp.pb(v);
         }
     }
+
+    if((int)resp.size() < n)
+        cout << "impossivel\n";
+
     return resp;
 }

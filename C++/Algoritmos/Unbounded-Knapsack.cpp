@@ -1,9 +1,7 @@
 int w, n;
 int c[MAX], v[MAX];
 
-int unbounded_knapsack()
-{
-
+int unbounded_knapsack(){
     int dp[w+1];
     memset(dp, 0, sizeof dp);
 
@@ -13,5 +11,4 @@ int unbounded_knapsack()
                 dp[i] = max(dp[i], dp[i-c[j]] + v[j]);
 
     return dp[w];
-
 }
