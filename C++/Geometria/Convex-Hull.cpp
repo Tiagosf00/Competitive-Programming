@@ -1,26 +1,20 @@
-vp convex_hull(const vp points)
+vp convex_hull(const vp &points)
 {
     vp P(points);
     sort(P.begin(), P.end());
-    vp lower, upper;
-    for(const auto& p: P){
-        int n = int(lower.size());
-        while(n>=2 and ccw(lower[n-2], lower[n-1], p)!=-1){
-            lower.pop_back();
-            n = int(lower.size());
-        }
-        lower.push_back(p);
+    vp L, U;
+    for(auto p: P){
+        while(L.size()>=2 and ccw(L[L.size()-2], L.back(), p)!=-1)
+            L.pop_back();
+        L.push_back(p);
     }
     reverse(P.begin(), P.end());
-    for(const auto& p: P){
-        int n = int(upper.size());
-        while(n>=2 and ccw(upper[n-2], upper[n-1], p)!=-1){
-            upper.pop_back();
-            n = int(upper.size());
-        }
-        upper.push_back(p);
+    for(auto p: P){
+        while(U.size()>=2 and ccw(U[U.size()-2], U.back(), p)!=-1)
+            U.pop_back();
+        U.push_back(p);
     }
-    lower.pop_back();
-    lower.insert(lower.end(), upper.begin(), upper.end()-1);
-    return lower;
+    L.pop_back();
+    L.insert(L.end(), U.begin(), U.end()-1);
+    return L;
 }

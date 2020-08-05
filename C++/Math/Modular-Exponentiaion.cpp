@@ -1,5 +1,5 @@
 // Modular exponentiaion - (x^y)%mod in O(log y)
-ll power(ll x, ll y, ll mod){
+ll fexp(ll x, ll y, ll mod){
     ll res = 1;
     x%=mod;
     while(y){ 

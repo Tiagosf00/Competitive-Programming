@@ -102,6 +102,7 @@ struct line{
     bool inside(point p){
         return eq(norm(p1-p)+norm(p2-p) - norm(p2-p1), 0);
     }
+
 };
 
 point intersection(line l1, line l2){
@@ -110,6 +111,10 @@ point intersection(line l1, line l2){
     ld x = (l1.b*l2.c - l1.c*l2.b)/det;
     ld y = (l1.c*l2.a - l1.a*l2.c)/det;
     return point(x, y);
+}
+
+ld func(line a, point b){
+    return a.a * b.x + a.b * b.y + a.c;
 }
 
 // Dist entre ponto e segmento de reta
@@ -121,8 +126,30 @@ cod distr(point p, point a, point b){
     return fabs((b-a)^(p-a))/norm(a-b);
 }
 
+line mediatrix(const point &a, const point &b){
+    point d = (b-a)*2;
+    return line(d.x, d.y, a*a - b*b);
+}
+
 struct circle{
     point c;
     cod r;
     circle(point c=0, cod r=0): c(c), r(r){}
+};
+
+struct circle{
+    point c; cod r;
+    circle() : c(0, 0), r(0){}
+    circle(const point o) : c(o), r(0){}
+    circle(const point &a, const point &b){
+        c = (a+b)/2;
+        r = norm(a-c);
+    }
+    circle(const point &a, const point &b, const point &cc){
+        c = mediatrix(a, b).inter(mediatrix(b, cc));
+        r = norm(a-c);
+    }
+    bool inside(const point &a) const{
+        return (a - c).len() <= r;
+    }
 };
