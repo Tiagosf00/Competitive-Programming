@@ -6,6 +6,7 @@ Resumos
 ------------
 
 - [Algoritmos](C++/Algoritmos/)
+- [DP](C++/DP/)
 - [Estruturas de Dados](C++/ED/)
 - [Grafos](C++/Grafos/)
 - [Matemática](C++/Math/)
