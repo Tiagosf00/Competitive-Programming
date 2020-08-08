@@ -3,11 +3,11 @@ ll mulmod(ll a, ll b) {
         return 0LL;
     }
     if(a%2 == 0) {
-        ll val = mullog(a/2, b);
+        ll val = mulmod(a/2, b);
         return (val + val) % MOD;
     }
     else {
-        ll val = mullog((a-1)/2, b);
+        ll val = mulmod((a-1)/2, b);
         val = (val + val) % MOD;
         return (val + b) % MOD;
     }
