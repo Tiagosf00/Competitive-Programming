@@ -58,3 +58,23 @@ vi suffix_array(string s) {
     }
     return ind;
 }
+
+vi lcp_array(string s, vi sarray) {
+    vi inv(s.size());
+    for(int i = 0; i < (int)s.size(); i++) {
+        inv[sarray[i]] = i;
+    }
+    vi lcp(s.size());
+    int k = 0;
+    for(int i = 0; i < (int)s.size()-1; i++) {
+        int pi = inv[i];
+        if(pi-1 < 0) continue;
+        int j = sarray[pi-1];
+
+        while(s[i+k] == s[j+k]) k++;
+        lcp[pi] = k;
+        k = max(k-1, 0);
+    }
+
+    return vi(lcp.begin()+1, lcp.end()); // LCP(i, j) = min(lcp[i], ..., lcp[j-1])
+}
