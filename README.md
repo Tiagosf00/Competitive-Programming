@@ -26,3 +26,9 @@ sudo apt install python3
 ```bash
 sudo apt install latexmk
 ```
+
+Comando:
+
+```bash
+python3 notebookcreator.py
+```
