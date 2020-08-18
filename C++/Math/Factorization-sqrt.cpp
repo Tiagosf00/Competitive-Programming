@@ -4,10 +4,10 @@ vi fact(ll n){
 	vector<int> div;
 	for(ll i=2;i*i<=n;i++)
 		if(n%i==0){
-			vet.pb(i);
+			div.pb(i);
 			while(n%i==0)
 				n/=i;
 		}
-	if(n!=1) vet.pb(n);
+	if(n!=1) div.pb(n);
 	return div;
 }

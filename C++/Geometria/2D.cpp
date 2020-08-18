@@ -105,7 +105,7 @@ struct line{
 
 };
 
-point intersection(line l1, line l2){
+point inter(line l1, line l2){
     ld det = l1.a*l2.b - l1.b*l2.a;
     if(det==0) return point(INF, INF);
     ld x = (l1.b*l2.c - l1.c*l2.b)/det;
@@ -146,10 +146,26 @@ struct circle{
         r = norm(a-c);
     }
     circle(const point &a, const point &b, const point &cc){
-        c = mediatrix(a, b).inter(mediatrix(b, cc));
+        c = inter(mediatrix(a, b), mediatrix(b, cc));
         r = norm(a-c);
     }
     bool inside(const point &a) const{
         return (a - c).len() <= r;
     }
 };
+
+circle min_circle_cover(vector<point> v){
+    random_shuffle(v.begin(), v.end());
+    circle ans;
+    int n = v.size();
+    for(int i=0;i<n;i++) if(!ans.inside(v[i])){
+        ans = circle(v[i]);
+        for(int j=0;j<i;j++) if(!ans.inside(v[j])){
+            ans = circle(v[i], v[j]);
+            for(int k=0;k<j;k++) if(!ans.inside(v[k])){
+                ans = circle(v[i], v[j], v[k]);
+            }
+        }
+    }
+    return ans;
+}

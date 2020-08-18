@@ -9,31 +9,32 @@ struct Segtree{
         t.assign(2*n, 0);
     }
 
-    void build(){
-        for(int i=n-1; i>0; i--)
-            t[i]=max(t[i<<1], t[i<<1|1]);
+    int merge(int a, int b){
+        return max(a, b);
     }
 
-    int query(int l, int r){ // idx 0
-        int ans=0;
-        for(l+=n, r+=n+1; l<r; l>>=1, r>>=1){
-            if(l&1)
-                ans=max(ans, t[l++]);
-            if(r&1)
-                ans=max(t[--r], ans);
+    void build(){
+        for(int i=n-1; i>0; i--)
+            t[i]=merge(t[i<<1], t[i<<1|1]);
+    }
+
+    int query(int l, int r){ // [l, r)
+        int resl=-INF, resr=-INF;
+        for(l+=n, r+=n; l<r; l>>=1, r>>=1){
+            if(l&1) resl = merge(resl, t[l++]);
+            if(r&1) resr = merge(t[--r], resr);
         }
-        return ans;
+        return merge(resl, resr);
     }
 
     void update(int p, int value){
         for(t[p+=n]=value; p >>= 1;)
-            t[p] = max(t[p<<1], t[p<<1|1]);
+            t[p] = merge(t[p<<1], t[p<<1|1]);
     }
 
 };
 
-int main()
-{
+int main(){
     Segtree st(n);
 
     for(int i=0;i<n;i++){
