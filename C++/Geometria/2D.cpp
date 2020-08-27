@@ -87,7 +87,10 @@ ld area(vp &p){
     return fabsl(ret/2);
 }
 
-
+point forca_mod(point p, ld m){
+    ld cm = norm(p);
+    return point(p.x*m/cm,p.y*m/cm);
+}
 
 
 struct line{
@@ -101,6 +104,12 @@ struct line{
 
     bool inside(point p){
         return eq(norm(p1-p)+norm(p2-p) - norm(p2-p1), 0);
+    }
+
+    bool inside_seg(point p){
+        return (inside(p) and
+                min(p1.x, p2.x)<=p.x and p.x<=max(p1.x, p2.x) and
+                min(p1.y, p2.y)<=p.y and p.y<=may(p1.y, p2.y));
     }
 
 };
@@ -119,11 +128,11 @@ ld func(line a, point b){
 
 // Dist entre ponto e segmento de reta
 cod distr(point p, point a, point b){
-    if(((b-a)^(p-b)) > 0)
-        return norm(p-b);
-    if(((a-b)^(p-a)) > 0)
+    if(((p-a)*(b-a)) < EPS)
         return norm(p-a);
-    return fabs((b-a)^(p-a))/norm(a-b);
+    if(((p-b)*(a-b)) < EPS)
+        return norm(p-b);
+    return fabs((p-a)^(b-a))/norm(b-a);
 }
 
 line mediatrix(const point &a, const point &b){
@@ -154,6 +163,7 @@ struct circle{
     }
 };
 
+// minimum circle cover O(n) amortizado
 circle min_circle_cover(vector<point> v){
     random_shuffle(v.begin(), v.end());
     circle ans;

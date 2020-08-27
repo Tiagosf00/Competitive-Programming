@@ -4,16 +4,6 @@ struct no{
     no(ll x=0): pref(x), suff(x), total(x), best(x){}
 };
 
-no merge(no l, no r){
-
-    no ans;
-    ans.pref = max(0LL, max(l.pref, l.total+r.pref));
-    ans.suff = max(0LL, max(r.suff, l.suff+r.total));
-    ans.total = l.total+r.total;
-    ans.best = max(max(l.best, r.best), l.suff+r.pref);
-    return ans;
-}
-
 struct Segtree{
     vector<no> t;
     int n;
@@ -21,6 +11,15 @@ struct Segtree{
     Segtree(int n){
         this->n = n;
         t.assign(2*n, no(0));
+    }
+
+    no merge(no l, no r){
+        no ans;
+        ans.pref = max(0LL, max(l.pref, l.total+r.pref));
+        ans.suff = max(0LL, max(r.suff, l.suff+r.total));
+        ans.total = l.total+r.total;
+        ans.best = max(max(l.best, r.best), l.suff+r.pref);
+        return ans;
     }
 
     void build(){
