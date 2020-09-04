@@ -1,17 +1,17 @@
 struct Trie{
 
-    int trie[MAX][26];
+    int trie[MAX][10];
     bool finish[MAX];
     int nxt = 1, len = 0;
 
     void add(string &s){
         int node = 0;
         for(auto c: s){
-            if(trie[node][c-'a'] == 0){
-                node = trie[node][c-'a'] = nxt;
+            if(trie[node][c-'0'] == 0){
+                node = trie[node][c-'0'] = nxt;
                 nxt++;
             }else
-                node = trie[node][c-'a'];
+                node = trie[node][c-'0'];
         }
         if(!finish[node]){
             finish[node] = true;
@@ -22,10 +22,10 @@ struct Trie{
     bool find(string &s, bool remove){
         int idx = 0;
         for(auto c: s)
-            if(trie[idx][c-'a'] == 0)
+            if(trie[idx][c-'0'] == 0)
                 return false;
             else
-                idx = trie[idx][c-'a'];
+                idx = trie[idx][c-'0'];
         if(remove and finish[idx]){
             finish[idx]=false;
             len--;
@@ -42,3 +42,10 @@ struct Trie{
     }
     
 };
+
+string sbits(ll n){
+    string ans;
+    for(int i=0;i<64;i++)
+        ans.pb((n & 1LL<<i)+'0');
+    return ans;
+}
