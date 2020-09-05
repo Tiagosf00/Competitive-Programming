@@ -427,12 +427,12 @@
 
   - [ ] [1388](https://www.urionlinejudge.com.br/judge/pt/problems/view/1388) - Onde Estão as Bolhas? *Estruturas e Bibliotecas*
   - [ ] [1408](https://www.urionlinejudge.com.br/judge/pt/problems/view/1408) - Mário *Paradigmas*
-  - [ ] [1409](https://www.urionlinejudge.com.br/judge/pt/problems/view/1409) - Zak Galou *Grafos*
-  - [ ] [1438](https://www.urionlinejudge.com.br/judge/pt/problems/view/1438) - Desempilhando Caixas *Ad-Hoc*
+  - [x] [1409](https://www.urionlinejudge.com.br/judge/pt/problems/view/1409) - Zak Galou *Grafos*
+  - [x] [1438](https://www.urionlinejudge.com.br/judge/pt/problems/view/1438) - Desempilhando Caixas *Ad-Hoc*
   - [ ] [2897](https://www.urionlinejudge.com.br/judge/pt/problems/view/2897) - Histórico de Comandos *Ad-Hoc*
   - [ ] [2898](https://www.urionlinejudge.com.br/judge/pt/problems/view/2898) - Olimpíadas *Ad-Hoc*
   - [ ] [2899](https://www.urionlinejudge.com.br/judge/pt/problems/view/2899) - Série de Tubos *Ad-Hoc*
-  - [ ] [2900](https://www.urionlinejudge.com.br/judge/pt/problems/view/2900) - Jogo de Varetas *Ad-Hoc*
+  - [x] [2900](https://www.urionlinejudge.com.br/judge/pt/problems/view/2900) - Jogo de Varetas *Ad-Hoc*
   - [ ] [2901](https://www.urionlinejudge.com.br/judge/pt/problems/view/2901) - Vôlei Marciano *Ad-Hoc*
   - [ ] [2902](https://www.urionlinejudge.com.br/judge/pt/problems/view/2902) - Rouba Monte *Ad-Hoc*
 
@@ -440,12 +440,12 @@
 ### 2ª Fase
 
   - [ ] [1363](https://www.urionlinejudge.com.br/judge/pt/problems/view/1363) - Competição de Placas de Carros *Ad-Hoc*
-  - [ ] [1364](https://www.urionlinejudge.com.br/judge/pt/problems/view/1364) - Emoticons :-) *Strings*
+  - [x] [1364](https://www.urionlinejudge.com.br/judge/pt/problems/view/1364) - Emoticons :-) *Strings*
   - [ ] [1365](https://www.urionlinejudge.com.br/judge/pt/problems/view/1365) - Procurando Assentos *Paradigmas*
-  - [ ] [1366](https://www.urionlinejudge.com.br/judge/pt/problems/view/1366) - Jogo de Varetas *Ad-Hoc*
+  - [x] [1366](https://www.urionlinejudge.com.br/judge/pt/problems/view/1366) - Jogo de Varetas *Ad-Hoc*
   - [ ] [1386](https://www.urionlinejudge.com.br/judge/pt/problems/view/1386) - Códigos Ambíguos *Strings*
-  - [ ] [1387](https://www.urionlinejudge.com.br/judge/pt/problems/view/1387) - Og *Ad-Hoc*
-  - [ ] [1410](https://www.urionlinejudge.com.br/judge/pt/problems/view/1410) - Ele Está Impedido! *Ad-Hoc*
+  - [x] [1387](https://www.urionlinejudge.com.br/judge/pt/problems/view/1387) - Og *Ad-Hoc*
+  - [x] [1410](https://www.urionlinejudge.com.br/judge/pt/problems/view/1410) - Ele Está Impedido! *Ad-Hoc*
   - [ ] [1415](https://www.urionlinejudge.com.br/judge/pt/problems/view/1415) - Galou Está de Volta! *Grafos*
   - [ ] [1416](https://www.urionlinejudge.com.br/judge/pt/problems/view/1416) - Placar do ICPC *Paradigmas*
   - [ ] [1417](https://www.urionlinejudge.com.br/judge/pt/problems/view/1417) - Liga da Justiça *Grafos*
@@ -457,11 +457,11 @@
 
 ### 1ª Fase
 
-  - [ ] [1371](https://www.urionlinejudge.com.br/judge/pt/problems/view/1371) - Fechem as Portas! *Matemática*
+  - [x] [1371](https://www.urionlinejudge.com.br/judge/pt/problems/view/1371) - Fechem as Portas! *Matemática*
   - [ ] [1404](https://www.urionlinejudge.com.br/judge/pt/problems/view/1404) - MegaDamas *Ad-Hoc*
   - [ ] [1405](https://www.urionlinejudge.com.br/judge/pt/problems/view/1405) - O Problema da Parada *Estruturas e Bibliotecas*
-  - [ ] [1437](https://www.urionlinejudge.com.br/judge/pt/problems/view/1437) - Esquerda, Volver! *Ad-Hoc*
-  - [ ] [1486](https://www.urionlinejudge.com.br/judge/pt/problems/view/1486) - Circuito Bioquímico Digital *Ad-Hoc*
+  - [x] [1437](https://www.urionlinejudge.com.br/judge/pt/problems/view/1437) - Esquerda, Volver! *Ad-Hoc*
+  - [x] [1486](https://www.urionlinejudge.com.br/judge/pt/problems/view/1486) - Circuito Bioquímico Digital *Ad-Hoc*
 
 
 ### 2ª Fase
@@ -470,9 +470,9 @@
   - [ ] [1384](https://www.urionlinejudge.com.br/judge/pt/problems/view/1384) - Sapo Preguiçoso *Grafos*
   - [ ] [1385](https://www.urionlinejudge.com.br/judge/pt/problems/view/1385) - Recuperação de Relatório *Strings*
   - [ ] [1406](https://www.urionlinejudge.com.br/judge/pt/problems/view/1406) - Jukebox *Strings*
-  - [ ] [1407](https://www.urionlinejudge.com.br/judge/pt/problems/view/1407) - Loteria de Fim de Semana *Ad-Hoc*
-  - [ ] [1414](https://www.urionlinejudge.com.br/judge/pt/problems/view/1414) - Copa do Mundo *Ad-Hoc*
-  - [ ] [1464](https://www.urionlinejudge.com.br/judge/pt/problems/view/1464) - Camadas de Cebola *Geometria Computacional*
+  - [x] [1407](https://www.urionlinejudge.com.br/judge/pt/problems/view/1407) - Loteria de Fim de Semana *Ad-Hoc*
+  - [x] [1414](https://www.urionlinejudge.com.br/judge/pt/problems/view/1414) - Copa do Mundo *Ad-Hoc*
+  - [x] [1464](https://www.urionlinejudge.com.br/judge/pt/problems/view/1464) - Camadas de Cebola *Geometria Computacional*
   - [ ] [1485](https://www.urionlinejudge.com.br/judge/pt/problems/view/1485) - Roleta Turca *Paradigmas*
 
 
@@ -492,8 +492,8 @@
 ### 2ª Fase
 
   - [ ] [1265](https://www.urionlinejudge.com.br/judge/pt/problems/view/1265) - DJ da Computação *Paradigmas*
-  - [ ] [1266](https://www.urionlinejudge.com.br/judge/pt/problems/view/1266) - Tornado! *Ad-Hoc*
-  - [ ] [1267](https://www.urionlinejudge.com.br/judge/pt/problems/view/1267) - Biblioteca Pascal *Ad-Hoc*
+  - [x] [1266](https://www.urionlinejudge.com.br/judge/pt/problems/view/1266) - Tornado! *Ad-Hoc*
+  - [x] [1267](https://www.urionlinejudge.com.br/judge/pt/problems/view/1267) - Biblioteca Pascal *Ad-Hoc*
   - [ ] [1268](https://www.urionlinejudge.com.br/judge/pt/problems/view/1268) - Missão Impossível *Geometria Computacional*
   - [ ] [1269](https://www.urionlinejudge.com.br/judge/pt/problems/view/1269) - ICPC Ataca Novamente *Paradigmas*
   - [ ] [1270](https://www.urionlinejudge.com.br/judge/pt/problems/view/1270) - Fibra Óptica *Grafos*
@@ -508,12 +508,12 @@
 
 ### 1ª Fase
 
-  - [ ] [1290](https://www.urionlinejudge.com.br/judge/pt/problems/view/1290) - Caixas Muito Especiais *Ad-Hoc*
+  - [x] [1290](https://www.urionlinejudge.com.br/judge/pt/problems/view/1290) - Caixas Muito Especiais *Ad-Hoc*
   - [ ] [1326](https://www.urionlinejudge.com.br/judge/pt/problems/view/1326) - Química *Estruturas e Bibliotecas*
   - [ ] [1327](https://www.urionlinejudge.com.br/judge/pt/problems/view/1327) - Drop Out *Ad-Hoc*
   - [ ] [1328](https://www.urionlinejudge.com.br/judge/pt/problems/view/1328) - Vá com Calma *Grafos*
-  - [ ] [1329](https://www.urionlinejudge.com.br/judge/pt/problems/view/1329) - Cara ou Coroa *Ad-Hoc*
-  - [ ] [1367](https://www.urionlinejudge.com.br/judge/pt/problems/view/1367) - Ajude! *Strings*
+  - [x] [1329](https://www.urionlinejudge.com.br/judge/pt/problems/view/1329) - Cara ou Coroa *Ad-Hoc*
+  - [x] [1367](https://www.urionlinejudge.com.br/judge/pt/problems/view/1367) - Ajude! *Strings*
   - [ ] [1413](https://www.urionlinejudge.com.br/judge/pt/problems/view/1413) - Apresse-se! *Grafos*
   - [ ] [1434](https://www.urionlinejudge.com.br/judge/pt/problems/view/1434) - Patrulheiros Romanos *Matemática*
 
@@ -523,7 +523,7 @@
   - [ ] [1358](https://www.urionlinejudge.com.br/judge/pt/problems/view/1358) - Cortando Extremidades *Geometria Computacional*
   - [ ] [1359](https://www.urionlinejudge.com.br/judge/pt/problems/view/1359) - Taxa de Divisão de Terreno *Ad-Hoc*
   - [ ] [1360](https://www.urionlinejudge.com.br/judge/pt/problems/view/1360) - Truque de Mágica *Ad-Hoc*
-  - [ ] [1403](https://www.urionlinejudge.com.br/judge/pt/problems/view/1403) - Meu Avô é Famoso *Ad-Hoc*
+  - [x] [1403](https://www.urionlinejudge.com.br/judge/pt/problems/view/1403) - Meu Avô é Famoso *Ad-Hoc*
   - [ ] [1481](https://www.urionlinejudge.com.br/judge/pt/problems/view/1481) - A Fazenda de Ostras de Zing Zhu *Matemática*
   - [ ] [1482](https://www.urionlinejudge.com.br/judge/pt/problems/view/1482) - Noite no Museu *Grafos*
 
@@ -534,7 +534,7 @@
 
 ### 2ª Fase
 
-  - [ ] [1342](https://www.urionlinejudge.com.br/judge/pt/problems/view/1342) - Dado *Ad-Hoc*
+  - [x] [1342](https://www.urionlinejudge.com.br/judge/pt/problems/view/1342) - Dado *Ad-Hoc*
   - [ ] [1343](https://www.urionlinejudge.com.br/judge/pt/problems/view/1343) - Runner Pawns *Ad-Hoc*
   - [ ] [1344](https://www.urionlinejudge.com.br/judge/pt/problems/view/1344) - Parceiros de Telecomunicação *Grafos*
   - [ ] [1345](https://www.urionlinejudge.com.br/judge/pt/problems/view/1345) - Região Segura *Geometria Computacional*
@@ -553,7 +553,7 @@
   - [ ] [1315](https://www.urionlinejudge.com.br/judge/pt/problems/view/1315) - Não tão Convexo *Geometria Computacional*
   - [ ] [1316](https://www.urionlinejudge.com.br/judge/pt/problems/view/1316) - Compra Livre de Impostos *Matemática*
   - [x] [1317](https://www.urionlinejudge.com.br/judge/pt/problems/view/1317) - Eu Odeio SPAM, Mas Algumas Pessoas Amam *Grafos*
-  - [ ] [1318](https://www.urionlinejudge.com.br/judge/pt/problems/view/1318) - Bilhetes Falsos *Ad-Hoc*
+  - [x] [1318](https://www.urionlinejudge.com.br/judge/pt/problems/view/1318) - Bilhetes Falsos *Ad-Hoc*
   - [ ] [1330](https://www.urionlinejudge.com.br/judge/pt/problems/view/1330) - A Terra Herdada por Tio Tom *Grafos*
   - [ ] [1339](https://www.urionlinejudge.com.br/judge/pt/problems/view/1339) - O Cubo Mágico do Avô *Ad-Hoc*
   - [ ] [1349](https://www.urionlinejudge.com.br/judge/pt/problems/view/1349) - Efeito Ruído *Ad-Hoc*
