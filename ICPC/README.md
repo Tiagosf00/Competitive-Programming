@@ -552,7 +552,7 @@
 
   - [ ] [1315](https://www.urionlinejudge.com.br/judge/pt/problems/view/1315) - Não tão Convexo *Geometria Computacional*
   - [ ] [1316](https://www.urionlinejudge.com.br/judge/pt/problems/view/1316) - Compra Livre de Impostos *Matemática*
-  - [ ] [1317](https://www.urionlinejudge.com.br/judge/pt/problems/view/1317) - Eu Odeio SPAM, Mas Algumas Pessoas Amam *Grafos*
+  - [x] [1317](https://www.urionlinejudge.com.br/judge/pt/problems/view/1317) - Eu Odeio SPAM, Mas Algumas Pessoas Amam *Grafos*
   - [ ] [1318](https://www.urionlinejudge.com.br/judge/pt/problems/view/1318) - Bilhetes Falsos *Ad-Hoc*
   - [ ] [1330](https://www.urionlinejudge.com.br/judge/pt/problems/view/1330) - A Terra Herdada por Tio Tom *Grafos*
   - [ ] [1339](https://www.urionlinejudge.com.br/judge/pt/problems/view/1339) - O Cubo Mágico do Avô *Ad-Hoc*
