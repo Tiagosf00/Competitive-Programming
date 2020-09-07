@@ -11,15 +11,20 @@
 #define vi vector<int>
 #define vl vector<ll>
 #define vii vector<pii>
-#define sws ios_base::sync_with_stdio(false);cin.tie(NULL)
+#define sws ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 #define endl '\n'
-#define teto(a, b) (a+b-1)/(b)
- 
-const int MAX = 300010;
-const int MOD = 1e9;
-const int INF = 0x3f3f3f3f;
-const ll LLINF = 0x3f3f3f3f3f3f3f3f;
-const ld EPS = 1e-8;
-const ld PI = acosl(-1.0);
+#define teto(a, b) ((a+b-1)/(b))
+#define all(x) x.begin(), x.end()
+#define forn(i, n) for(int i = 0; i < (int)n; i++)
+#define forne(i, a, b) for(int i = a; i <= b; i++)
+#define dbg(msg, var) cerr << msg << " " << var << endl;
 
 using namespace std;
+
+const int MAX = 200010;
+const int MOD = 1000000007;
+const int INF = 1e8;
+const ll LLINF = 0x3f3f3f3f3f3f3f3f;
+const ld EPS = 1e-7;
+
+// End Template //
