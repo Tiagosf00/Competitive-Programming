@@ -13,7 +13,7 @@ void dijkstra(int k){
         fila.pop();
         if(w>d[u]) continue;
 
-        for(auto [w, v]: grafo[u]){
+        for(auto [v, w]: grafo[u]){
             if(d[v]>d[u]+w){
                 d[v]=d[u]+w;
                 fila.push(mp(d[v], v));   
