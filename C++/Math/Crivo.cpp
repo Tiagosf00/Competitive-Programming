@@ -8,6 +8,6 @@ primos[0]=false;
 primos[1]=false;
 
 for(int i=2;i<=N;i++)
-	if(primos[i])
-		for(int j=i+i; j<=N; j+=i)
-			primos[j]=false;
+    if(primos[i])
+        for(int j=i+i; j<=N; j+=i)
+            primos[j]=false;

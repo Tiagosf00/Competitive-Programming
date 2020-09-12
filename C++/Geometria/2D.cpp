@@ -89,9 +89,9 @@ ld area(vp &p){
 
 point forca_mod(point p, ld m){
     ld cm = norm(p);
+    if(cm<EPS) return point();
     return point(p.x*m/cm,p.y*m/cm);
 }
-
 
 struct line{
     point p1, p2;
