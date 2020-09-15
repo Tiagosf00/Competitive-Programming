@@ -1,4 +1,3 @@
-//defines e includes
 #include <bits/stdc++.h>
 #define fastio ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0)
 #define rep1(i, n) for(int i=0;i<(int)n;i++)

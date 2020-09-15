@@ -8,18 +8,18 @@
 
 ### 1ª Fase
 
-  - [ ] [2962](https://www.urionlinejudge.com.br/judge/pt/problems/view/2962) - Arte Valiosa *Grafos*
-  - [ ] [2963](https://www.urionlinejudge.com.br/judge/pt/problems/view/2963) - Bobo da Corte *Iniciante*
+  - [x] [2962](https://www.urionlinejudge.com.br/judge/pt/problems/view/2962) - Arte Valiosa *Grafos*
+  - [x] [2963](https://www.urionlinejudge.com.br/judge/pt/problems/view/2963) - Bobo da Corte *Iniciante*
   - [ ] [2964](https://www.urionlinejudge.com.br/judge/pt/problems/view/2964) - Cruzamento Perigoso *Ad-Hoc*
   - [ ] [2965](https://www.urionlinejudge.com.br/judge/pt/problems/view/2965) - Delação Premiada *Grafos*
   - [ ] [2966](https://www.urionlinejudge.com.br/judge/pt/problems/view/2966) - Exibição de Peixes *Ad-Hoc*
   - [ ] [2967](https://www.urionlinejudge.com.br/judge/pt/problems/view/2967) - Florestas em Risco *Paradigmas*
-  - [ ] [2968](https://www.urionlinejudge.com.br/judge/pt/problems/view/2968) - Hora da Corrida *Iniciante*
+  - [x] [2968](https://www.urionlinejudge.com.br/judge/pt/problems/view/2968) - Hora da Corrida *Iniciante*
   - [ ] [2969](https://www.urionlinejudge.com.br/judge/pt/problems/view/2969) - Interplanetário *Grafos*
   - [ ] [2970](https://www.urionlinejudge.com.br/judge/pt/problems/view/2970) - Keep Calm e Venda Balões *Paradigmas*
   - [ ] [2971](https://www.urionlinejudge.com.br/judge/pt/problems/view/2971) - Jogo de Baralho *Ad-Hoc*
   - [ ] [2972](https://www.urionlinejudge.com.br/judge/pt/problems/view/2972) - Lançando Moedas *Ad-Hoc*
-  - [ ] [2973](https://www.urionlinejudge.com.br/judge/pt/problems/view/2973) - Maratona Brasileira de Comedores de Pipoca *Paradigmas*
+  - [x] [2973](https://www.urionlinejudge.com.br/judge/pt/problems/view/2973) - Maratona Brasileira de Comedores de Pipoca *Paradigmas*
 
 
 ### 2ª Fase
@@ -36,7 +36,7 @@
   - [ ] [3021](https://www.urionlinejudge.com.br/judge/pt/problems/view/3021) - Jumping Grasshopper *Ad-Hoc*
   - [ ] [3022](https://www.urionlinejudge.com.br/judge/pt/problems/view/3022) - Know your Aliens *Ad-Hoc*
   - [ ] [3023](https://www.urionlinejudge.com.br/judge/pt/problems/view/3023) - Leverage MDT *Ad-Hoc*
-  - [ ] [3024](https://www.urionlinejudge.com.br/judge/pt/problems/view/3024) - Mountain Ranges *Ad-Hoc*
+  - [x] [3024](https://www.urionlinejudge.com.br/judge/pt/problems/view/3024) - Mountain Ranges *Ad-Hoc*
 
 
 ## 2018
@@ -48,8 +48,8 @@
   - [ ] [2876](https://www.urionlinejudge.com.br/judge/pt/problems/view/2876) - Aventurando-se no Slackline *Ad-Hoc*
   - [ ] [2877](https://www.urionlinejudge.com.br/judge/pt/problems/view/2877) - Bolinhas de Gude *Paradigmas*
   - [ ] [2878](https://www.urionlinejudge.com.br/judge/pt/problems/view/2878) - Cortador de Pizza *Matemática*
-  - [ ] [2879](https://www.urionlinejudge.com.br/judge/pt/problems/view/2879) - Desvendando Monty Hall *Iniciante*
-  - [ ] [2880](https://www.urionlinejudge.com.br/judge/pt/problems/view/2880) - Enigma *Strings*
+  - [x] [2879](https://www.urionlinejudge.com.br/judge/pt/problems/view/2879) - Desvendando Monty Hall *Iniciante*
+  - [x] [2880](https://www.urionlinejudge.com.br/judge/pt/problems/view/2880) - Enigma *Strings*
   - [ ] [2881](https://www.urionlinejudge.com.br/judge/pt/problems/view/2881) - Festival *Paradigmas*
   - [ ] [2882](https://www.urionlinejudge.com.br/judge/pt/problems/view/2882) - Gasolina *Paradigmas*
   - [ ] [2883](https://www.urionlinejudge.com.br/judge/pt/problems/view/2883) - Hipótese Policial *Grafos*
@@ -74,7 +74,7 @@
   - [ ] [2912](https://www.urionlinejudge.com.br/judge/pt/problems/view/2912) - Jeopardized Election *Ad-Hoc*
   - [ ] [2913](https://www.urionlinejudge.com.br/judge/pt/problems/view/2913) - KryptoLocker Ate my Homework *Ad-Hoc*
   - [ ] [2914](https://www.urionlinejudge.com.br/judge/pt/problems/view/2914) - Looking for the Risk Factor *Ad-Hoc*
-  - [ ] [2915](https://www.urionlinejudge.com.br/judge/pt/problems/view/2915) - Mount Marathon *Ad-Hoc*
+  - [x] [2915](https://www.urionlinejudge.com.br/judge/pt/problems/view/2915) - Mount Marathon *Ad-Hoc*
 
 
 ## 2017
@@ -86,16 +86,16 @@
   - [ ] [2658](https://www.urionlinejudge.com.br/judge/pt/problems/view/2658) - Acordes Intergaláticos *Estruturas e Bibliotecas*
   - [ ] [2659](https://www.urionlinejudge.com.br/judge/pt/problems/view/2659) - Brincadeira *Ad-Hoc*
   - [ ] [2660](https://www.urionlinejudge.com.br/judge/pt/problems/view/2660) - Cigarras Periódicas *Matemática*
-  - [ ] [2661](https://www.urionlinejudge.com.br/judge/pt/problems/view/2661) - Despojados *Matemática*
+  - [x] [2661](https://www.urionlinejudge.com.br/judge/pt/problems/view/2661) - Despojados *Matemática*
   - [ ] [2662](https://www.urionlinejudge.com.br/judge/pt/problems/view/2662) - Escala Musical *Ad-Hoc*
-  - [ ] [2663](https://www.urionlinejudge.com.br/judge/pt/problems/view/2663) - Fase *Iniciante*
+  - [x] [2663](https://www.urionlinejudge.com.br/judge/pt/problems/view/2663) - Fase *Iniciante*
   - [ ] [2664](https://www.urionlinejudge.com.br/judge/pt/problems/view/2664) - Ginástica *Paradigmas*
   - [ ] [2665](https://www.urionlinejudge.com.br/judge/pt/problems/view/2665) - Hipercampo *Geometria Computacional*
   - [ ] [2666](https://www.urionlinejudge.com.br/judge/pt/problems/view/2666) - Imposto Real *Grafos*
-  - [ ] [2667](https://www.urionlinejudge.com.br/judge/pt/problems/view/2667) - Jogo de Boca *Matemática*
+  - [x] [2667](https://www.urionlinejudge.com.br/judge/pt/problems/view/2667) - Jogo de Boca *Matemática*
   - [ ] [2668](https://www.urionlinejudge.com.br/judge/pt/problems/view/2668) - K-ésimo *Matemática*
   - [ ] [2669](https://www.urionlinejudge.com.br/judge/pt/problems/view/2669) - Laboratório de Biotecnologia *Strings*
-  - [ ] [2670](https://www.urionlinejudge.com.br/judge/pt/problems/view/2670) - Máquina de Café *Iniciante*
+  - [x] [2670](https://www.urionlinejudge.com.br/judge/pt/problems/view/2670) - Máquina de Café *Iniciante*
 
 
 ### 2ª Fase
@@ -106,7 +106,7 @@
   - [ ] [2699](https://www.urionlinejudge.com.br/judge/pt/problems/view/2699) - Enigma *Iniciante*
   - [ ] [2700](https://www.urionlinejudge.com.br/judge/pt/problems/view/2700) - Angariando Fundos *Estruturas e Bibliotecas*
   - [ ] [2701](https://www.urionlinejudge.com.br/judge/pt/problems/view/2701) - Portas da Incerteza *Ad-Hoc*
-  - [ ] [2702](https://www.urionlinejudge.com.br/judge/pt/problems/view/2702) - Escolha Difícil *Iniciante*
+  - [x] [2702](https://www.urionlinejudge.com.br/judge/pt/problems/view/2702) - Escolha Difícil *Iniciante*
   - [ ] [2703](https://www.urionlinejudge.com.br/judge/pt/problems/view/2703) - Estradas Imperiais *Grafos*
   - [ ] [2704](https://www.urionlinejudge.com.br/judge/pt/problems/view/2704) - Sapo Saltador *Ad-Hoc*
   - [ ] [2705](https://www.urionlinejudge.com.br/judge/pt/problems/view/2705) - Mantenha Coberto *Ad-Hoc*
@@ -120,15 +120,15 @@
 ### 1ª Fase
 
   - [ ] [2233](https://www.urionlinejudge.com.br/judge/pt/problems/view/2233) - Etiquetas Coloridas *Ad-Hoc*
-  - [ ] [2234](https://www.urionlinejudge.com.br/judge/pt/problems/view/2234) - Cachorros-Quentes *Iniciante*
-  - [ ] [2235](https://www.urionlinejudge.com.br/judge/pt/problems/view/2235) - Andando no Tempo *Iniciante*
+  - [x] [2234](https://www.urionlinejudge.com.br/judge/pt/problems/view/2234) - Cachorros-Quentes *Iniciante*
+  - [x] [2235](https://www.urionlinejudge.com.br/judge/pt/problems/view/2235) - Andando no Tempo *Iniciante*
   - [ ] [2236](https://www.urionlinejudge.com.br/judge/pt/problems/view/2236) - Batata Quente *Paradigmas*
   - [ ] [2237](https://www.urionlinejudge.com.br/judge/pt/problems/view/2237) - Containers *Ad-Hoc*
-  - [ ] [2238](https://www.urionlinejudge.com.br/judge/pt/problems/view/2238) - Divisores *Matemática*
+  - [x] [2238](https://www.urionlinejudge.com.br/judge/pt/problems/view/2238) - Divisores *Matemática*
   - [ ] [2239](https://www.urionlinejudge.com.br/judge/pt/problems/view/2239) - Estatística Hexa *Estruturas e Bibliotecas*
   - [ ] [2240](https://www.urionlinejudge.com.br/judge/pt/problems/view/2240) - Fundindo Árvores *Estruturas e Bibliotecas*
   - [ ] [2241](https://www.urionlinejudge.com.br/judge/pt/problems/view/2241) - Go-- *Estruturas e Bibliotecas*
-  - [ ] [2242](https://www.urionlinejudge.com.br/judge/pt/problems/view/2242) - Huaauhahhuahau *Strings*
+  - [x] [2242](https://www.urionlinejudge.com.br/judge/pt/problems/view/2242) - Huaauhahhuahau *Strings*
   - [x] [2243](https://www.urionlinejudge.com.br/judge/pt/problems/view/2243) - Isósceles *Paradigmas*
   - [ ] [2244](https://www.urionlinejudge.com.br/judge/pt/problems/view/2244) - Jogos Olímpicos *Ad-Hoc*
   - [ ] [2245](https://www.urionlinejudge.com.br/judge/pt/problems/view/2245) - Kit de Encolhimento de Polígonos *Geometria Computacional*
@@ -137,7 +137,7 @@
 
 ### 2ª Fase
 
-  - [ ] [2345](https://www.urionlinejudge.com.br/judge/pt/problems/view/2345) - Assigning Teams *Ad-Hoc*
+  - [x] [2345](https://www.urionlinejudge.com.br/judge/pt/problems/view/2345) - Assigning Teams *Ad-Hoc*
   - [ ] [2346](https://www.urionlinejudge.com.br/judge/pt/problems/view/2346) - Back to the Future *Ad-Hoc*
   - [ ] [2347](https://www.urionlinejudge.com.br/judge/pt/problems/view/2347) - Counting Self-Rotating Subsets *Ad-Hoc*
   - [ ] [2348](https://www.urionlinejudge.com.br/judge/pt/problems/view/2348) - Dating On-Line *Ad-Hoc*
@@ -241,7 +241,7 @@
 
   - [ ] [1490](https://www.urionlinejudge.com.br/judge/pt/problems/view/1490) - Torres que Atacam *Grafos*
   - [ ] [1491](https://www.urionlinejudge.com.br/judge/pt/problems/view/1491) - Linguagem de Blogger *Strings*
-  - [ ] [1492](https://www.urionlinejudge.com.br/judge/pt/problems/view/1492) - Contando Uns *Matemática*
+  - [x] [1492](https://www.urionlinejudge.com.br/judge/pt/problems/view/1492) - Contando Uns *Matemática*
   - [ ] [1493](https://www.urionlinejudge.com.br/judge/pt/problems/view/1493) - Abastecimento de Água Disjunto *Paradigmas*
   - [ ] [1494](https://www.urionlinejudge.com.br/judge/pt/problems/view/1494) - Onze *Paradigmas*
   - [ ] [1495](https://www.urionlinejudge.com.br/judge/pt/problems/view/1495) - Futebol *Ad-Hoc*
