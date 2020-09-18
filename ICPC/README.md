@@ -127,7 +127,7 @@
   - [x] [2238](https://www.urionlinejudge.com.br/judge/pt/problems/view/2238) - Divisores *Matemática*
   - [ ] [2239](https://www.urionlinejudge.com.br/judge/pt/problems/view/2239) - Estatística Hexa *Estruturas e Bibliotecas*
   - [ ] [2240](https://www.urionlinejudge.com.br/judge/pt/problems/view/2240) - Fundindo Árvores *Estruturas e Bibliotecas*
-  - [ ] [2241](https://www.urionlinejudge.com.br/judge/pt/problems/view/2241) - Go-- *Estruturas e Bibliotecas*
+  - [x] [2241](https://www.urionlinejudge.com.br/judge/pt/problems/view/2241) - Go-- *Estruturas e Bibliotecas*
   - [x] [2242](https://www.urionlinejudge.com.br/judge/pt/problems/view/2242) - Huaauhahhuahau *Strings*
   - [x] [2243](https://www.urionlinejudge.com.br/judge/pt/problems/view/2243) - Isósceles *Paradigmas*
   - [ ] [2244](https://www.urionlinejudge.com.br/judge/pt/problems/view/2244) - Jogos Olímpicos *Ad-Hoc*
