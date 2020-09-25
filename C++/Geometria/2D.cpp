@@ -82,6 +82,15 @@ ld area(vp &p){ // (points sorted)
     return fabsl(ret/2);
 }
 
+point center(vp A){
+    point centerA = point();
+    int len = A.size();
+    for(int i=0;i<len;i++)
+        centerA=centerA+A[i];
+    return centerA/len;
+}
+
+
 point forca_mod(point p, ld m){
     ld cm = norm(p);
     if(cm<EPS) return point();
