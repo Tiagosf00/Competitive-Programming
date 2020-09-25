@@ -1,85 +1,41 @@
-ll llrand()
-{
-	ll tmp = rand();
-	return (tmp << 31) | rand();
+ll mul(ll a, ll b, ll m) {
+    return (a*b-ll(a*(long double)b/m+0.5)*m+m)%m;
 }
- 
-ll add(ll a, ll b, ll c)
-{
-	return (a + b)%c;
-}
- 
-ll mul(ll a, ll b, ll c)
-{
-	ll ans = 0;
-	while(b)
-	{
-		if(b & 1)
-			ans = add(ans, a, c);
-		a = add(a, a, c);
-		b /= 2;
-	}
-	return ans;
-}
- 
-ll fexp(ll a, ll b, ll c)
-{
-	ll ans = 1;
-	while(b)
-	{
-		if(b & 1)
-			ans = mul(ans, a, c);
-		a = mul(a, a, c);
-		b /= 2;
-	}
-	return ans;
-}
- 
-bool rabin(ll n)
-{
-	if(n <= 1)
-		return 1;
-	if(n <= 3)
-		return 1;
- 
-	ll s=0, d=n-1;
-	while(d%2==0)
-	{
-		d/=2;
-		s++;
-	}
- 
-	for(int k = 0; k < 64*4; k++)
-	{
-		ll a = (llrand()%(n - 3)) + 2;
-		ll x = fexp(a, d, n);
-		if(x != 1 and x != n-1)
-		{
-			for(int r = 1; r < s; r++)
-			{
-				x = mul(x, x, n);
-				if(x == 1)
-					return 0;
-				if(x == n-1)
-					break;
-			}
-			if(x != n-1)
-				return 0;
-		}
-	}
- 
-	return 1;
-}
- 
- 
-int main()
-{
 
-	ll N;
-	cin >> N;
- 
-	cout << rabin(N) << endl;
- 
-	return 0;
- 
+ll expo(ll a, ll b, ll m) {
+    if (!b) return 1;
+    ll ans = expo(mul(a, a, m), b/2, m);
+    return b%2 ? mul(a, ans, m) : ans;
+}
+
+bool prime(ll n) {
+    if (n < 2) return 0;
+    if (n <= 3) return 1;
+    if (n % 2 == 0) return 0;
+
+    ll d = n - 1;
+    int r = 0;
+    while (d % 2 == 0) {
+        r++;
+        d /= 2;
+    }
+
+    // com esses primos, o teste funciona garantido para n <= 2^64
+    // funciona para n <= 3*10^24 com os primos ate 41
+    for (int i : {2, 325, 9375, 28178, 450775, 9780504, 1795265022}) {
+        if (i >= n) break;
+        ll x = expo(i, d, n);
+        if (x == 1 or x == n - 1) continue;
+
+        bool deu = 1;
+        for (int j = 0; j < r - 1; j++) {
+            x = mul(x, x, n);
+            if (x == n - 1) {
+                deu = 0;
+                break;
+            }
+        }
+        if (deu) return 0;
+    }
+    return 1;
 }

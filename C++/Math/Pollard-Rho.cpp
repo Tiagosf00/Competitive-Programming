@@ -1,84 +1,78 @@
-// Pollard Rho Algorithm
-
-#include <bits/stdc++.h>
-#define ll long long
-
-using namespace std;
-
-ll llrand()
-{
-	ll tmp = rand();
-	return (tmp << 31) | rand();
+mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
+ 
+ll uniform(ll l, ll r){
+    uniform_int_distribution<ll> uid(l, r);
+    return uid(rng);
 }
 
-ll add(ll a, ll b, ll c)
-{
-	return (a + b)%c;
+ll mul(ll a, ll b, ll m) {
+    ll ret = a*b - ll(a*(long double)b/m+0.5)*m;
+    return ret < 0 ? ret+m : ret;
 }
  
-ll mul(ll a, ll b, ll c)
-{
-	ll ans = 0;
-	while(b)
-	{
-		if(b & 1)
-			ans = add(ans, a, c);
-		a = add(a, a, c);
-		b /= 2;
-	}
-	return ans;
+ll expo(ll a, ll b, ll m) {
+    if (!b) return 1;
+    ll ans = expo(mul(a, a, m), b/2, m);
+    return b%2 ? mul(a, ans, m) : ans;
 }
-
-ll rho(ll n)
-{
-	ll x, c, y, d, k;
-	int i;
-	do{
-		i = 1;
-		x = llrand()%n;
-		c = llrand()%n;
-		y = x, k = 4;
-		do{
-			if(++i == k)
-			{
-				y = x;
-				k *= 2;
-			}
-			x = add(mul(x, x, n), c, n);
-			d = __gcd(abs(x - y), n);
-		}
-		while(d == 1);
-	}
-	while(d == n);
-	
-	return d;
+ 
+bool prime(ll n) {
+    if (n < 2) return 0;
+    if (n <= 3) return 1;
+    if (n % 2 == 0) return 0;
+ 
+    ll d = n - 1;
+    int r = 0;
+    while (d % 2 == 0) {
+        r++;
+        d /= 2;
+    }
+ 
+    for (int i : {2, 325, 9375, 28178, 450775, 9780504, 795265022}) {
+        if (i >= n) break;
+        ll x = expo(i, d, n);
+        if (x == 1 or x == n - 1) continue;
+ 
+        bool deu = 1;
+        for (int j = 0; j < r - 1; j++) {
+            x = mul(x, x, n);
+            if (x == n - 1) {
+                deu = 0;
+                break;
+            }
+        }
+        if (deu) return 0;
+    }
+    return 1;
 }
-
-int main()
-{
-	srand(time(0));
-
-	ll N;
-	cin >> N;
-
-	ll div = rho(N);
-	cout << div << " " << N/div << endl;
-
-
-	// Finding all divisors
-
-	vector<ll> div;
-
-	while(N>1 and !rabin(N))
-	{
-		ll d = rho(N);
-		div.pb(d);
-		while(N%d==0)
-			N/=d;
-	}
-	if(N!=1)
-		div.pb(N);
-
-	return 0;
-
+ 
+ll rho(ll n) {
+    if (n == 1 or prime(n)) return n;
+    if (n % 2 == 0) return 2;
+ 
+    while (1) {
+        ll x = 2, y = 2, ciclo = 2, i = 0, d = 1;
+        ll c = uniform(1, n-1);
+ 
+        while (d == 1) {
+            if (++i == ciclo) ciclo *= 2, y = x;
+            x = (mul(x, x, n) + c) % n;
+ 
+            if (x == y) break;
+ 
+            d = __gcd(abs(x-y), n);
+        }
+ 
+        if (x != y) return d;
+    }
+}
+ 
+void fact(ll n, vector<ll>& v) {
+    if (n == 1) return;
+    if (prime(n)) v.pb(n);
+    else {
+        ll d = rho(n);
+        fact(d, v);
+        fact(n / d, v);
+    }
 }
