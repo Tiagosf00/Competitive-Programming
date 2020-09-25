@@ -40,12 +40,32 @@ struct Trie{
     void del(string &s){
         find(s, 1);
     }
+
+    string best_xor(string s){
+        int idx = 0;
+        string ans;
+        for(auto c: s){
+            char other='1'; if(c=='1') other='0';
+
+            if(trie[idx][other-'0'] != 0){
+                idx = trie[idx][other-'0'];
+                if(other=='1') ans.pb('1');
+                else ans.pb('0');
+            }else{
+                idx = trie[idx][c-'0'];
+                if(c=='1') ans.pb('1');
+                else ans.pb('0');
+            }
+        }
+             
+        return ans;
+    }
     
 };
 
 string sbits(ll n){
     string ans;
     for(int i=0;i<64;i++)
-        ans.pb((n & 1LL<<i)+'0');
+        ans.pb(!!(n & 1LL<<i)+'0');
     return ans;
 }
