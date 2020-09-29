@@ -1,4 +1,4 @@
-const int BLK = 500; // tamanho do bloco, algo entre 300 e 500 e nice
+const int BLK = 600; // tamanho do bloco, algo entre 500 e 700 eh nice
 
 struct Query {
     int l, r, idx;
@@ -8,14 +8,16 @@ struct Query {
         this->idx = idx;
     }
     bool operator<(Query other) const {
-        return make_pair(l / BLK, r) <
-        make_pair(other.l / BLK, other.r);
+        if(l/BLK != other.l/BLK)
+            return l/BLK < other.l/BLK;
+        return (l/BLK & 1) ? r < other.r : r > other.r;
     }
 };
 
-void add() void remove() // implementar operacoes de acordo com o problema, cuidado com TLE ao utilizar MAP
+inline void add() {} 
+inline void remove() {} // implementar operacoes de acordo com o problema
 
-vector<int> mo(vector<Query> queries) {
+vector<int> mo(vector<Query>& queries) {
     vector<int> res(queries.size());
     sort(queries.begin(), queries.end());
     resposta = 0;
