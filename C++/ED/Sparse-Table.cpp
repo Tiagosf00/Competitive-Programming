@@ -4,31 +4,32 @@ void make_log() {
     for (int i = 2; i <= MAX; i++)
         logv[i] = logv[i/2] + 1;
 }
-
 struct Sparse {
     int n;
-    vector<vector<int>> st;
+    vector<vi> st;
 
-    Sparse(int n, vi array) {
-        this->n = n;
+    Sparse(vi& v) {
+        n = v.size();
         int k = logv[n];
-        st.assign(n+1, vector<int>(k+1, 0));
+        st.assign(n+1, vi(k+1, 0));
 
-        for (int i = 0; i < n; i++)
-            st[i][0] = array[i];
+        forn(i, n) {
+            st[i][0] = v[i];
+        }
 
-        for (int j = 1; j <= k; j++)
-            for (int i = 0; i + (1 << j) <= n; i++)
-                st[i][j] = f(st[i][j-1], st[i + (1 << (j - 1))][j - 1]);
+        for(int j = 1; j <= k; j++) {
+            for(int i = 0; i + (1 << j) <= n; i++) {
+                st[i][j] = f(st[i][j-1], st[i + (1 << (j-1))][j-1]);
+            }
+        }
     }
 
     int f(int a, int b) {
         return min(a, b);
     }
 
-    int query(int L, int R) {
-        int j = logv[R - L + 1];
-        int res = f(st[L][j], st[R - (1 << j) + 1][j]);
-        return res;
+    int query(int l, int r) {
+        int k = logv[r-l+1];
+        return f(st[l][k], st[r - (1 << k) + 1][k]);
     }
 };
