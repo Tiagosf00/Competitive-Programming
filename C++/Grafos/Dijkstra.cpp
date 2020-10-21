@@ -6,7 +6,7 @@ priority_queue< pii, vii, greater<pii> > fila;
 
 void dijkstra(int k){
     d[k]=0;
-    fila.push(mp(0, k));
+    fila.push({0, k});
 
     while(!fila.empty()){
         int w=fila.top().ff, u=fila.top().ss;
@@ -16,7 +16,7 @@ void dijkstra(int k){
         for(auto [v, w]: grafo[u]){
             if(d[v]>d[u]+w){
                 d[v]=d[u]+w;
-                fila.push(mp(d[v], v));   
+                fila.push({d[v], v});   
             }
         }
     }

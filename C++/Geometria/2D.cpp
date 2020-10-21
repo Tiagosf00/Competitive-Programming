@@ -1,6 +1,7 @@
 // typedef int cod;
 // bool eq(cod a, cod b){ return (a==b); }
 
+#define PI acos(-1)
 #define vp vector<point>
 typedef ld cod;
 bool eq(cod a, cod b){ return fabsl(a - b) <= EPS; }
@@ -56,6 +57,10 @@ ld angle_vec(point v){
     // return 180/PI*atan2(v.x, v.y);
     return atan2(v.x, v.y);
 }
+ld order_angle(point a, point b){ // from a to b ccw (a in front of b)
+    ld aux = angle(a,b)*180/PI;
+    return ((a^b)<=0 ? aux:360-aux);
+}
 int ccw(point a, point b, point e){ //-1=dir; 0=collinear; 1=esq;
     cod tmp = (b-a)^(e-a); // from a to b
     return (tmp > EPS) - (tmp < -EPS);
@@ -63,10 +68,6 @@ int ccw(point a, point b, point e){ //-1=dir; 0=collinear; 1=esq;
 point rotccw(point p, ld a){
     // a = PI*a/180; // graus
     return point((p.x*cos(a)-p.y*sin(a)), (p.y*cos(a)+p.x*sin(a)));
-}
-ld order_angle(point a, point b){ // from a to b ccw (a in front of b)
-    ld aux = angle(a,b)*180/PI;
-    return ((a^b)<=0 ? aux:360-aux);
 }
 bool collinear(point a, point b, point c){ 
     return eq((a-c)^(b-c), 0);
@@ -83,11 +84,11 @@ ld area(vp &p){ // (points sorted)
 }
 
 point center(vp A){
-    point centerA = point();
+    point cA = point();
     int len = A.size();
     for(int i=0;i<len;i++)
-        centerA=centerA+A[i];
-    return centerA/len;
+        cA=cA+A[i];
+    return cA/len;
 }
 
 

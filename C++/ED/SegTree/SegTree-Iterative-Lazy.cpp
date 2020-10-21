@@ -1,10 +1,15 @@
-const int LOG = ceil(log2(MAX));
-
 struct Segtree{
-    ll seg[2*MAX], lazy[2*MAX];
-    int n;
+    vector<ll> seg, lazy;
+    int n, LOG;
 
-    ll junta(ll a, ll b) {
+    Segtree(int n){
+        this->n = n;
+        LOG = ceil(log2(n));
+        seg.assign(2*n, 0);
+        lazy.assign(2*n, 0);
+    }
+
+    ll build(ll a, ll b) {
         return max(a, b);
     }
 
@@ -15,7 +20,7 @@ struct Segtree{
 
     void sobe(int p) {
         for (int tam = 2; p /= 2; tam *= 2) {
-            seg[p] = junta(seg[2*p], seg[2*p+1]);
+            seg[p] = build(seg[2*p], seg[2*p+1]);
             poe(p, lazy[p], tam, 0);
         }
     }
@@ -32,18 +37,16 @@ struct Segtree{
         }
     }
 
-    void build(int n2, int* v) {
-        n = n2;
-        for (int i = 0; i < n; i++) seg[n+i] = v[i];
-        for (int i = n-1; i; i--) seg[i] = junta(seg[2*i], seg[2*i+1]);
-        for (int i = 0; i < 2*n; i++) lazy[i] = 0;
+    void build(){
+        for (int i = n-1; i; i--)
+            seg[i] = build(seg[2*i], seg[2*i+1]);
     }
 
     ll query(int a, int b) {
         ll ret = 0;
         for (prop(a+=n), prop(b+=n); a <= b; ++a/=2, --b/=2) {
-            if (a%2 == 1) ret = junta(ret, seg[a]);
-            if (b%2 == 0) ret = junta(ret, seg[b]);
+            if (a%2 == 1) ret = build(ret, seg[a]);
+            if (b%2 == 0) ret = build(ret, seg[b]);
         }
         return ret;
     }
