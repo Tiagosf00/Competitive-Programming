@@ -2,11 +2,11 @@ bool insideT(point a, point b, point c, point e){
     int x = ccw(a, b, e);
     int y = ccw(b, c, e);
     int z = ccw(c, a, e);
+    // if(!x or !y or !z) return false; // bordo
     return !((x==1 or y==1 or z==1) and (x==-1 or y==-1 or z==-1));
 }
 
-bool inside(vector<point> &vet, point e) //ccw
-{
+bool inside(vp &vet, point e){ // ccw
     int l=2, r=(int)vet.size()-1;
     int res=r;
     while(l<r){

@@ -1,8 +1,8 @@
-// typedef int cod;
-// bool eq(cod a, cod b){ return (a==b); }
-
 #define PI acos(-1)
 #define vp vector<point>
+
+// typedef int cod;
+// bool eq(cod a, cod b){ return (a==b); }
 typedef ld cod;
 bool eq(cod a, cod b){ return fabsl(a - b) <= EPS; }
 
@@ -82,8 +82,11 @@ ld area(vp &p){ // (points sorted)
         ret += (p[i]-p[0])^(p[i-1]-p[0]);
     return fabsl(ret/2);
 }
+ld areaT(point &a, point &b, point &c){
+    return fabsl((b-a)^(c-a))/2.0;
+}
 
-point center(vp A){
+point center(vp &A){
     point cA = point();
     int len = A.size();
     for(int i=0;i<len;i++)
@@ -131,12 +134,19 @@ struct line{
 
 };
 
-point inter(line l1, line l2){
+point inter(line &l1, line &l2){
     ld det = l1.a*l2.b - l1.b*l2.a;
     if(det==0) return point(INF, INF);
     ld x = (l1.b*l2.c - l1.c*l2.b)/det;
     ld y = (l1.c*l2.a - l1.a*l2.c)/det;
     return point(x, y);
+}
+
+point inter_seg(line &l1, line &l2){
+    point ans = inter(l1, l2);
+    if(ans.x==INF or !l1.inside_seg(ans) or !l2.inside_seg(ans))
+        return point(INF, INF);
+    return ans;
 }
 
 cod dseg(point p, point a, point b){ // point - seg

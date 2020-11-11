@@ -1,6 +1,6 @@
 // Sieve of Eratosthenes
 
-vector<bool> primos(n, true);
+vector<bool> primos(n+1, true);
 
 primos[0]=primos[1]=false;
 

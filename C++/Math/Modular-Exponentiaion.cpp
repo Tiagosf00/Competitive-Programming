@@ -1,12 +1,12 @@
-// Modular exponentiaion - (x^y)%mod in O(log y)
-ll fexp(ll x, ll y, ll mod){
+// Modular exponentiaion - (b^e)%mod in O(log e)
+ll fexp(ll b, ll e, ll mod){
     ll res = 1;
-    x%=mod;
-    while(y){ 
-        if(y&1)
-            res=(res*x)%mod;
-        y=y>>1;
-        x=(x*x)%mod;
+    b%=mod;
+    while(e){ 
+        if(e&1LL)
+            res=(res*b)%mod;
+        e=e>>1LL;
+        b=(b*b)%mod;
     }
     return res;
 }
