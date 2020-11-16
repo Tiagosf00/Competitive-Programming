@@ -1,5 +1,5 @@
 struct FT {
-    vector<int> bit;  // indexado em 0
+    vi bit;  // indexado em 1
     int n;
 
     FT(int n) {
