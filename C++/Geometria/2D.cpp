@@ -61,6 +61,11 @@ ld order_angle(point a, point b){ // from a to b ccw (a in front of b)
     ld aux = angle(a,b)*180/PI;
     return ((a^b)<=0 ? aux:360-aux);
 }
+bool angle_less(point a1, point b1, point a2, point b2){ // ang(a1,b1) <= ang(a2,b2)
+    point p1((a1*b1), abs((a1^b1)));
+    point p2((a2*b2), abs((a2^b2)));
+    return (p1^p2) <= 0;
+}
 int ccw(point a, point b, point e){ //-1=dir; 0=collinear; 1=esq;
     cod tmp = (b-a)^(e-a); // from a to b
     return (tmp > EPS) - (tmp < -EPS);
@@ -188,6 +193,14 @@ struct circle{
     bool inside(const point &a) const{
         return norm(a - c) <= r;
     }
+    pair<point, point> getTangentPoint(point p) {
+        ld d1 = norm(p-c), theta = asin(r/d1);
+        point p1 = rotccw(c-p,-theta);
+        point p2 = rotccw(c-p,theta);
+        p1 = p1*(sqrt(d1*d1-r*r)/d1)+p;
+        p2 = p2*(sqrt(d1*d1-r*r)/d1)+p;
+        return {p1,p2};
+    }
 };
 
 // minimum circle cover O(n) amortizado
@@ -204,5 +217,27 @@ circle min_circle_cover(vector<point> v){
             }
         }
     }
+    return ans;
+}
+
+
+circle incircle( point p1, point p2, point p3 ){
+    ld m1=norm(p2-p3);
+    ld m2=norm(p1-p3);
+    ld m3=norm(p1-p2);
+    point c = (p1*m1+p2*m2+p3*m3)*(1/(m1+m2+m3));
+    ld s = 0.5*(m1+m2+m3);
+    ld r = sqrt(s*(s-m1)*(s-m2)*(s-m3))/s;
+    return circle(c, r);
+}
+
+circle circumcircle(point a, point b, point c) {
+    circle ans;
+    point u = point((b-a).y, -(b-a).x);
+    point v = point((c-a).y, -(c-a).x);
+    point n = (c-b)*0.5;
+    ld t = (u^n)/(v^u);
+    ans.c = ((a+c)*0.5) + (v*t);
+    ans.r = norm(ans.c-a);
     return ans;
 }
