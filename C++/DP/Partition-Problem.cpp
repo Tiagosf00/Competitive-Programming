@@ -1,4 +1,4 @@
-// Partition Problem DP O(n²)
+// Partition Problem DP O(n2)
 bool findPartition(vi &arr){
     int sum = 0;
     int n = arr.size();

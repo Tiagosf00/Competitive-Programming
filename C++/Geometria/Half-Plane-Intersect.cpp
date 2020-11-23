@@ -1,4 +1,4 @@
-// Half plane intersect O(n³)
+// Half plane intersect O(n3)
 vp half_plane_intersect(vector<line> &v){
     vp ret;
     int n = v.size();
