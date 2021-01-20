@@ -147,7 +147,7 @@ point inter(line &l1, line &l2){
     return point(x, y);
 }
 
-point inter_seg(line &l1, line &l2){
+point inter_seg(line l1, line l2){
     point ans = inter(l1, l2);
     if(ans.x==INF or !l1.inside_seg(ans) or !l2.inside_seg(ans))
         return point(INF, INF);

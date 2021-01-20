@@ -1,4 +1,4 @@
-int val[MAXN], peso[MAXN], dp[MAXN][MAXS]
+int val[MAXN], peso[MAXN], dp[MAXN][MAXS];
 
 int knapsack(int n, int m){ // n Objetos | Peso max
     for(int i=0;i<=n;i++){
@@ -13,3 +13,14 @@ int knapsack(int n, int m){ // n Objetos | Peso max
     }
     return dp[n][m];
 }
+
+
+// space optimized
+
+int val[MAX], wt[MAX], dp[MAX];
+int knapsack(int n, int W){
+    for(int i=0; i < n; i++)
+        for(int j=W; j>=wt[i]; j--) 
+            dp[j] = max(dp[j], val[i] + dp[j-wt[i]]); 
+    return dp[W];
+} 

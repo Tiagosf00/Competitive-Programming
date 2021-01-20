@@ -36,7 +36,7 @@ struct Dinic {
         for(int i = 0; i < qt; i++) {
             int u = qu[i];
             px[u] = 0;
-    		if(u == sink) return true;
+            if(u == sink) return true;
             for(auto& ed : g[u]) {
                 auto v = edge[ed];
                 if(v.flow >= v.cap || vis[v.to] == pass)
@@ -53,7 +53,7 @@ struct Dinic {
         ll ans = 0;
         //for(lim = (1LL << 62); lim >= 1; lim /= 2)
         while(bfs(source, sink))
-    		ans += run(source, sink, LLINF);
+            ans += run(source, sink, LLINF);
         return ans;
     }
     void addEdge(int u, int v, ll c, ll rc) {
@@ -66,8 +66,8 @@ struct Dinic {
         g[v].push_back(ne++);
     }
     void reset_flow() {
-    	for(int i = 0; i < ne; i++)
-    		edge[i].flow = 0;
+        for(int i = 0; i < ne; i++)
+            edge[i].flow = 0;
         memset(lvl, 0, sizeof(lvl));
         memset(vis, 0, sizeof(vis));
         memset(qu, 0, sizeof(qu));
