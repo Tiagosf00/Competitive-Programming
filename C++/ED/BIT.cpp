@@ -4,12 +4,12 @@ struct FT {
 
     FT(int n) {
         this->n = n+1;
-        bit.assign(n+1, 0);
+        bit.assign(n+2, 0);
     }
 
     int sum(int idx) {
         int ret = 0;
-        for (; idx > 0; idx -= idx & -idx)
+        for(++idx; idx > 0; idx -= idx & -idx)
             ret += bit[idx];
         return ret;
     }
@@ -19,7 +19,7 @@ struct FT {
     }
 
     void add(int idx, int delta) {
-        for (; idx < n; idx += idx & -idx)
+        for(++idx; idx < n; idx += idx & -idx)
             bit[idx] += delta;
     }
 };
