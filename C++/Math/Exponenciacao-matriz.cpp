@@ -10,7 +10,7 @@ struct Matrix {
 
     Matrix(int row, int col, bool ident=false) {
         r = row; c = col;
-        m = vector<vl>(r, vi(c, 0));
+        m = vector<vl>(r, vl(c, 0));
         if(ident) {
             for(int i = 0; i < min(r, c); i++) {
                 m[i][i] = 1;
@@ -20,7 +20,7 @@ struct Matrix {
 
     Matrix operator*(const Matrix &o) const {
         assert(c == o.r); // garantir que da pra multiplicar
-        vector<vl> res(r, vi(o.c, 0));
+        vector<vl> res(r, vl(o.c, 0));
 
         for(int i = 0; i < r; i++) {
             for(int j = 0; j < o.c; j++) {
