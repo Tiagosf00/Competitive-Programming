@@ -1,7 +1,7 @@
 // Subarray with maximum sum
 struct no{
-    ll pref, suff, total, best;
-    no(ll x=0): pref(x), suff(x), total(x), best(x){}
+    ll p, s, t, b; // prefix, suffix, total, best
+    no(ll x=0): p(x), s(x), t(x), b(x){}
 };
 
 struct Segtree{
@@ -15,10 +15,10 @@ struct Segtree{
 
     no merge(no l, no r){
         no ans;
-        ans.pref = max(0LL, max(l.pref, l.total+r.pref));
-        ans.suff = max(0LL, max(r.suff, l.suff+r.total));
-        ans.total = l.total+r.total;
-        ans.best = max(max(l.best, r.best), l.suff+r.pref);
+        ans.p = max(0LL, max(l.p, l.t+r.p));
+        ans.s = max(0LL, max(r.s, l.s+r.t));
+        ans.t = l.t+r.t;
+        ans.b = max(max(l.b, r.b), l.s+r.p);
         return ans;
     }
 
