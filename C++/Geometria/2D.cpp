@@ -4,7 +4,7 @@
 // typedef int cod;
 // bool eq(cod a, cod b){ return (a==b); }
 typedef ld cod;
-bool eq(cod a, cod b){ return fabsl(a - b) <= EPS; }
+bool eq(cod a, cod b){ return abs(a - b) <= EPS; }
 
 struct point{
     cod x, y;
@@ -46,6 +46,18 @@ ld norm(point a){ // Modulo
 bool nulo(point a){
     return (eq(a.x, 0) and eq(a.y, 0));
 }
+
+int ccw(point a, point b, point e){ //-1=dir; 0=collinear; 1=esq;
+    cod tmp = (b-a)^(e-a); // from a to b
+    return (tmp > EPS) - (tmp < -EPS);
+}
+point rotccw(point p, ld a){
+    // a = PI*a/180; // graus
+    return point((p.x*cos(a)-p.y*sin(a)), (p.y*cos(a)+p.x*sin(a)));
+}
+point rot90cw(point a) { return point(a.y, -a.x); };
+point rot90ccw(point a) { return point(-a.y, a.x); };
+
 ld proj(point a, point b){ // a sobre b
     return a*b/norm(b);
 }
@@ -54,7 +66,7 @@ ld angle(point a, point b){ // em radianos
     return acos(max(min(ang, (ld)1), (ld)-1));
 }
 ld angle_vec(point v){
-    // return 180/PI*atan2(v.x, v.y);
+    // return 180/PI*atan2(v.x, v.y); // graus
     return atan2(v.x, v.y);
 }
 ld order_angle(point a, point b){ // from a to b ccw (a in front of b)
@@ -66,39 +78,24 @@ bool angle_less(point a1, point b1, point a2, point b2){ // ang(a1,b1) <= ang(a2
     point p2((a2*b2), abs((a2^b2)));
     return (p1^p2) <= 0;
 }
-int ccw(point a, point b, point e){ //-1=dir; 0=collinear; 1=esq;
-    cod tmp = (b-a)^(e-a); // from a to b
-    return (tmp > EPS) - (tmp < -EPS);
-}
-point rotccw(point p, ld a){
-    // a = PI*a/180; // graus
-    return point((p.x*cos(a)-p.y*sin(a)), (p.y*cos(a)+p.x*sin(a)));
-}
-bool collinear(point a, point b, point c){ 
-    return eq((a-c)^(b-c), 0);
-}
-
-point rot90cw(point a) { return point(a.y, -a.x); };
-point rot90ccw(point a) { return point(-a.y, a.x); };
 
 ld area(vp &p){ // (points sorted)
     ld ret = 0;
     for(int i=2;i<(int)p.size();i++)
         ret += (p[i]-p[0])^(p[i-1]-p[0]);
-    return fabsl(ret/2);
+    return abs(ret/2);
 }
 ld areaT(point &a, point &b, point &c){
-    return fabsl((b-a)^(c-a))/2.0;
+    return abs((b-a)^(c-a))/2.0;
 }
 
 point center(vp &A){
-    point cA = point();
+    point c = point();
     int len = A.size();
     for(int i=0;i<len;i++)
-        cA=cA+A[i];
-    return cA/len;
+        c=c+A[i];
+    return c/len;
 }
-
 
 point forca_mod(point p, ld m){
     ld cm = norm(p);
@@ -114,12 +111,23 @@ point forca_mod(point p, ld m){
 struct line{
     point p1, p2;
     cod a, b, c; // ax+by+c = 0;
+    // y-y1 = ((y2-y1)/(x2-x1))(x-x1)
     line(point p1=0, point p2=0): p1(p1), p2(p2){
         a = p1.y-p2.y;
         b = p2.x-p1.x;
         c = -(a*p1.x + b*p1.y);
     }
-    line(cod a=0, cod b=0, cod c=0): a(a), b(b), c(c){}
+    line(cod a=0, cod b=0, cod c=0): a(a), b(b), c(c){
+        // Gera os pontos p1 p2 dados os coeficientes
+        // isso aqui é horrível mas quebra um galho kkkkkk
+        if(b==0){
+            p1 = point(1, -c/a);
+            p1 = point(0, -c/a);
+        }else{
+            p1 = point(1, (-c-a*1)/b);
+            p2 = point(0, -c/b);
+        }
+    }
 
     cod eval(point p){
         return a*p.x+b*p.y+c;
@@ -139,16 +147,16 @@ struct line{
 
 };
 
-point inter(line &l1, line &l2){
+vp inter_line(line l1, line l2){
     ld det = l1.a*l2.b - l1.b*l2.a;
-    if(det==0) return point(INF, INF);
+    if(det==0) return {};
     ld x = (l1.b*l2.c - l1.c*l2.b)/det;
     ld y = (l1.c*l2.a - l1.a*l2.c)/det;
-    return point(x, y);
+    return {point(x, y)};
 }
 
 point inter_seg(line l1, line l2){
-    point ans = inter(l1, l2);
+    point ans = inter_line(l1, l2);
     if(ans.x==INF or !l1.inside_seg(ans) or !l2.inside_seg(ans))
         return point(INF, INF);
     return ans;
@@ -157,11 +165,11 @@ point inter_seg(line l1, line l2){
 cod dseg(point p, point a, point b){ // point - seg
     if(((p-a)*(b-a)) < EPS) return norm(p-a);
     if(((p-b)*(a-b)) < EPS) return norm(p-b);
-    return fabs((p-a)^(b-a))/norm(b-a);
+    return abs((p-a)^(b-a))/norm(b-a);
 }
 
 cod dline(point p, line l){ // point - line
-    return fabs(l.eval(p))/sqrt(l.a*l.a + l.b*l.b);
+    return abs(l.eval(p))/sqrt(l.a*l.a + l.b*l.b);
 }
 
 line mediatrix(point a, point b){
@@ -187,7 +195,7 @@ struct circle{
         r = norm(a-c);
     }
     circle(const point a, const point b, const point cc){
-        c = inter(mediatrix(a, b), mediatrix(b, cc));
+        c = inter_line(mediatrix(a, b), mediatrix(b, cc));
         r = norm(a-c);
     }
     bool inside(const point &a) const{
@@ -240,4 +248,24 @@ circle circumcircle(point a, point b, point c) {
     ans.c = ((a+c)*0.5) + (v*t);
     ans.r = norm(ans.c-a);
     return ans;
+}
+
+vp inter_circle_line(circle C, line L){
+    point ab = L.p2 - L.p1, p = L.p1 + ab * ((C.c-L.p1)*(ab) / (ab*ab));
+    ld s = (L.p2-L.p1)^(C.c-L.p1), h2 = C.r*C.r - s*s / (ab*ab);
+    if (h2 < 0) return {};
+    if (h2 == 0) return {p};
+    point h = (ab/norm(ab)) * sqrt(h2);
+    return {p - h, p + h};
+}
+
+vp inter_circle(circle C1, circle C2){
+    if(C1.c == C2.c) { assert(C1.r != C2.r); return {}; }
+    point vec = C2.c - C1.c;
+    ld d2 = vec*vec, sum = C1.r+C2.r, dif = C1.r-C2.r;
+    ld p = (d2 + C1.r*C1.r - C2.r*C2.r)/(d2*2), h2 = C1.r*C1.r - p*p*d2;
+    if (sum*sum < d2 or dif*dif > d2) return {};
+    point mid = C1.c + vec*p, per = point(-vec.y, vec.x) * sqrt(max((ld)0, h2) / d2);
+    if(eq(per.x, 0) and eq(per.y, 0)) return {mid};
+    return {mid + per, mid - per};
 }

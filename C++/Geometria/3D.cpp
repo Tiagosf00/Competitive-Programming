@@ -7,10 +7,10 @@ bool eq(cod a, cod b){ return fabs(a - b) <= EPS; }
 
 struct point
 {
-	cod x, y, z;
-	point(cod x=0, cod y=0, cod z=0): x(x), y(y), z(z){}
+    cod x, y, z;
+    point(cod x=0, cod y=0, cod z=0): x(x), y(y), z(z){}
 
-	point operator+(const point &o) const{
+    point operator+(const point &o) const{
         return {x+o.x, y+o.y, z+o.z};
     }
     point operator-(const point &o) const{
@@ -69,4 +69,12 @@ struct plane{
 
 cod dist(plane pl, point p){
     return fabs(pl.a*p.x + pl.b*p.y + pl.c*p.z + pl.d) / sqrt(pl.a*pl.a + pl.b*pl.b + pl.c*pl.c);
+}
+
+point rotate(point v, point k, ld theta){
+    // Rotaciona o vetor v theta graus em torno do eixo k
+    // theta *= PI/180; // graus
+    return rotated = (v*cos(theta)) +
+                     ((k^v)*sin(theta)) +
+                     (k*(k*v))*(1-cos(theta));
 }
