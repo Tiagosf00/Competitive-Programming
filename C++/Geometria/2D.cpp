@@ -162,13 +162,13 @@ point inter_seg(line l1, line l2){
     return ans;
 }
 
-cod dseg(point p, point a, point b){ // point - seg
+ld dseg(point p, point a, point b){ // point - seg
     if(((p-a)*(b-a)) < EPS) return norm(p-a);
     if(((p-b)*(a-b)) < EPS) return norm(p-b);
     return abs((p-a)^(b-a))/norm(b-a);
 }
 
-cod dline(point p, line l){ // point - line
+ld dline(point p, line l){ // point - line
     return abs(l.eval(p))/sqrt(l.a*l.a + l.b*l.b);
 }
 
