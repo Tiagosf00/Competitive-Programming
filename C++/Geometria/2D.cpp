@@ -1,4 +1,3 @@
-#define PI acos(-1)
 #define vp vector<point>
 
 // typedef int cod;
@@ -155,10 +154,10 @@ vp inter_line(line l1, line l2){
     return {point(x, y)};
 }
 
-point inter_seg(line l1, line l2){
-    point ans = inter_line(l1, l2);
-    if(ans.x==INF or !l1.inside_seg(ans) or !l2.inside_seg(ans))
-        return point(INF, INF);
+vp inter_seg(line l1, line l2){
+    vp ans = inter_line(l1, l2);
+    if(ans.empty() or !l1.inside_seg(ans[0]) or !l2.inside_seg(ans[0]))
+        return {};
     return ans;
 }
 
