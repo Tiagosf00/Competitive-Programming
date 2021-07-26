@@ -42,13 +42,14 @@ struct point{
 ld norm(point a){ // Modulo
     return sqrt(a*a);
 }
-bool nulo(point a){
-    return (eq(a.x, 0) and eq(a.y, 0));
-}
 
 int ccw(point a, point b, point e){ //-1=dir; 0=collinear; 1=esq;
     cod tmp = (b-a)^(e-a); // from a to b
     return (tmp > EPS) - (tmp < -EPS);
+}
+
+bool nulo(point a){
+    return (eq(a.x, 0) and eq(a.y, 0));
 }
 point rotccw(point p, ld a){
     // a = PI*a/180; // graus
@@ -118,7 +119,7 @@ struct line{
     }
     line(cod a=0, cod b=0, cod c=0): a(a), b(b), c(c){
         // Gera os pontos p1 p2 dados os coeficientes
-        // isso aqui é horrível mas quebra um galho kkkkkk
+        // isso aqui eh um lixo mas quebra um galho kkkkkk
         if(b==0){
             p1 = point(1, -c/a);
             p1 = point(0, -c/a);
