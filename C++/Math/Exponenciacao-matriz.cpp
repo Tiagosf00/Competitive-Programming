@@ -23,8 +23,8 @@ struct Matrix {
         vector<vl> res(r, vl(o.c, 0));
 
         for(int i = 0; i < r; i++) {
-            for(int j = 0; j < o.c; j++) {
-                for(int k = 0; k < c; k++) {
+            for(int k = 0; k < c; k++) {
+                for(int j = 0; j < o.c; j++) {
                     res[i][j] = (res[i][j] + m[i][k]*o.m[k][j]) % MOD;
                 }
             }
