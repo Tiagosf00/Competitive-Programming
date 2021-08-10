@@ -26,7 +26,7 @@ void radix_sort(vector<pii>& rnk, vi& ind) {
     counting_sort(rnk, ind);
 }
 
-vi suffix_array(string s) {
+vi suffix_array(const string& s) {
     int n = s.size();
     vector<pii> rnk(n, mp(0, 0));
     vi ind(n);
@@ -59,7 +59,7 @@ vi suffix_array(string s) {
     return ind;
 }
 
-vi lcp_array(string s, vi sarray) {
+vi lcp_array(const string& s, const vi& sarray) {
     vi inv(s.size());
     for(int i = 0; i < (int)s.size(); i++) {
         inv[sarray[i]] = i;
