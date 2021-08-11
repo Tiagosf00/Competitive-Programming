@@ -1,7 +1,7 @@
 // Dijkstra - Shortest Path
 
-vector<vii> g(MAX+1, vii());
-vi d(MAX+1, INF);
+vector<vii> g(MAX, vii());
+vi d(MAX, INF);
 priority_queue< pii, vii, greater<pii> > fila;
 
 void dijkstra(int k){
@@ -9,7 +9,7 @@ void dijkstra(int k){
     fila.push({0, k});
 
     while(!fila.empty()){
-        int w=fila.top().ff, u=fila.top().ss;
+        auto [w, u] = fila.top();
         fila.pop();
         if(w>d[u]) continue;
 
