@@ -6,7 +6,7 @@ ll MinDistPair(vp &vet){
     ll best_dist = LLINF;
     int j=0;
     for(int i=0;i<n;i++){
-        int d = ceil(sqrt(best_dist));
+        ll d = ceil(sqrt(best_dist));
         while(j<n and vet[i].x-vet[j].x >= d){
             s.erase(point(vet[j].y, vet[j].x));
             j++;

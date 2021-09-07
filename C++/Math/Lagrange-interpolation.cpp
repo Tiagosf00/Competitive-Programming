@@ -1,4 +1,4 @@
-// Lagrange's interpolation (n+1 points)
+// Lagrange's interpolation O(n²)
 ld interpolate(vii d, ld x){
     ld y = 0;
     int n = d.size();
@@ -13,16 +13,36 @@ ld interpolate(vii d, ld x){
     return y;
 }
 
-ld inv_interpolate(vii d, ld y){
-    ld x = 0;
-    int n = d.size();
-    for(int i=0;i<n;i++){
-        ld xi = d[i].ff;
-        for(int j=0;j<n;j++)
-            if(j!=i)
-                xi = xi*(y - d[j].ss)/(ld)(d[i].ss - d[j].ss);
+// O(n)
 
-        x += xi;
+template<typename T = mint>
+struct Lagrange {
+    vector<T> y, den, l, r;
+    int n;
+    Lagrange(const vector<T>& _y) : y(_y), n(_y.size()) {
+        den.resize(n, 0);
+        l.resize(n, 0); r.resize(n, 0);
+
+        for (int i = 0; i < n; i++) {
+            den[i] = ifac[i] * ifac[n - 1 - i];
+            if ((n - 1 - i) % 2 == 1) den[i] = -den[i];
+        }
     }
-    return x;
-}
+
+    T eval(T x) {
+        l[0] = 1;
+        for (int i = 1; i < n; i++)
+            l[i] = l[i-1] * (x + -T(i-1));
+
+        r[n - 1] = 1;
+        for (int i = n - 2; i >= 0; i--)
+            r[i] = r[i+1] * (x + -T(i+1));
+
+        T ans = 0;
+        for (int i = 0; i < n; i++) {
+            T num = l[i] * r[i];
+            ans = ans + y[i] * num * den[i];
+        }
+        return ans;
+    }
+};

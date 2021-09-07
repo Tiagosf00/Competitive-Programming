@@ -103,6 +103,26 @@ point forca_mod(point p, ld m){
     return point(p.x*m/cm,p.y*m/cm);
 }
 
+point mirror(point m1, point m2, point p){
+    // mirror point p around segment m1m2
+    point seg = m2-m1;
+    ld t0 = ((p-m1)*seg) / (seg*seg);
+    point ort = m1 + seg*t0;
+    point pm = ort-(p-ort);
+    return pm;
+}
+
+bool simetric(vector<point> &a){ //ordered
+    int n = a.size();
+    c = center(a);
+    if(n&1) return false;
+    for(int i=0;i<n/2;i++)
+        if(!collinear(a[i], a[i+n/2], c))
+            return false;
+    return true;
+}
+
+
 
 ////////////
 //  Line  //
@@ -172,7 +192,7 @@ ld dline(point p, line l){ // point - line
     return abs(l.eval(p))/sqrt(l.a*l.a + l.b*l.b);
 }
 
-line mediatrix(point a, point b){
+line bisector(point a, point b){
     point d = (b-a)*2;
     return line(d.x, d.y, a*a - b*b);
 }
