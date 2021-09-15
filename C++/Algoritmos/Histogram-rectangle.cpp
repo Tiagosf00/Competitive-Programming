@@ -1,9 +1,9 @@
 ll bestRectangle(vi hist){
     int n = hist.size();
-    stack<int> s;
+    stack<ll> s;
     s.push(-1);
     ll ans = hist[0];
-    vector<int> left_smaller(n, -1), right_smaller(n, n);
+    vl left_smaller(n, -1), right_smaller(n, n);
     for(int i=0;i<n;i++){
         while(!s.empty() and s.top()!=-1 and hist[s.top()]>hist[i]){
             right_smaller[s.top()] = i;

@@ -103,15 +103,6 @@ point forca_mod(point p, ld m){
     return point(p.x*m/cm,p.y*m/cm);
 }
 
-point mirror(point m1, point m2, point p){
-    // mirror point p around segment m1m2
-    point seg = m2-m1;
-    ld t0 = ((p-m1)*seg) / (seg*seg);
-    point ort = m1 + seg*t0;
-    point pm = ort-(p-ort);
-    return pm;
-}
-
 bool simetric(vector<point> &a){ //ordered
     int n = a.size();
     c = center(a);
