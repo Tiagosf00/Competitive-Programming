@@ -19,7 +19,8 @@ struct Segtree {
     void sobe(int p){
         for(int tam = 2; p /= 2; tam *= 2){
             seg[p] = merge(seg[2*p], seg[2*p+1]);
-            poe(p, lazy[p], tam, 0);
+            if(lazy[p]!=0)
+                poe(p, lazy[p], tam, 0);
         }
     }
     void prop(int p){
