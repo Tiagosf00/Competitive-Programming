@@ -33,3 +33,52 @@ struct Sparse {
         return f(st[l][k], st[r - (1 << k) + 1][k]);
     }
 };
+
+
+struct Sparse2d {
+    int n, m;
+    vector<vector<vi>> st;
+ 
+    Sparse2d(vector<vi> mat) {
+        n = mat.size();
+        m = mat[0].size();
+        int k = logv[min(n, m)];
+ 
+        st.assign(n+1, vector<vi>(m+1, vi(k+1)));
+        for(int i = 0; i < n; i++) 
+            for(int j = 0; j < m; j++) 
+                st[i][j][0] = mat[i][j];
+ 
+        for(int j = 1; j <= k; j++) {
+            for(int x1 = 0; x1 < n; x1++) {
+                for(int y1 = 0; y1 < m; y1++) {
+                    int delta = (1 << (j-1));
+                    if(x1+delta >= n or y1+delta >= m) continue;
+ 
+                    st[x1][y1][j] = st[x1][y1][j-1];
+                    st[x1][y1][j] = f(st[x1][y1][j], st[x1+delta][y1][j-1]);
+                    st[x1][y1][j] = f(st[x1][y1][j], st[x1][y1+delta][j-1]);
+                    st[x1][y1][j] = f(st[x1][y1][j], st[x1+delta][y1+delta][j-1]);
+                }
+            }
+        }
+    }
+ 
+    // so funciona para quadrados
+    int query(int x1, int y1, int x2, int y2) {
+        assert(x2-x1+1 == y2-y1+1);
+        int k = logv[x2-x1+1];
+        int delta = (1 << k);
+ 
+        int res = st[x1][y1][k];
+        res = f(res, st[x2 - delta+1][y1][k]);
+        res = f(res, st[x1][y2 - delta+1][k]);
+        res = f(res, st[x2 - delta+1][y2 - delta+1][k]);
+        return res;
+    }
+ 
+    int f(int a, int b) {
+        return a | b;
+    }
+ 
+};
