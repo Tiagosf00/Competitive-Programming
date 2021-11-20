@@ -4,13 +4,12 @@ struct Trie{
     bool finish[MAX];
     int nxt = 1, len = 0;
 
-    void add(string &s){
+    void add(string s){
         int node = 0;
         for(auto c: s){
-            if(trie[node][c-'a'] == 0){
-                node = trie[node][c-'a'] = nxt;
-                nxt++;
-            }else
+            if(trie[node][c-'a'] == 0)
+                node = trie[node][c-'a'] = nxt++;
+            else
                 node = trie[node][c-'a'];
         }
         if(!finish[node]){
@@ -19,26 +18,17 @@ struct Trie{
         }
     }
 
-    bool find(string &s, bool remove){
-        int idx = 0;
+    bool find(string s, bool remove=false){
+        int node = 0;
         for(auto c: s)
-            if(trie[idx][c-'a'] == 0)
+            if(trie[node][c-'a'] == 0)
                 return false;
             else
-                idx = trie[idx][c-'a'];
-        if(remove and finish[idx]){
-            finish[idx]=false;
+                node = trie[node][c-'a'];
+        if(remove and finish[node]){
+            finish[node]=false;
             len--;
         }
-        return finish[idx];
+        return finish[node];
     }
-
-    bool find(string &s){
-        return find(s, 0);
-    }
-
-    void del(string &s){
-        find(s, 1);
-    }
-    
 };

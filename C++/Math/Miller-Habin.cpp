@@ -22,7 +22,7 @@ bool prime(ll n) {
 
     // com esses primos, o teste funciona garantido para n <= 2^64
     // funciona para n <= 3*10^24 com os primos ate 41
-    for (int i : {2, 325, 9375, 28178, 450775, 9780504, 1795265022}) {
+    for (int i : {2, 325, 9375, 28178, 450775, 9780504, 795265022}) {
         if (i >= n) break;
         ll x = expo(i, d, n);
         if (x == 1 or x == n - 1) continue;

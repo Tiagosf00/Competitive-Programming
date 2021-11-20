@@ -160,13 +160,14 @@ struct line{
     }
 
     bool inside_seg(point p){
-        return (inside(p) and
+        return (ccw(p1, p2, p)==0 and
                 min(p1.x, p2.x)<=p.x and p.x<=max(p1.x, p2.x) and
                 min(p1.y, p2.y)<=p.y and p.y<=max(p1.y, p2.y));
     }
 
 };
 
+// be careful with precision error
 vp inter_line(line l1, line l2){
     ld det = l1.a*l2.b - l1.b*l2.a;
     if(det==0) return {};
@@ -175,6 +176,7 @@ vp inter_line(line l1, line l2){
     return {point(x, y)};
 }
 
+// segments not collinear
 vp inter_seg(line l1, line l2){
     vp ans = inter_line(l1, l2);
     if(ans.empty() or !l1.inside_seg(ans[0]) or !l2.inside_seg(ans[0]))
@@ -215,7 +217,7 @@ struct circle{
         r = norm(a-c);
     }
     circle(const point a, const point b, const point cc){
-        c = inter_line(mediatrix(a, b), mediatrix(b, cc));
+        c = inter_line(bisector(a, b), bisector(b, cc));
         r = norm(a-c);
     }
     bool inside(const point &a) const{
