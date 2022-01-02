@@ -1,61 +1,64 @@
-int val[4*MAX];
-int vet[MAX];
-int N;
+pii tree[4*MAX];
+int lazy[4*MAX];
+int N, vet[MAX];
 
-int merge(int a, int b){
-    return max(a, b);
+// Segtree de mínimo e quantidade com lazy
+
+pii merge(pii a, pii b){
+    if(a.ff == b.ff) return {a.ff, a.ss+b.ss};
+    return min(a, b);
+}
+
+void prop(int no, bool leaf){
+    if(lazy[no] != 0){
+        tree[no].ff += lazy[no];
+        if(!leaf){
+            lazy[no<<1] += lazy[no];
+            lazy[no<<1|1] += lazy[no];
+        }
+        lazy[no] = 0;
+    }
 }
 
 void build(int i=1, int j=N, int no=1){
     if(i==j){
-        val[no]=vet[i];
+        tree[no].ff = vet[i];
+        tree[no].ss = 1;
         return;
     }
 
-    int meio = (i+j)/2;
+    int mid = (i+j)/2;
 
-    build(i, meio, no<<1);
-    build(meio+1, j, no<<1|1);
+    build(i, mid, no<<1);
+    build(mid+1, j, no<<1|1);
 
-    val[no]=merge(val[no<<1], val[no<<1|1]);
+    tree[no]=merge(tree[no<<1], tree[no<<1|1]);
 }
  
-void update(int pos, int x, int no=1, int i=1, int j=N){
-    if(i==j){
-        val[no]=x;
+void update(int l, int r, int x, int no=1, int i=1, int j=N){
+    prop(no, i==j);
+    if(r<i or j<l) return;
+    if(l<=i and j<=r){
+        lazy[no] += x;
+        prop(no, i==j);
         return;
     }
-    int meio = (i+j)/2;
+    int mid = (i+j)/2;
 
-    if(pos<=meio)
-        update(pos, x, no<<1, i, meio);
-    else
-        update(pos, x, no<<1|1, meio+1, j);
+    update(l, r, x, no<<1, i, mid);
+    update(l, r, x, no<<1|1, mid+1, j);
 
-    val[no]=merge(val[no<<1], val[no<<1|1]);
+    tree[no] = merge(tree[no<<1], tree[no<<1|1]);
     
 }
  
-int query(int A, int B, int i=1, int j=N, int no=1){
-    if(B<i or j<A)
-        return INF;
-    if(A<=i and j<=B)
-        return val[no];
+pii query(int l, int r, int i=1, int j=N, int no=1){
+    prop(no, i==j);
+    if(r<i or j<l) return {INF, 0};
+    if(l<=i and j<=r) return tree[no];
  
     int mid = (i+j)/2;
- 
-    int ansl = query(A, B, i, mid, no<<1);
-    int ansr = query(A, B, mid+1, j, no<<1|1);
- 
-    if(ansr==INF) return ansl;
-    if(ansl==INF) return ansr;
- 
-    return merge(ansl, ansr);
-}
 
-int main()
-{
-	build();
-	update(pos, valor);
-	x = query(l, r);
+    return merge(query(l, r, i, mid, no<<1),
+                 query(l, r, mid+1, j, no<<1|1));
 }

@@ -1,10 +1,10 @@
 // Sieve of Eratosthenes
 
-vector<bool> primos(n+1, true);
+vector<bool> primos(MAX, true);
 
 primos[0]=primos[1]=false;
 
-for(int i=2;i<=n;i++)
+for(int i=2;i<MAX;i++)
     if(primos[i])
-        for(int j=i+i; j<=n; j+=i)
+        for(int j=i+i; j<MAX; j+=i)
             primos[j]=false;

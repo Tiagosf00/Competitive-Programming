@@ -14,3 +14,10 @@ struct custom_hash {
 };
 
 unordered_map<long long, int, custom_hash> safe_map;
+
+// when using pairs
+struct custom_hash {
+    inline size_t operator ()(const pii & a) const {
+        return (a.first << 6) ^ (a.first >> 2) ^ 2038074743 ^ a.second;
+    }
+};
