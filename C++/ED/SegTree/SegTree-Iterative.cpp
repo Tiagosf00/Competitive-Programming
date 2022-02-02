@@ -33,17 +33,3 @@ struct Segtree{
     }
 
 };
-
-int main(){
-    Segtree st(n);
-
-    for(int i=0;i<n;i++){
-        cin >> aux;
-        st.t[n+i]=aux; //Leaves are stored in continuous nodes with indices starting with N
-    }
-
-    st.build();
-    x = st.query(inicio, fim);
-    st.update(ind, value);
-
-}
