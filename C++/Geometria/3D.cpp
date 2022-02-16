@@ -65,6 +65,9 @@ struct plane{
     cod a = aux.x, b = aux.y, c = aux.z;
     cod d = -a*p1.x - b*p1.y - c*p1.z;
     // ax+by+cz+d = 0;
+    cod eval(point &p){
+        return a*p.x + b*p.y + c*p.z + d;
+    }
 };
 
 cod dist(plane pl, point p){

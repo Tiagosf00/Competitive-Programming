@@ -142,7 +142,7 @@ struct line{
         // isso aqui eh um lixo mas quebra um galho kkkkkk
         if(b==0){
             p1 = point(1, -c/a);
-            p1 = point(0, -c/a);
+            p2 = point(0, -c/a);
         }else{
             p1 = point(1, (-c-a*1)/b);
             p2 = point(0, -c/b);
@@ -184,13 +184,13 @@ vp inter_seg(line l1, line l2){
     return ans;
 }
 
-ld dseg(point p, point a, point b){ // point - seg
+ld dist_seg(point p, point a, point b){ // point - seg
     if(((p-a)*(b-a)) < EPS) return norm(p-a);
     if(((p-b)*(a-b)) < EPS) return norm(p-b);
     return abs((p-a)^(b-a))/norm(b-a);
 }
 
-ld dline(point p, line l){ // point - line
+ld dist_line(point p, line l){ // point - line
     return abs(l.eval(p))/sqrt(l.a*l.a + l.b*l.b);
 }
 
@@ -221,43 +221,28 @@ struct circle{
         r = norm(a-c);
     }
     bool inside(const point &a) const{
-        return norm(a - c) <= r;
-    }
-    pair<point, point> getTangentPoint(point p) {
-        ld d1 = norm(p-c), theta = asin(r/d1);
-        point p1 = rotccw(c-p,-theta);
-        point p2 = rotccw(c-p,theta);
-        p1 = p1*(sqrt(d1*d1-r*r)/d1)+p;
-        p2 = p2*(sqrt(d1*d1-r*r)/d1)+p;
-        return {p1,p2};
+        return norm(a - c) <= r + EPS;
     }
 };
 
-// minimum circle cover O(n) amortizado
-circle min_circle_cover(vector<point> v){
-    random_shuffle(v.begin(), v.end());
-    circle ans;
-    int n = v.size();
-    for(int i=0;i<n;i++) if(!ans.inside(v[i])){
-        ans = circle(v[i]);
-        for(int j=0;j<i;j++) if(!ans.inside(v[j])){
-            ans = circle(v[i], v[j]);
-            for(int k=0;k<j;k++) if(!ans.inside(v[k])){
-                ans = circle(v[i], v[j], v[k]);
-            }
-        }
-    }
-    return ans;
+pair<point, point> getTangentPoint(circle cr, point p) {
+    ld d1 = norm(p-cr.c), theta = asin(cr.r/d1);
+    point p1 = rotccw(cr.c-p, -theta);
+    point p2 = rotccw(cr.c-p, theta);
+    assert(d1 >= cr.r);
+    p1 = p1 * (sqrt(d1*d1-cr.r*cr.r) / d1) + p;
+    p2 = p2 * (sqrt(d1*d1-cr.r*cr.r) / d1) + p;
+    return {p1, p2};
 }
 
 
-circle incircle( point p1, point p2, point p3 ){
-    ld m1=norm(p2-p3);
-    ld m2=norm(p1-p3);
-    ld m3=norm(p1-p2);
-    point c = (p1*m1+p2*m2+p3*m3)*(1/(m1+m2+m3));
+circle incircle(point p1, point p2, point p3){
+    ld m1 = norm(p2-p3);
+    ld m2 = norm(p1-p3);
+    ld m3 = norm(p1-p2);
+    point c = (p1*m1 + p2*m2 + p3*m3)*(1/(m1+m2+m3));
     ld s = 0.5*(m1+m2+m3);
-    ld r = sqrt(s*(s-m1)*(s-m2)*(s-m3))/s;
+    ld r = sqrt(s*(s-m1)*(s-m2)*(s-m3)) / s;
     return circle(c, r);
 }
 
@@ -275,8 +260,8 @@ circle circumcircle(point a, point b, point c) {
 vp inter_circle_line(circle C, line L){
     point ab = L.p2 - L.p1, p = L.p1 + ab * ((C.c-L.p1)*(ab) / (ab*ab));
     ld s = (L.p2-L.p1)^(C.c-L.p1), h2 = C.r*C.r - s*s / (ab*ab);
-    if (h2 < 0) return {};
-    if (h2 == 0) return {p};
+    if (h2 < -EPS) return {};
+    if (eq(h2, 0)) return {p};
     point h = (ab/norm(ab)) * sqrt(h2);
     return {p - h, p + h};
 }
@@ -290,4 +275,21 @@ vp inter_circle(circle C1, circle C2){
     point mid = C1.c + vec*p, per = point(-vec.y, vec.x) * sqrt(max((ld)0, h2) / d2);
     if(eq(per.x, 0) and eq(per.y, 0)) return {mid};
     return {mid + per, mid - per};
+}
+
+// minimum circle cover O(n) amortizado
+circle min_circle_cover(vector<point> v){
+    random_shuffle(v.begin(), v.end());
+    circle ans;
+    int n = v.size();
+    for(int i=0;i<n;i++) if(!ans.inside(v[i])){
+        ans = circle(v[i]);
+        for(int j=0;j<i;j++) if(!ans.inside(v[j])){
+            ans = circle(v[i], v[j]);
+            for(int k=0;k<j;k++) if(!ans.inside(v[k])){
+                ans = circle(v[i], v[j], v[k]);
+            }
+        }
+    }
+    return ans;
 }
