@@ -1,6 +1,6 @@
 #define vp vector<point>
 
-// typedef int cod;
+// typedef ll cod;
 // bool eq(cod a, cod b){ return (a==b); }
 typedef ld cod;
 bool eq(cod a, cod b){ return abs(a - b) <= EPS; }
