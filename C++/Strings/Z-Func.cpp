@@ -1,17 +1,12 @@
-vi z_algo(const string &s)
-{   // returns vector for each idx where a prefix of size i starts.
-    int n = s.size();
-    int L = 0, R = 0;
-    vi z(n, 0);
-    for(int i = 1; i < n; i++){
-        if(i <= R)
-            z[i] = min(z[i-L], R - i + 1);
-        while(z[i]+i < n and s[ z[i]+i ] == s[ z[i] ])
-            z[i]++;
-        if(i+z[i]-1 > R){
-            L = i;
-            R = i + z[i] - 1;
-        }
+vi Z(string s) {
+  int n = s.size();
+  vi z(n);
+  int x = 0, y = 0;
+  for (int i = 1; i < n; i++) {
+    z[i] = max(0, min(z[i - x], y - i + 1));
+    while (i + z[i] < n && s[z[i]] == s[i + z[i]]) {
+      x = i; y = i + z[i]; z[i]++;
     }
-    return z;
+  }
+  return z;
 }
