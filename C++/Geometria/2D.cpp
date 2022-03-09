@@ -112,6 +112,12 @@ point mirror(point m1, point m2, point p){
     return pm;
 }
 
+ld param(point a, point b, point v){
+    // v = t*(b-a) + a // return t;
+    // assert(line(a, b).inside_seg(v));
+    return ((v-a) * (b-a)) / ((b-a) * (b-a));
+}
+
 bool simetric(vector<point> &a){ //ordered
     int n = a.size();
     c = center(a);
@@ -160,9 +166,10 @@ struct line{
     }
 
     bool inside_seg(point p){
-        return (ccw(p1, p2, p)==0 and
-                min(p1.x, p2.x)<=p.x and p.x<=max(p1.x, p2.x) and
-                min(p1.y, p2.y)<=p.y and p.y<=max(p1.y, p2.y));
+        return (
+            ((p1-p) ^ (p2-p)) == 0 and
+            ((p1-p) * (p2-p)) <= 0
+        );
     }
 
 };
