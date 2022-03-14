@@ -6,6 +6,15 @@ import shutil
 def cpy_template():
     shutil.copyfile('template.tex', 'notebook.tex')
 
+def get_blocked():
+    blocked = set()
+    with open("block_from_notebook.txt") as f:
+        for line in f:
+            line = line.split('#')[0] # Remove comments
+            line = line.strip().lower().replace(" ", "_") + ".cpp" # normalize filename
+            if line != "":
+                blocked.add(line)
+    return blocked
 
 def remove_aux():
     if os.path.exists('notebook.aux'):

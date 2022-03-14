@@ -1,0 +1,51 @@
+# Filenames blocked from being included in notebook.tex
+#
+# Notes about this filetype:
+# - Comments start with #
+# - Entries like "meet in the middle" will be replaced by "meet_in_the_middle",
+#   but you can write "meet_in_the_middle" directly if you like
+
+# Algorithms
+meet in the middle
+iterative bs
+
+# Grafos
+bfs 01
+bfs
+dijkstra
+floyd warshall
+kruskal
+dfs
+topological sort
+prim
+
+# ED
+trie
+prefixsum2d
+delta encoding
+bit 2d
+bit bigger k
+mergesorttree  # ?
+union find
+mo             # ?
+mochila
+dp digitos     # ?
+unbounded knapsack
+partition problem  # ??
+
+# Math
+# double gcd   # ?
+factorization sqrt
+verif primo
+crivo
+modular exponentiation
+next permutation
+# bitwise      # remover uma parte?
+all subsets
+trie bits
+# safe map     # ?
+
+# Strings
+pal int
+# hash         # ?
+
