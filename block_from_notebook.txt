@@ -27,11 +27,9 @@ bit 2d
 bit bigger k
 mergesorttree  # ?
 union find
-mo             # ?
+mo
 mochila
-dp digitos     # ?
 unbounded knapsack
-partition problem  # ??
 
 # Math
 # double gcd   # ?
@@ -43,7 +41,7 @@ next permutation
 # bitwise      # remover uma parte?
 all subsets
 trie bits
-# safe map     # ?
+safe map
 
 # Strings
 pal int
