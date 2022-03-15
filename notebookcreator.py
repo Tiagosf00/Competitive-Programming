@@ -15,8 +15,7 @@ def get_blocked():
             line = line.split('#')[0]
             # Normalize filename
             line = line.strip().lower().replace(" ", "_") + ".cpp"
-            if line != "":
-                blocked.add(line)
+            blocked.add(line)
     return blocked
 
 
@@ -78,24 +77,28 @@ def create_notebook(section, blocked):
         aux += '\n\\end{multicols}\n\\end{document}\n'
         texfile.write(aux)
 
+def main():
+    cpy_template()
+    section = get_dir()
+    blocked = get_blocked()
+    create_notebook(section, blocked)
 
-cpy_template()
-section = get_dir()
-blocked = get_blocked()
-create_notebook(section, blocked)
+    cmd = ['pdflatex', '-interaction=nonstopmode', '-halt-on-error',
+           'notebook.tex']
+    with open(os.devnull, 'w') as DEVNULL:
+        try:
+            subprocess.check_call(cmd, stdout=DEVNULL)
+            subprocess.check_call(cmd, stdout=DEVNULL)
+        except Exception:
+            print("Erro na transformação de LaTex para pdf.")
+            print("Execute manualmente para entender o erro:")
+            print('pdflatex -interaction=nonstopmode -halt-on-error notebook.tex')
+            exit(1)
 
-cmd = ['pdflatex', '-interaction=nonstopmode', '-halt-on-error',
-       'notebook.tex']
-with open(os.devnull, 'w') as DEVNULL:
-    try:
-        subprocess.check_call(cmd, stdout=DEVNULL)
-        subprocess.check_call(cmd, stdout=DEVNULL)
-    except Exception:
-        print("Erro na transformação de LaTex para pdf.")
-        print("Execute manualmente para entender o erro:")
-        print('pdflatex -interaction=nonstopmode -halt-on-error notebook.tex')
-        exit(1)
+    remove_aux()
 
-remove_aux()
+    print("O PDF foi gerado com sucesso!")
 
-print("O PDF foi gerado com sucesso!")
+if __name__ == '__main__':
+    main()
+
