@@ -13,18 +13,19 @@ Resumos
 - [Geometria](C++/Geometria/)
 - [Strings](C++/Strings/)
 - [Misc](C++/Misc)
+- [Numeric](C++/Numeric/)
 
 Gerando notebook
 ----------------------
 
-Requerimentos: [Python 2/3](https://www.python.org/), [latexmk](https://www.ctan.org/pkg/latexmk/)
+Requerimentos: [Python 3](https://www.python.org/), [pdflatex](http://pdftex.org)
 
 ```bash
 sudo apt install python3
 ```
 
 ```bash
-sudo apt install latexmk
+sudo apt install texlive texinfo texlive-fonts-recommended texlive-latex-extra
 ```
 
 Comando:
