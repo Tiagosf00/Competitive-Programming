@@ -1,4 +1,4 @@
-// Lagrange's interpolation O(n²)
+// Lagrange's interpolation O(n^2)
 ld interpolate(vii d, ld x){
     ld y = 0;
     int n = d.size();
