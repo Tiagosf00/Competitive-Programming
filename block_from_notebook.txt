@@ -26,7 +26,7 @@ delta encoding
 bit 2d
 bit bigger k
 mergesorttree  # ?
-union find
+dsu
 mo
 mochila
 unbounded knapsack
