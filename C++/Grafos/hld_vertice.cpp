@@ -1,56 +1,63 @@
-struct Hld {
-    Segtree st;
-    int n;
-    vector<vi> g;
-    vi pos, sz, peso, pai, h, v;
-    int t;
+// Use it together with recursive_segtree
+vector<vi> g(MAX, vi());
+vi in(MAX), inv(MAX), sz(MAX);
+vi peso(MAX), pai(MAX);
+vi head(MAX), tail(MAX), h(MAX);
 
-    Hld(int n){
-        this->n=n;
-        st = Segtree(n);
-        g.assign(n, vi());
-        pos.assign(n, 0);sz.assign(n, 0);
-        peso.assign(n, 0);pai.assign(n, 0);
-        h.assign(n, 0);v.assign(n, 0);
+int tin;
+
+void dfs(int u, int p=-1, int depth=0){
+    sz[u] = 1; h[u] = depth;
+    for(auto &v: g[u]) if(v != p){
+        dfs(v, u, depth+1);
+        pai[v] = u; sz[u] += sz[v];
+        if (sz[v] > sz[g[u][0]] or g[u][0] == p) swap(v, g[u][0]);
     }
- 
-    void build_hld(int k, int p = -1, int f = 1){
-        v[pos[k] = t++] = peso[k]; sz[k] = 1;
-        for(auto &i: g[k]) if(i!=p){
-            pai[i] = k;
-            h[i] = (i==g[k][0] ? h[k]:i);
-            build_hld(i, k, f); sz[k]+=sz[i];
- 
-            if(sz[i]>sz[g[k][0]] or g[k][0]==p) swap(i, g[k][0]);
-        }
-        if(p*f == -1) build_hld(h[k] = k, -1, t = 0);
+}
+void build_hld(int u, int p = -1) {
+    v[in[u] = tin++] = peso[u]; tail[u] = u;
+    inv[tin-1] = u;
+    for(auto &v: g[u]) if(v != p) {
+        head[v] = (v == g[u][0] ? head[u] : v);
+        build_hld(v, u);
     }
-    void build(int root = 0){
-        t = 0;
-        build_hld(root);
-        for(int i=0;i<n;i++) st.seg[i+n]=v[i];
-        st.build();
-    }
-    ll query_path(int a, int b){
-        if(pos[a]<pos[b]) swap(a, b);
- 
-        if(h[a]==h[b]) return st.query(pos[b], pos[a]);
-        return st.query(pos[h[a]], pos[a]) + query_path(pai[h[a]], b);
-    }
-    void update_path(int a, int b, int x){
-        if(pos[a]<pos[b]) swap(a, b);
- 
-        if(h[a]==h[b]) return (void)st.update(pos[b], pos[a], x);
-        st.update(pos[h[a]], pos[a], x); update_path(pai[h[a]], b, x);
-    }
-    ll query_subtree(int a){
-        return st.query(pos[a], pos[a]+sz[a]-1);
-    }
-    void update_subtree(int a, int x){
-        st.update(pos[a], pos[a]+sz[a]-1, x);
-    }
-    int lca(int a, int b){
-        if(pos[a]<pos[b]) swap(a, b);
-        return (h[a]==h[b] ? b:lca(pai[h[a]], b));
-    }
-};
+    if(g[u].size() > 1) tail[u] = tail[g[u][0]];
+}
+void init_hld(int root = 0) {
+    dfs(root);
+    tin = 0;
+    build_hld(root);
+    build();
+}
+void reset(){
+    g.assign(MAX, vi());
+    in.assign(MAX, 0), sz.assign(MAX, 0);
+    peso.assign(MAX, 0), pai.assign(MAX, 0);
+    head.assign(MAX, 0); tail.assign(MAX, 0);
+    h.assign(0); inv.assign(MAX, 0);
+
+    t.assign(4*MAX, 0); v.assign(MAX, 0);
+    lazy.assign(4*MAX, 0);
+}
+ll query_path(int a, int b) {
+    if(in[a] < in[b]) swap(a, b);
+
+    if(head[a] == head[b]) return query(in[b], in[a]);
+    return merge(query(in[head[a]], in[a]), query_path(pai[head[a]], b));
+}
+void update_path(int a, int b, int x) {
+    if(in[a] < in[b]) swap(a, b);
+
+    if(head[a] == head[b]) return (void)update(in[b], in[a], x);
+    update(in[head[a]], in[a], x); update_path(pai[head[a]], b, x);
+}
+ll query_subtree(int a) {
+    return query(in[a], in[a]+sz[a]-1);
+}
+void update_subtree(int a, int x) {
+    update(in[a], in[a]+sz[a]-1, x);
+}
+int lca(int a, int b) {
+    if(in[a] < in[b]) swap(a, b);
+    return head[a] == head[b] ? b : lca(pai[head[a]], b);
+}
