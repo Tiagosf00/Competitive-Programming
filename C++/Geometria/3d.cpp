@@ -53,17 +53,27 @@ ld angle(point a, point b){ // em radianos
 }
 
 cod triple(point a, point b, point c){
-    return dot(a, b^c); // Area do paralelepipedo
+    return (a * (b^c)); // Area do paralelepipedo
 }
 
+point normilize(point a){
+    return a/norm(a);
+}
 
 struct plane{
+    cod a, b, c, d;
     point p1, p2, p3;
-    plane(point p1=0, point p2=0, point p3=0): p1(p1), p2(p2), p3(p3){}
+    plane(point p1=0, point p2=0, point p3=0): p1(p1), p2(p2), p3(p3){
+        point aux = (p1-p3)^(p2-p3);
+        a = aux.x; b = aux.y; c = aux.z;
+        d = -a*p1.x - b*p1.y - c*p1.z;
+    }
+    plane(point p, point normal){
+        normal = normilize(normal);
+        a = normal.x; b = normal.y; c = normal.z;
+        d = -(p*normal);
+    }
 
-    point aux = (p1-p3)^(p2-p3);
-    cod a = aux.x, b = aux.y, c = aux.z;
-    cod d = -a*p1.x - b*p1.y - c*p1.z;
     // ax+by+cz+d = 0;
     cod eval(point &p){
         return a*p.x + b*p.y + c*p.z + d;
@@ -77,7 +87,9 @@ cod dist(plane pl, point p){
 point rotate(point v, point k, ld theta){
     // Rotaciona o vetor v theta graus em torno do eixo k
     // theta *= PI/180; // graus
-    return rotated = (v*cos(theta)) +
-                     ((k^v)*sin(theta)) +
-                     (k*(k*v))*(1-cos(theta));
+    return (
+        v*cos(theta)) +
+        ((k^v)*sin(theta)) +
+        (k*(k*v))*(1-cos(theta)
+    );
 }
