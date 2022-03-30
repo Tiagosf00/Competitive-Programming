@@ -1,7 +1,7 @@
 int N;
-vl t(4*MAX, 0);
-vl v(MAX, 0);
-vl lazy(4*MAX, 0);
+vector<ll> t(4*MAX, 0);
+vector<ll> v(MAX, 0);
+vector<ll> lazy(4*MAX, 0);
 
 inline ll merge(ll a, ll b){
     return a + b;

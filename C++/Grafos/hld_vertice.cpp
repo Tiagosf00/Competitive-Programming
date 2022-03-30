@@ -34,7 +34,7 @@ void reset(){
     in.assign(MAX, 0), sz.assign(MAX, 0);
     peso.assign(MAX, 0), pai.assign(MAX, 0);
     head.assign(MAX, 0); tail.assign(MAX, 0);
-    h.assign(0); inv.assign(MAX, 0);
+    h.assign(MAX, 0); inv.assign(MAX, 0);
 
     t.assign(4*MAX, 0); v.assign(MAX, 0);
     lazy.assign(4*MAX, 0);
