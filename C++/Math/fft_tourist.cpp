@@ -83,7 +83,7 @@ vi multiply(vi &a, vi &b){
     fft(fa, sz);
     vi res(need);
     for(int i = 0; i < need; i++)
-        res[i] = fa[i].x + 0.5;
+        res[i] = round(fa[i].x);
 
     return res;
 }
