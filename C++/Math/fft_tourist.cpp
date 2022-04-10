@@ -142,9 +142,9 @@ vi multiply_mod(vi &a, vi &b, int m, int eq = 0){
     fft(fb, sz);
     vi res(need);
     for(int i=0;i<need;i++){
-        ll aa = fa[i].x + 0.5;
-        ll bb = fb[i].x + 0.5;
-        ll cc = fa[i].y + 0.5;
+        ll aa = round(fa[i].x);
+        ll bb = round(fb[i].x);
+        ll cc = round(fa[i].y);
         res[i] = (aa + ((bb % m) << 15) + ((cc % m) << 30)) % m;
     }
     return res;
