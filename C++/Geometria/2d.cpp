@@ -142,6 +142,12 @@ struct line{
         a = p1.y-p2.y;
         b = p2.x-p1.x;
         c = -(a*p1.x + b*p1.y);
+
+        if(a < 0){
+            a *= -1;
+            b *= -1;
+            c *= -1;
+        }
     }
     line(cod a=0, cod b=0, cod c=0): a(a), b(b), c(c){
         // Gera os pontos p1 p2 dados os coeficientes

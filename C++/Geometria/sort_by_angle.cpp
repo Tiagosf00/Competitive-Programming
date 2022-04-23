@@ -19,4 +19,10 @@ bool comp(point a, point b) //ccw
 }
 
 c = center(A);
-sort(A.begin(), A.end(), comp);
+
+
+// only vectors in range [x+0, x+180)
+bool comp(point a, point b){
+    return (a ^ b) > 0; // ccw
+    // return (a ^ b) < 0; // cw
+}
