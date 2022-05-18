@@ -10,28 +10,14 @@ struct point{
     int id;
     point(cod x=0, cod y=0): x(x), y(y){}
 
-
-    point operator+(const point &o) const{
-        return {x+o.x, y+o.y};
-    }
-    point operator-(const point &o) const{
-        return {x-o.x, y-o.y};
-    }
-    point operator*(cod t) const{
-        return {x*t, y*t};
-    }
-    point operator/(cod t) const{
-        return {x/t, y/t};
-    }
-    cod operator*(const point &o) const{ // dot
-        return x * o.x + y * o.y;
-    }
-    cod operator^(const point &o) const{ // cross
-        return x * o.y - y * o.x;
-    }
+    point operator+(const point &o) const{ return {x+o.x, y+o.y}; }
+    point operator-(const point &o) const{ return {x-o.x, y-o.y}; }
+    point operator*(cod t) const{ return {x*t, y*t}; }
+    point operator/(cod t) const{ return {x/t, y/t}; }
+    cod operator*(const point &o) const{ return x * o.x + y * o.y; }
+    cod operator^(const point &o) const{ return x * o.y - y * o.x; }
     bool operator<(const point &o) const{
-        if(!eq(x, o.x)) return x < o.x;
-        return y < o.y;
+        return (eq(x, o.x) ? y < o.y : x < o.x);
     }
     bool operator==(const point &o) const{
         return eq(x, o.x) and eq(y, o.y);
@@ -44,7 +30,7 @@ ld norm(point a){ // Modulo
 }
 
 int ccw(point a, point b, point e){ //-1=dir; 0=collinear; 1=esq;
-    cod tmp = (b-a)^(e-a); // from a to b
+    cod tmp = (b-a) ^ (e-a); // from a to b
     return (tmp > EPS) - (tmp < -EPS);
 }
 
