@@ -69,7 +69,7 @@ def create_notebook(section, blocked):
                 name, ext = os.path.splitext(file)
                 name = os.path.split(name)[1]  # Remove Segtree/ prefix
                 file_name = " ".join([x.capitalize() for x in name.split("_")])
-                file_path = os.path.join(path, item, file)
+                file_path = os.path.join(path, item, file).replace("\\","/")
 
                 aux += '\\includes{%s}{%s}\n' % \
                     (file_name, file_path)
