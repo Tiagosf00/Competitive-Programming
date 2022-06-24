@@ -125,9 +125,9 @@ struct line{
     cod a, b, c; // ax+by+c = 0;
     // y-y1 = ((y2-y1)/(x2-x1))(x-x1)
     line(point p1=0, point p2=0): p1(p1), p2(p2){
-        a = p1.y-p2.y;
-        b = p2.x-p1.x;
-        c = -(a*p1.x + b*p1.y);
+        a = p1.y - p2.y;
+        b = p2.x - p1.x;
+        c = p1 ^ p2;
 
         if(a < 0){
             a *= -1;
