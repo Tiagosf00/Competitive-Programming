@@ -1,4 +1,4 @@
-vp convex_hull(const vp P)
+vp convex_hull(vp P)
 {
     sort(P.begin(), P.end());
     vp L, U;
