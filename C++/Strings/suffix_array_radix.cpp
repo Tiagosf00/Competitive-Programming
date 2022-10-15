@@ -1,3 +1,5 @@
+#define pii pair<int, int>
+
 void radix_sort(vector<pii>& rnk, vi& ind) {
     auto counting_sort = [](vector<pii>& rnk, vi& ind) {
         int n = ind.size(), maxx = -1;
@@ -28,9 +30,9 @@ void radix_sort(vector<pii>& rnk, vi& ind) {
 
 vi suffix_array(const string& s) {
     int n = s.size();
-    vector<pii> rnk(n, mp(0, 0));
+    vector<pii> rnk(n, {0, 0});
     vi ind(n);
-    forn(i, n) {
+    for(int i=0;i<n;i++) {
         rnk[i].ff = (s[i] == '$') ? 0 : s[i]-'a'+1; // manter '$' como 0
         ind[i] = i;
     }
@@ -47,7 +49,7 @@ vi suffix_array(const string& s) {
         radix_sort(rnk, ind); // sort(all(rnk), cmp) pra n*log(n), cmp com rnk[i] < rnk[j]
 
         vector<pii> tmp = rnk;
-        tmp[ind[0]] = mp(1, 0); // rnk.ff comecar em 1 pois '$' eh o 0
+        tmp[ind[0]] = {1, 0}; // rnk.ff comecar em 1 pois '$' eh o 0
         for(int i = 1; i < n; i++) {
             tmp[ind[i]].ff = tmp[ind[i-1]].ff;
             if(rnk[ind[i]] != rnk[ind[i-1]]) {
@@ -58,6 +60,7 @@ vi suffix_array(const string& s) {
     }
     return ind;
 }
+
 
 vi lcp_array(const string& s, const vi& sarray) {
     vi inv(s.size());
