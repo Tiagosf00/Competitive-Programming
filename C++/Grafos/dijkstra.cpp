@@ -1,6 +1,6 @@
-vector<vii> g(MAX, vii());
-vi d(MAX, INF);
-priority_queue< pii, vii, greater<pii> > fila;
+vector<vector<pii>> g(N);
+vector<ll> d(N, LINF);
+priority_queue< pii, vector<pii>, greater<pii> > fila;
 
 void dijkstra(int k){
     d[k] = 0;
