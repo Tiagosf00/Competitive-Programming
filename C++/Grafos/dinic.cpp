@@ -74,4 +74,13 @@ struct Dinic {
         memset(px, 0, sizeof(px));
         qt = 0; pass = 0;
     }
+    vector<pair<int, int>> cut() {
+        vector<pair<int, int>> cuts;
+        for (auto [from, to, flow, cap]: edge) {
+            if (flow == cap and vis[from] == pass and vis[to] < pass and cap>0) {
+                cuts.pb({from, to});
+            }
+        }
+        return cuts;
+    }
 };
