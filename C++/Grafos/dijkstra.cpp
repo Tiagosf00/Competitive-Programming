@@ -1,6 +1,6 @@
 vector<vector<pii>> g(N);
 vector<bool> used(N);
-vector<ll> d(N, LINF);
+vector<ll> d(N, LLINF);
 priority_queue< pii, vector<pii>, greater<pii> > fila;
 
 void dijkstra(int k){
