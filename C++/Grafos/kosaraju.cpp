@@ -1,6 +1,5 @@
-int n;
-vi g[MAX], gi[MAX]; // grafo invertido
-int vis[MAX], comp[MAX]; // componente conexo de cada vertice
+vector<int> g[N], gi[N]; // grafo invertido
+int vis[N], comp[N]; // componente conexo de cada vertice
 stack<int> S;
 
 void dfs(int u){
@@ -14,7 +13,7 @@ void scc(int u, int c){
     for(auto v: gi[u]) if(!vis[v]) scc(v, c);
 }
 
-void kosaraju(){
+void kosaraju(int n){
     for(int i=0;i<n;i++) vis[i] = 0;
     for(int i=0;i<n;i++) if(!vis[i]) dfs(i);
     for(int i=0;i<n;i++) vis[i] = 0;

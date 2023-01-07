@@ -1,13 +1,13 @@
-int N;
-vector<ll> t(4*MAX, 0);
-vector<ll> v(MAX, 0);
-vector<ll> lazy(4*MAX, 0);
+int n;
+vector<ll> t(4*N, 0);
+vector<ll> v(N, 0);
+vector<ll> lazy(4*N, 0);
 
 inline ll merge(ll a, ll b){
     return a + b;
 }
 
-void build(int l=0, int r=N-1, int no=1){
+void build(int l=0, int r=n-1, int no=1){
     if(l == r){ t[no] = v[l]; return; }
     int mid = (l + r) / 2;
     build(l, mid, 2*no);
@@ -26,7 +26,7 @@ void prop(int l, int r, int no){
     }
 }
 
-ll query(int a, int b, int l=0, int r=N-1, int no=1){
+ll query(int a, int b, int l=0, int r=n-1, int no=1){
     prop(l, r, no);
     if(r<a or b<l) return 0;
     if(a<=l and r<=b) return t[no];
@@ -37,7 +37,7 @@ ll query(int a, int b, int l=0, int r=N-1, int no=1){
     );
 }
 
-void update(int a, int b, ll x, int l=0, int r=N-1, int no=1){
+void update(int a, int b, ll x, int l=0, int r=n-1, int no=1){
     prop(l, r, no);
     if(r<a or b<l) return;
     if(a<=l and r<=b){

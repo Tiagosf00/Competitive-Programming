@@ -1,10 +1,10 @@
 ll fexp(ll b, ll e) {
-    ll ans = 1;
     b %= MOD;
+    ll ans = 1;
     while (e) {
-        if (e & 1) ans = (ans * b) % MOD;
-        b = (b * b) % MOD;
-        e /= 2;
+        if (e & 1) (ans *= b) %= MOD;
+        e >>= 1;
+        (b *= b) %= MOD;
     }
     return ans;
 }

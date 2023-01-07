@@ -1,5 +1,5 @@
-int desce[MAX], sobe[MAX], vis[MAX], h[MAX];
-int backedges[MAX], pai[MAX];
+int desce[N], sobe[N], vis[N], h[N];
+int backedges[N], pai[N];
 
 // backedges[u] = backedges que comecam embaixo de (ou =) u e sobem pra cima de u; backedges[u] == 0 => u eh ponte
 void dfs(int u, int p) {
