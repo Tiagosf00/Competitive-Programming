@@ -3,7 +3,7 @@ struct FT {
     int n;
 
     FT(int n) {
-        this->n = n+1;
+        this->n = n+5;
         bit.assign(n+2, 0);
     }
 
