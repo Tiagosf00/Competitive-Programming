@@ -1,5 +1,6 @@
 const int SA = 2*N; // Node 1 is the initial node of the automaton
 int last = 1;
+#define link my_link
 int len[SA], link[SA];
 array<int, 26> to[SA]; // maybe map<int, int>
 int lastID = 1;

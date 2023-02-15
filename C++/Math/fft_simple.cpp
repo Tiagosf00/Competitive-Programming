@@ -1,3 +1,5 @@
+const ld PI = acos(-1);
+
 struct num{
     ld a {0.0}, b {0.0};
     num(){}
@@ -46,7 +48,7 @@ void fft(vector<num> &a, bool invert){
 
 }
 
-vector<ll> multiply(vi const& a, vi const& b){
+vector<ll> multiply(vector<int> const& a, vector<int> const& b){
     vector<num> fa(a.begin(), a.end());
     vector<num> fb(b.begin(), b.end());
     int n = 1;
