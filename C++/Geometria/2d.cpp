@@ -1,4 +1,6 @@
 #define vp vector<point>
+#define ld long double
+const ld EPS = 1e-6;
 
 // typedef ll cod;
 // bool eq(cod a, cod b){ return (a==b); }
