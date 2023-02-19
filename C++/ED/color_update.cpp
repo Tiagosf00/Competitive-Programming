@@ -1,3 +1,4 @@
+#define ti tuple<int, int, int>
 struct Color{
     set<ti> inter; // l, r, color
     vector<ti> update(int l, int r, int c){

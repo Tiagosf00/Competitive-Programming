@@ -1,6 +1,6 @@
 // Floyd Warshall
 
-int dist[MAX][MAX];
+int dist[N][N];
 
 for(int k = 1; k <= n; k++)
     for(int i = 1; i <= n; i++)

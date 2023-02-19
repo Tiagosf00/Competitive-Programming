@@ -1,5 +1,5 @@
 // Lagrange's interpolation O(n^2)
-ld interpolate(vii d, ld x){
+ld interpolate(vector<pair<int, int>> d, ld x){
     ld y = 0;
     int n = d.size();
     for(int i=0;i<n;i++){

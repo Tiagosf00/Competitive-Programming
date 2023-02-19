@@ -1,6 +1,6 @@
 struct DSU {
     int n;
-    vi parent, size;
+    vector<int> parent, size;
 
     DSU(int n) {
         this->n = n;
@@ -12,20 +12,20 @@ struct DSU {
     }
 
     int find(int v) {
-        if(v==parent[v])
+        if(v == parent[v])
             return v;
-        return parent[v]=find(parent[v]);
+        return parent[v] = find(parent[v]);
     }
 
     void join(int a, int b) {
         a = find(a);
         b = find(b);
-        if(a!=b) {
-            if(size[a]<size[b])
+        if(a != b) {
+            if(size[a] < size[b])
                 swap(a, b);
 
-            parent[b]=a;
-            size[a]+=size[b];
+            parent[b] = a;
+            size[a] += size[b];
         }
     }
 };

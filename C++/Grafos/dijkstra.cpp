@@ -1,3 +1,4 @@
+#define pii pair<int, int>
 vector<vector<pii>> g(N);
 vector<bool> used(N);
 vector<ll> d(N, LLINF);

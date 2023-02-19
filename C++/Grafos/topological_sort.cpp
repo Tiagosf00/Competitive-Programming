@@ -1,8 +1,8 @@
-vector<vi> grafo(MAX, vi());
-int grau[MAX]; // Quantas arestas chegam no indice i
+vector<vector<int>> g(N);
+int grau[N];
 
-vi topological_sort(int n){
-    vi resp;
+vector<int> topological_sort(int n){
+    vector<int> resp;
     for(int i=1;i<=n;i++)
         if(!grau[i])
             resp.push_back(i);
@@ -11,7 +11,7 @@ vi topological_sort(int n){
     while(k < (int)resp.size()){
         int u = resp[k];
         k++;
-        for(auto v: grafo[u]){
+        for(auto v: g[u]){
             grau[v]--;
             if(!grau[v])
                 resp.pb(v);

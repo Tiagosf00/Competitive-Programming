@@ -1,7 +1,7 @@
-vector<vector<pair<int, int>>> g(MAX, vector<pair<int,int>>());
-vi in(MAX), inv(MAX), sz(MAX);
-vi peso(MAX), pai(MAX);
-vi head(MAX), tail(MAX), h(MAX);
+vector<vector<pair<int, int>>> g(N, vector<pair<int,int>>());
+vi in(N), inv(N), sz(N);
+vi peso(N), pai(N);
+vi head(N), tail(N), h(N);
 
 int tin;
 
@@ -31,14 +31,14 @@ void init_hld(int root = 0) {
     build();
 }
 void reset(){
-    g.assign(MAX, vector<pair<int,int>>());
-    in.assign(MAX, 0), sz.assign(MAX, 0);
-    peso.assign(MAX, 0), pai.assign(MAX, 0);
-    head.assign(MAX, 0); tail.assign(MAX, 0);
-    h.assign(MAX, 0); inv.assign(MAX, 0);
+    g.assign(N, vector<pair<int,int>>());
+    in.assign(N, 0), sz.assign(N, 0);
+    peso.assign(N, 0), pai.assign(N, 0);
+    head.assign(N, 0); tail.assign(N, 0);
+    h.assign(N, 0); inv.assign(N, 0);
 
-    t.assign(4*MAX, 0); v.assign(MAX, 0);
-    lazy.assign(4*MAX, 0);
+    t.assign(4*N, 0); v.assign(N, 0);
+    lazy.assign(4*N, 0);
 }
 ll query_path(int a, int b) {
     if (a == b) return 0;

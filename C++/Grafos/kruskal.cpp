@@ -6,8 +6,7 @@ struct Edge {
     }
 };
 
-int n;
-DSU dsu(n);
+DSU dsu(N);
 vector<Edge> edges, result;
 int cost = 0;
 

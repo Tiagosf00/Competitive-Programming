@@ -1,7 +1,7 @@
 struct Trie{
 
-    int trie[MAX][10];
-    bool finish[MAX];
+    int trie[N][10];
+    bool finish[N];
     int nxt = 1, len = 0;
 
     void add(string s){
