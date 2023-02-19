@@ -1,11 +1,11 @@
 // Segment Tree Iterativa - Max
 
 struct Segtree{
-    vi t;
+    vector<int> t;
     int n;
 
-    Segtree(int n){
-        this->n = n;
+    Segtree(int _n){
+        n = _n;
         t.assign(2*n, 0);
     }
 
@@ -15,7 +15,7 @@ struct Segtree{
 
     void build(){
         for(int i=n-1; i>0; i--)
-            t[i]=merge(t[i<<1], t[i<<1|1]);
+            t[i] = merge(t[i<<1], t[i<<1|1]);
     }
 
     int query(int l, int r){ // [l, r]
