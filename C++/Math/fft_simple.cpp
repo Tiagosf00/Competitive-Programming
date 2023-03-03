@@ -1,3 +1,4 @@
+#define ld long double
 const ld PI = acos(-1);
 
 struct num{

@@ -1,6 +1,6 @@
-int sz[MAX];
-bool erased[MAX];
-vi grafo[MAX];
+int sz[N];
+bool erased[N];
+vector<int> grafo[N];
 
 void dfs(int u, int p=-1){
     sz[u] = 1;
@@ -18,7 +18,7 @@ int centroid(int u, int p=-1, int size=-1){
     return u;
 }
 
-pii centroids(int u=1){ // idx 1
+pair<int, int> centroids(int u=1){ // idx 1
     dfs(u);
     int c1=centroid(u), c2=c1;
     for(int v: grafo[c1]) if(2*sz[v]==sz[u]) c2=v;

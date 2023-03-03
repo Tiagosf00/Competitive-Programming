@@ -91,3 +91,7 @@
         int flog2(int x){ return 32-1-__builtin_clz(x); }
 
         int flog2ll(ll x){ return 64-1-__builtin_clzll(x); }
+
+    // iterate all submasks of a mask
+        
+        for (int m=mask;m>=0;m=(m-1)&mask)
