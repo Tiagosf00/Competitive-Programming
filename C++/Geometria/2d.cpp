@@ -27,15 +27,14 @@ struct point{
 
 };
 
-ld norm(point a){ // Modulo
-    return sqrt(a*a);
-}
-
 int ccw(point a, point b, point e){ //-1=dir; 0=collinear; 1=esq;
     cod tmp = (b-a) ^ (e-a); // from a to b
     return (tmp > EPS) - (tmp < -EPS);
 }
 
+ld norm(point a){ // Modulo
+    return sqrt(a*a);
+}
 bool nulo(point a){
     return (eq(a.x, 0) and eq(a.y, 0));
 }
@@ -97,12 +96,12 @@ ld param(point a, point b, point v){
     return ((v-a) * (b-a)) / ((b-a) * (b-a));
 }
 
-bool simetric(vector<point> &a){ //ordered
+bool simetric(vp &a){ //ordered
     int n = a.size();
-    c = center(a);
+    point c = center(a);
     if(n&1) return false;
     for(int i=0;i<n/2;i++)
-        if(!collinear(a[i], a[i+n/2], c))
+        if(ccw(a[i], a[i+n/2], c) != 0)
             return false;
     return true;
 }
@@ -185,9 +184,9 @@ vp inter_seg(line l1, line l2){
 }
 
 ld dist_seg(point p, point a, point b){ // point - seg
-    if(((p-a)*(b-a)) < EPS) return norm(p-a);
-    if(((p-b)*(a-b)) < EPS) return norm(p-b);
-    return abs((p-a)^(b-a))/norm(b-a);
+    if((p-a)*(b-a) < EPS) return norm(p-a);
+    if((p-b)*(a-b) < EPS) return norm(p-b);
+    return abs((p-a)^(b-a)) / norm(b-a);
 }
 
 ld dist_line(point p, line l){ // point - line
@@ -217,7 +216,8 @@ struct circle{
         r = norm(a-c);
     }
     circle(const point a, const point b, const point cc){
-        c = inter_line(bisector(a, b), bisector(b, cc));
+        assert(ccw(a, b, cc) != 0);
+        c = inter_line(bisector(a, b), bisector(b, cc))[0];
         r = norm(a-c);
     }
     bool inside(const point &a) const{
@@ -278,7 +278,7 @@ vp inter_circle(circle C1, circle C2){
 }
 
 // minimum circle cover O(n) amortizado
-circle min_circle_cover(vector<point> v){
+circle min_circle_cover(vp v){
     random_shuffle(v.begin(), v.end());
     circle ans;
     int n = v.size();

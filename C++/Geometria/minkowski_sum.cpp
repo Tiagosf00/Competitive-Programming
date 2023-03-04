@@ -1,31 +1,24 @@
-vp mk(const vp &a,const vp &b){
-    int i = 0, j = 0;
-    for(int k = 0; k < (int)a.size(); k++)if(a[k]<a[i])
-        i = k;
-    for(int k = 0; k < (int)b.size(); k++)if(b[k]<b[j])
-        j = k;
+vp minkowski(vp p, vp q){
+    int n = p.size(), m = q.size();
+    auto reorder = [&](vp &p) {
+        // set the first vertex must be the lowest
+        int id = 0;
+        for(int i=1;i<p.size();i++){
+            if(p[i].y < p[id].y or (p[i].y == p[id].y and p[i].x < p[id].x))
+                id = i;
+        }
+        rotate(p.begin(), p.begin() + id, p.end());
+    };
 
-    vp c;
-    c.reserve(a.size() + b.size());
-    for(int k = 0; k < int(a.size()+b.size()); k++){
-        point pt{a[i] + b[j]};
-        if((int)c.size() >= 2 and !ccw(c[c.size()-2], c.back(), pt))
-            c.pop_back();
-        c.pb(pt);
-        int q = i+1, w = j+1;
-        if(q == int(a.size())) q = 0;
-        if(w == int(b.size())) w = 0;
-        if(ccw(c.back(), a[i]+b[w], a[q]+b[j]) < 0) i = q;
-        else j = w;
+    reorder(p); reorder(q);
+    p.push_back(p[0]);
+    q.push_back(q[0]);
+    vp ans; int i = 0, j = 0;
+    while(i < n or j < m){
+        ans.push_back(p[i] + q[j]);
+        cod cross = (p[i+1] - p[i]) ^ (q[j+1] - q[j]);
+        if(cross >= 0) i ++;
+        if(cross <= 0) j ++;
     }
-
-    if(!ccw(c[0], c[(int)c.size()-1], c[(int)c.size()-2]))
-        c.pop_back();
-    if(!ccw(c.back(), c[0], c[1])){
-        c[0]=c.back();
-        c.pop_back();
-    }
-    c.shrink_to_fit();
-
-    return c;
+    return ans;
 }
