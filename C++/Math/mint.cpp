@@ -3,7 +3,7 @@ struct mint {
     mint(int _x = 0) : x(_x) { }
     mint operator +(const mint &o) const { return x + o.x >= MOD ? x + o.x - MOD : x + o.x; }
     mint operator *(const mint &o) const { return mint((ll)x * o.x % MOD); }
-    mint operator -(const mint &o) const { return x + (MOD - o.x); }
+    mint operator -(const mint &o) const { return *this + (MOD - o.x); }
     mint inv() { return pwr(MOD - 2); }
     mint pwr(ll e) {
         mint ans = 1;
