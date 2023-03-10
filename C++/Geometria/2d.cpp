@@ -28,8 +28,8 @@ struct point{
 
 };
 
-int ccw(point a, point b, point e){ //-1=dir; 0=collinear; 1=esq;
-    cod tmp = (b-a) ^ (e-a); // from a to b
+int ccw(point a, point b, point e){ // -1=dir; 0=collinear; 1=esq;
+    cod tmp = (b-a) ^ (e-a); // vector from a to b
     return (tmp > EPS) - (tmp < -EPS);
 }
 
