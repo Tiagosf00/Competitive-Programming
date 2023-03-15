@@ -1,4 +1,4 @@
-// typedef int cod;
+// typedef ll cod;
 // bool eq(cod a, cod b){ return (a==b); }
 
 const ld EPS = 1e-6;
