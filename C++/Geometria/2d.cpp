@@ -34,7 +34,10 @@ int ccw(point a, point b, point e){ // -1=dir; 0=collinear; 1=esq;
 }
 
 ld norm(point a){ // Modulo
-    return sqrt(a*a);
+    return sqrt(a * a);
+}
+cod norm(point a){ // Modulo
+    return a * a;
 }
 bool nulo(point a){
     return (eq(a.x, 0) and eq(a.y, 0));
