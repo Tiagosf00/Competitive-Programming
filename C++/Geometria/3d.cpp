@@ -1,6 +1,7 @@
 // typedef int cod;
 // bool eq(cod a, cod b){ return (a==b); }
 
+const ld EPS = 1e-6;
 #define vp vector<point>
 typedef ld cod;
 bool eq(cod a, cod b){ return fabs(a - b) <= EPS; }
