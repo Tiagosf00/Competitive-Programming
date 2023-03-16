@@ -1,3 +1,17 @@
+pair<point, point> polygon_diameter(vp p) {
+    p = convex_hull(p);
+	int n = p.size(), j = n<2 ? 0:1;
+	pair<ll, vp> res({0, {p[0], p[0]}});
+	for (int i=0;i<j;i++){
+		for (;; j = (j+1) % n) {
+			res = max(res, {norm2(p[i] - p[j]), {p[i], p[j]}});
+			if ((p[(j + 1) % n] - p[j]) ^ (p[i + 1] - p[i]) >= 0)
+				break;
+		}
+	}
+	return res.second;
+}
+
 double diameter(const vector<point> &p) {
     vector<point> h = convexHull(p);
     int m = h.size();
