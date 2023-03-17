@@ -25,7 +25,8 @@ struct point{
     bool operator==(const point &o) const{
         return eq(x, o.x) and eq(y, o.y);
     }
-
+	friend ostream& operator<<(ostream& os, point p) {
+		return os << "(" << p.x << "," << p.y << ")"; }
 };
 
 int ccw(point a, point b, point e){ // -1=dir; 0=collinear; 1=esq;
@@ -36,7 +37,7 @@ int ccw(point a, point b, point e){ // -1=dir; 0=collinear; 1=esq;
 ld norm(point a){ // Modulo
     return sqrt(a * a);
 }
-cod norm(point a){ // Modulo
+cod norm2(point a){
     return a * a;
 }
 bool nulo(point a){
