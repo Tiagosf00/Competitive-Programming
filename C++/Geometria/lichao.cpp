@@ -1,4 +1,4 @@
-struct Lichao { // max
+struct Lichao { // min
 	struct line {
 		ll a, b;
 		array<int, 2> ch;
