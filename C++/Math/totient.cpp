@@ -17,9 +17,9 @@ ll phi(ll m){
 }
 
 // modificacao do crivo, O(n*log(log(n)))
-vl phi_to_n(ll n){
+vector<ll> phi_to_n(ll n){
     vector<bool> isprime(n+1, true);
-    vl tot(n+1);
+    vector<ll> tot(n+1);
     tot[0] = 0; tot[1] = 1;
     for(ll i=1;i<=n; i++){
         tot[i] = i;
