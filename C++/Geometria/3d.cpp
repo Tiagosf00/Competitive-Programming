@@ -93,3 +93,17 @@ point rotate(point v, point k, ld theta) {
         (k*(k*v))*(1-cos(theta)
     );
 }
+
+// 3d line inter / mindistance
+cod d(point p1, point p2, point p3, point p4) {
+    return (p2-p1) * (p4-p3);
+}
+vector<point> inter3d(point p1, point p2, point p3, point p4) {
+    cod mua = ( d(p1, p3, p4, p3) * d(p4, p3, p2, p1) - d(p1, p3, p2, p1) * d(p4, p3, p4, p3) )
+           / ( d(p2, p1, p2, p1) * d(p4, p3, p4, p3) - d(p4, p3, p2, p1) * d(p4, p3, p2, p1) );
+    cod mub = ( d(p1, p3, p4, p3) + mua * d(p4, p3, p2, p1) ) / d(p4, p3, p4, p3);
+    point pa = p1 + (p2-p1) * mua;
+    point pb = p3 + (p4-p3) * mub;
+    if (pa == pb) return {pa};
+    return {};
+}
