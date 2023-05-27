@@ -23,6 +23,6 @@ void build_fac() {
         ifac[i] = ifac[i+1] * (i+1);
 }
 mint c(ll n, ll k) {
-    if (k > n) return mint(0);
+    if (k > n) return 0;
     return fac[n] * ifac[k] * ifac[n-k];
 }
