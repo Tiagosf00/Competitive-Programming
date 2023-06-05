@@ -1,7 +1,9 @@
+// Use it together with recursive_segtree
+const int N = 3e5+10;
 vector<vector<pair<int, int>>> g(N, vector<pair<int,int>>());
-vi in(N), inv(N), sz(N);
-vi peso(N), pai(N);
-vi head(N), tail(N), h(N);
+vector<int> in(N), inv(N), sz(N);
+vector<int> peso(N), pai(N);
+vector<int> head(N), tail(N), h(N);
 
 int tin;
 

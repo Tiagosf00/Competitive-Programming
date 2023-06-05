@@ -1,8 +1,9 @@
 // Use it together with recursive_segtree
-vector<vi> g(N, vi());
-vi in(N), inv(N), sz(N);
-vi peso(N), pai(N);
-vi head(N), tail(N), h(N);
+const int N = 3e5+10;
+vector<vector<int>> g(N, vector<int>());
+vector<int> in(N), inv(N), sz(N);
+vector<int> peso(N), pai(N);
+vector<int> head(N), tail(N), h(N);
 
 int tin;
 
@@ -30,7 +31,7 @@ void init_hld(int root = 0) {
     build();
 }
 void reset(){
-    g.assign(N, vi());
+    g.assign(N, vector<int>());
     in.assign(N, 0), sz.assign(N, 0);
     peso.assign(N, 0), pai.assign(N, 0);
     head.assign(N, 0); tail.assign(N, 0);
