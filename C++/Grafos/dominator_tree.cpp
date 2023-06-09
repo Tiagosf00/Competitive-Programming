@@ -1,3 +1,6 @@
+// Dominator Tree
+// idom[x] = immediate dominator of x
+
 vector<int> g[N], gt[N], T[N];
 vector<int> S;
 int dsu[N], label[N];

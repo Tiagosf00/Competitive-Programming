@@ -4,7 +4,7 @@ struct MinQ {
 
     void add(ll val) {
         ll minimum = in.empty() ? val : min(val, in.top().ss);
-        in.push(mp(val, minimum));
+        in.push({val, minimum});
     }
 
     ll pop() {
