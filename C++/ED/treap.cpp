@@ -1,64 +1,121 @@
-// source: https://github.com/victorsenam/caderno/blob/master/code/treap.cpp
-//const int N = 2e5+10; typedef int num;
-num X[N]; int en = 1, Y[N], sz[N], L[N], R[N];
-void calc (int u) { // update node given children info
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count()); // mt19937_64
+uniform_int_distribution<int> distribution(1, INF);
+
+const int N = 2e5+10;
+int nxt = 0;
+int X[N], Y[N], L[N], R[N], sz[N], idx[N];
+bool flip[N];
+
+//! Call this before anything else
+void build() {
+    iota(Y+1, Y+N, 1);
+	shuffle(Y+1, Y+N, rng); // rng :: mt19937
+}
+
+int new_node(int x, int id) {
+	int u = ++nxt;
+    idx[u] = id;
+	sz[u] = 1;
+	X[u] = x;
+	return u;
+}
+
+void push(int u) { // also known as unlaze
     if(!u) return;
-    sz[u] = sz[L[u]] + 1 + sz[R[u]];
-    // code here, no recursion
+    if (flip[u]) {
+		flip[u] = false;
+		flip[L[u]] ^= 1;
+		flip[R[u]] ^= 1;
+		swap(L[u], R[u]);
+	}
 }
-void unlaze (int u) {
-    if(!u) return;
-    // code here, no recursion
+
+void pull(int u) { // also known as fix
+	if (!u) return;
+	sz[u] = sz[L[u]] + 1 + sz[R[u]];
 }
-void split_val(int u, num x, int &l, int &r) { // l gets <= x, r gets > x
-    unlaze(u); if(!u) return (void) (l = r = 0);
-    if(X[u] <= x) { split_val(R[u], x, l, r); R[u] = l; l = u; }
-    else { split_val(L[u], x, l, r); L[u] = r; r = u; }
-    calc(u);
+
+// root = merge(l, r);
+int merge(int l, int r) {
+	push(l); push(r);
+	int u;
+	if (!l || !r) {
+		u = l ? l : r;
+	} else if (Y[l] < Y[r]) {
+		u = l;
+		R[u] = merge(R[u], r);
+	} else {
+		u = r;
+		L[u] = merge(l, L[u]);
+	}
+	pull(u);
+	return u;
 }
-void split_sz(int u, int s, int &l, int &r) { // l gets first s, r gets remaining
-    unlaze(u); if(!u) return (void) (l = r = 0);
-    if(sz[L[u]] < s) { split_sz(R[u], s - sz[L[u]] - 1, l, r); R[u] = l; l = u; }
-    else { split_sz(L[u], s, l, r); L[u] = r; r = u; }
-    calc(u);
+
+// (s elements, N - s elements)
+pair<int, int> splitsz(int u, int s) {
+	if (!u) return {0, 0};
+	push(u);
+	if (sz[L[u]] >= s) {
+		auto [l, r] = splitsz(L[u], s);
+		L[u] = r;
+		pull(u);
+		return { l, u };
+	} else {
+		auto [l, r] = splitsz(R[u], s - sz[L[u]] - 1);
+		R[u] = l;
+		pull(u);
+		return { u, r };
+	}
 }
-int merge(int l, int r) { // els on l <= els on r
-    unlaze(l); unlaze(r); if(!l || !r) return l + r; int u;
-    if(Y[l] > Y[r]) { R[l] = merge(R[l], r); u = l; }
-    else { L[r] = merge(l, L[r]); u = r; }
-    calc(u); return u;
+
+// (<= x, > x)
+pair<int, int> splitval(int u, int x) {
+	if (!u) return {0, 0};
+	push(u);
+	if (X[u] > x) {
+		auto [l, r] = splitval(L[u], x);
+        L[u] = r;
+		pull(u);
+		return { l, u };
+	} else {
+		auto [l, r] = splitval(R[u], x);
+        R[u] = l;
+		pull(u);
+		return { u, r };
+	}
 }
-void init(int n=N-1) { // XXX call before using other funcs
-    for(int i = en = 1; i <= n; i++) { Y[i] = i; sz[i] = 1; L[i] = R[i] = 0; }
-    random_shuffle(Y + 1, Y + n + 1);
+
+int insert(int u, int node) {
+    push(u);
+    if (!u) return node;
+    if (Y[node] < Y[u]) {
+        tie(L[node], R[node]) = splitval(u, X[node]);
+        u = node;
+    }
+    else if (X[node] < X[u]) L[u] = insert(L[u], node);
+    else R[u] = insert(R[u], node);
+    pull(u);
+    return u;
 }
-void insert(int &u, int it){
-    unlaze(u);
-    if(!u) u = it;
-    else if(Y[it] > Y[u]) split_val(u, X[it], L[it], R[it]), u = it;
-    else insert(X[it] < X[u] ? L[u] : R[u], it);
-    calc(u);
+
+int find(int u, int x) {
+    return u == 0    ? 0 :
+           x == X[u] ? u :
+           x <  X[u] ? find(L[u], x) :
+                       find(R[u], x);
 }
-void erase(int &u, num key){
-    unlaze(u);
-    if(!u) return;
-    if(X[u] == key) u = merge(L[u], R[u]);
-    else erase(key < X[u] ? L[u] : R[u], key);
-    calc(u);
-}
-int create_node(num key){
-    X[en] = key;
-    sz[en] = 1;
-    L[en] = R[en] = 0;
-    return en++;
-}
-int query(int u, int l, int r){//0 index
-    unlaze(u);
-    if(!u or r < 0 or l >= sz[u]) return identity_element;
-    if(l <= 0 and r >= sz[u] - 1) return subt_data[u];
-    int ans = query(L[u], l, r);
-    if(l <= sz[ L[u] ] and sz[ L[u] ] <= r)
-        ans = max(ans, st[u]);
-    ans = max(ans, query(R[u], l-sz[L[u]]-1, r-sz[L[u]]-1));
-    return ans;
+
+void free(int u) { /* node u can be deleted, maybe put in a pool of free IDs */ }
+
+int erase(int u, int key) {
+    push(u);
+    if (!u) return 0;
+    if (X[u] == key) {
+        int v = merge(L[u], R[u]);
+        free(u);
+        u = v; 
+    } else u = erase(key < X[u] ? L[u] : R[u], key);
+    pull(u);
+    return u;
 }
