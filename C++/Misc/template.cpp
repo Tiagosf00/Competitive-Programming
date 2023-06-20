@@ -1,10 +1,17 @@
 #include <bits/stdc++.h>
+#define sws cin.tie(0)->sync_with_stdio(false); 
+#define ll long long
+#define ff first
+#define ss second
+#define pb push_back
+#define endl '\n'
+
 using namespace std;
 
-using ll = long long;
-using ld = long double;
-using pii = pair<int, int>;
-using vi = vector<int>;
+const int INF = 0x3f3f3f3f;
 
-const ll MOD = 998'244'353;
-const int N = 2e5 + 5;
+int main() {
+    sws;
+
+    return 0;
+}
