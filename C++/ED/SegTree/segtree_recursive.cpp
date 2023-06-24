@@ -38,11 +38,11 @@ ll query(int l, int r, int lx=0, int rx=n-1, int x=1){
 }
 
 void update(int l, int r, ll val, int lx=0, int rx=n-1, int x=1){
-    prop(lx, rx, val);
+    prop(lx, rx, x);
     if(r < lx or rx < l) return;
     if(l <= lx and rx <= r){
         lazy[x] += val;
-        prop(lx, rx, val);
+        prop(lx, rx, x);
         return;
     }
     int mid = (lx + rx) / 2;
