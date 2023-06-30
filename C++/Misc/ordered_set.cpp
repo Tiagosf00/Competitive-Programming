@@ -5,3 +5,5 @@ using ordered_set = tree<T, B, less<T>, rb_tree_tag, tree_order_statistics_node_
 
 // order_of_key(k)  : Number of items strictly smaller than k
 // find_by_order(k) : K-th element in a set (counting from zero)
+
+// to swap two sets, use a.swap(b);
