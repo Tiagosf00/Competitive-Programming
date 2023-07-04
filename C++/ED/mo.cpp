@@ -14,33 +14,22 @@ struct Query {
     }
 };
 
+int ans = 0;
 inline void add() {} 
 inline void remove() {} // implementar operacoes de acordo com o problema
 
 vector<int> mo(vector<Query>& queries) {
     vector<int> res(queries.size());
     sort(queries.begin(), queries.end());
-    resposta = 0;
+    ans = 0;
 
     int l = 0, r = -1;
     for(Query q : queries) {
-        while(l > q.l) {
-                l--;
-                add(l);
-        }
-        while(r < q.r) {
-                r++;
-                add(r);
-        }
-        while(l < q.l) {
-                remove(l);
-                l++;
-        }
-        while(r > q.r) {
-                remove(r);
-                r--;
-        }
-        res[q.idx] = resposta; // adicionar resposta de acordo com o problema
+        while(l > q.l) add(--l);
+        while(r < q.r) add(++r);
+        while(l < q.l) remove(l++);
+        while(r > q.r) remove(r--);
+        res[q.idx] = ans; // adicionar resposta de acordo com o problema
      }
      return res; // ordernar o vetor pelo indice e responder queries na ordem
 }
