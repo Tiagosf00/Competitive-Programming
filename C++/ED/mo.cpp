@@ -26,6 +26,6 @@ vector<int> mo(vector<Query>& queries) {
         while(l < q.l) remove(l++);
         while(r > q.r) remove(r--);
         res[q.idx] = ans;
-     }
-     return res;
+    }
+    return res;
 }

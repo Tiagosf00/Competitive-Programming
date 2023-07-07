@@ -11,10 +11,10 @@ struct DSU {
             parent[i] = i;
     }
 
-    int find(int v) {
-        if(v == parent[v])
-            return v;
-        return parent[v] = find(parent[v]);
+    int find(int a) {
+        if(a == parent[a])
+            return a;
+        return parent[a] = find(parent[a]);
     }
 
     void join(int a, int b) {
