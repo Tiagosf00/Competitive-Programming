@@ -1,24 +1,22 @@
-int n;
 vector<ll> t(4*N, 0);
-vector<ll> v(N, 0);
 vector<ll> lazy(4*N, 0);
 
-inline ll f(ll a, ll b){
+inline ll f(ll a, ll b) {
     return a + b;
 }
 
-void build(int lx=0, int rx=n-1, int x=1){
-    if(lx == rx){ t[x] = v[lx]; return; }
+void build(vector<int> &v, int lx=0, int rx=N-1, int x=1) {
+    if (lx == rx) { if (lx < v.size()) t[x] = v[lx]; return; }
     int mid = (lx + rx) / 2;
-    build(lx, mid, 2*x);
-    build(mid+1, rx, 2*x+1);
+    build(v, lx, mid, 2*x);
+    build(v, mid+1, rx, 2*x+1);
     t[x] = f(t[2*x], t[2*x+1]);
 }
 
-void prop(int lx, int rx, int x){
-    if(lazy[x] != 0){
+void prop(int lx, int rx, int x) {
+    if (lazy[x] != 0) {
         t[x] += lazy[x] * (rx-lx+1);
-        if(lx != rx){
+        if (lx != rx) {
             lazy[2*x] += lazy[x];
             lazy[2*x+1] += lazy[x];
         }
@@ -26,10 +24,10 @@ void prop(int lx, int rx, int x){
     }
 }
 
-ll query(int l, int r, int lx=0, int rx=n-1, int x=1){
+ll query(int l, int r, int lx=0, int rx=N-1, int x=1) {
     prop(lx, rx, x);
-    if(r < lx or rx < l) return 0;
-    if(l <= lx and rx <= r) return t[x];
+    if (r < lx or rx < l) return 0;
+    if (l <= lx and rx <= r) return t[x];
     int mid = (lx + rx) / 2;
     return f(
         query(l, r, lx, mid, 2*x),
@@ -37,10 +35,10 @@ ll query(int l, int r, int lx=0, int rx=n-1, int x=1){
     );
 }
 
-void update(int l, int r, ll val, int lx=0, int rx=n-1, int x=1){
+void update(int l, int r, ll val, int lx=0, int rx=N-1, int x=1) {
     prop(lx, rx, x);
-    if(r < lx or rx < l) return;
-    if(l <= lx and rx <= r){
+    if (r < lx or rx < l) return;
+    if (l <= lx and rx <= r) {
         lazy[x] += val;
         prop(lx, rx, x);
         return;

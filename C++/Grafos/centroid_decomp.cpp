@@ -19,7 +19,7 @@ int centroid(int u, int p, int size) {
 }
 
 ll decomp(int u, int k) {
-    int c = centroid(u, u, dfs_sz(i));
+    int c = centroid(u, u, dfs_sz(u));
     rem[c] = true;
 
     ll ans = 0;
@@ -34,6 +34,6 @@ ll decomp(int u, int k) {
         for (int d : path) cnt[d+1]++;
     }
 
-    for (int v : g[c]) if (!rem[v]) ans += decomp(j, k);
+    for (int v : g[c]) if (!rem[v]) ans += decomp(v, k);
     return ans;
 }

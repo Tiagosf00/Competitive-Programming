@@ -11,7 +11,8 @@ inline num conj(num a) { return num(a.x, -a.y); }
 
 int base = 1;
 vector<num> roots = {{0, 0}, {1, 0}};
-vi rev = {0, 1};
+vector<int> rev = {0, 1};
+const ld PI = acos(-1);
 
 void ensure_base(int nbase){
     if(nbase <= base)
@@ -56,7 +57,7 @@ void fft(vector<num> &a, int n = -1){
 }
 
 vector<num> fa, fb;
-vi multiply(vi &a, vi &b){
+vector<ll> multiply(vector<ll> &a, vector<ll> &b){
     int need = a.size() + b.size() - 1;
     int nbase = 0;
     while((1 << nbase) < need) nbase++;
@@ -81,7 +82,7 @@ vi multiply(vi &a, vi &b){
         fa[i] = z;
     }
     fft(fa, sz);
-    vi res(need);
+    vector<ll> res(need);
     for(int i = 0; i < need; i++)
         res[i] = round(fa[i].x);
 
@@ -89,7 +90,7 @@ vi multiply(vi &a, vi &b){
 }
 
 
-vi multiply_mod(vi &a, vi &b, int m, int eq = 0){
+vector<ll> multiply_mod(vector<ll> &a, vector<ll> &b, int m, int eq = 0){
     int need = a.size() + b.size() - 1;
     int nbase = 0;
     while((1 << nbase) < need) nbase++;
@@ -140,7 +141,7 @@ vi multiply_mod(vi &a, vi &b, int m, int eq = 0){
     }
     fft(fa, sz);
     fft(fb, sz);
-    vi res(need);
+    vector<ll> res(need);
     for(int i=0;i<need;i++){
         ll aa = round(fa[i].x);
         ll bb = round(fb[i].x);
@@ -148,21 +149,4 @@ vi multiply_mod(vi &a, vi &b, int m, int eq = 0){
         res[i] = (aa + ((bb % m) << 15) + ((cc % m) << 30)) % m;
     }
     return res;
-}
-
-
-
-
-int main()
-{sws;
-
-    //FFT
-    vi fx{1, 2, 3}; // 1+2x+3x^2
-    vi gx{4, 5}; // 4+5x
-    vi res;
-
-    res = multiply(fx,gx); //4 + 13x + 22x^2 + 15x^3
-
-    return 0;
-    
 }
