@@ -1,19 +1,19 @@
-int logv[MAX+1];
+int logv[N+1];
 void make_log() {
     logv[1] = 0; // pre-computar tabela de log
-    for (int i = 2; i <= MAX; i++)
+    for (int i = 2; i <= N; i++)
         logv[i] = logv[i/2] + 1;
 }
 struct Sparse {
     int n;
-    vector<vi> st;
+    vector<vector<int>> st;
 
-    Sparse(vi& v) {
+    Sparse(vector<int>& v) {
         n = v.size();
         int k = logv[n];
-        st.assign(n+1, vi(k+1, 0));
+        st.assign(n+1, vector<int>(k+1, 0));
 
-        forn(i, n) {
+        for (int i=0;i<n;i++) {
             st[i][0] = v[i];
         }
 
@@ -37,14 +37,14 @@ struct Sparse {
 
 struct Sparse2d {
     int n, m;
-    vector<vector<vi>> st;
+    vector<vector<vector<int>>> st;
  
-    Sparse2d(vector<vi> mat) {
+    Sparse2d(vector<vector<int>> mat) {
         n = mat.size();
         m = mat[0].size();
         int k = logv[min(n, m)];
  
-        st.assign(n+1, vector<vi>(m+1, vi(k+1)));
+        st.assign(n+1, vector<vector<int>>(m+1, vector<int>(k+1)));
         for(int i = 0; i < n; i++) 
             for(int j = 0; j < m; j++) 
                 st[i][j][0] = mat[i][j];
