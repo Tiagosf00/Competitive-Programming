@@ -3,22 +3,20 @@
 const ld EPS = 1e-6;
 const ld PI = acos(-1);
 
-// typedef ll cod;
-// bool eq(cod a, cod b){ return (a==b); }
-typedef ld cod;
-bool eq(cod a, cod b){ return abs(a - b) <= EPS; }
+typedef ld T;
+bool eq(T a, T b){ return abs(a - b) <= EPS; }
 
 struct point{
-    cod x, y;
+    T x, y;
     int id;
-    point(cod x=0, cod y=0): x(x), y(y){}
+    point(T x=0, T y=0): x(x), y(y){}
 
-    point operator+(const point &o) const{ return {x+o.x, y+o.y}; }
-    point operator-(const point &o) const{ return {x-o.x, y-o.y}; }
-    point operator*(cod t) const{ return {x*t, y*t}; }
-    point operator/(cod t) const{ return {x/t, y/t}; }
-    cod operator*(const point &o) const{ return x * o.x + y * o.y; }
-    cod operator^(const point &o) const{ return x * o.y - y * o.x; }
+    point operator+(const point &o) const{ return {x + o.x, y + o.y}; }
+    point operator-(const point &o) const{ return {x - o.x, y - o.y}; }
+    point operator*(T t) const{ return {x * t, y * t}; }
+    point operator/(T t) const{ return {x / t, y / t}; }
+    T operator*(const point &o) const{ return x * o.x + y * o.y; }
+    T operator^(const point &o) const{ return x * o.y - y * o.x; }
     bool operator<(const point &o) const{
         return (eq(x, o.x) ? y < o.y : x < o.x);
     }
@@ -30,14 +28,14 @@ struct point{
 };
 
 int ccw(point a, point b, point e){ // -1=dir; 0=collinear; 1=esq;
-    cod tmp = (b-a) ^ (e-a); // vector from a to b
+    T tmp = (b-a) ^ (e-a); // vector from a to b
     return (tmp > EPS) - (tmp < -EPS);
 }
 
 ld norm(point a){ // Modulo
     return sqrt(a * a);
 }
-cod norm2(point a){
+T norm2(point a){
     return a * a;
 }
 bool nulo(point a){
@@ -127,14 +125,14 @@ point mirror(point m1, point m2, point p){
 
 struct line{
     point p1, p2;
-    cod a, b, c; // ax+by+c = 0;
+    T a, b, c; // ax+by+c = 0;
     // y-y1 = ((y2-y1)/(x2-x1))(x-x1)
     line(point p1=0, point p2=0): p1(p1), p2(p2){
         a = p1.y - p2.y;
         b = p2.x - p1.x;
         c = p1 ^ p2;
     }
-    line(cod a=0, cod b=0, cod c=0): a(a), b(b), c(c){
+    line(T a=0, T b=0, T c=0): a(a), b(b), c(c){
         // Gera os pontos p1 p2 dados os coeficientes
         // isso aqui eh um lixo mas quebra um galho kkkkkk
         if(b==0){
@@ -146,7 +144,7 @@ struct line{
         }
     }
 
-    cod eval(point p){
+    T eval(point p){
         return a*p.x+b*p.y+c;
     }
     bool inside(point p){
@@ -211,7 +209,7 @@ line perpendicular(line l, point p){ // passes through p
 ////////////
 
 struct circle{
-    point c; cod r;
+    point c; T r;
     circle() : c(0, 0), r(0){}
     circle(const point o) : c(o), r(0){}
     circle(const point a, const point b){
@@ -269,14 +267,15 @@ vp inter_circle_line(circle C, line L){
     return {p - h, p + h};
 }
 
-vp inter_circle(circle C1, circle C2){
-    if(C1.c == C2.c) { assert(C1.r != C2.r); return {}; }
-    point vec = C2.c - C1.c;
-    ld d2 = vec*vec, sum = C1.r+C2.r, dif = C1.r-C2.r;
-    ld p = (d2 + C1.r*C1.r - C2.r*C2.r)/(d2*2), h2 = C1.r*C1.r - p*p*d2;
-    if (sum*sum < d2 or dif*dif > d2) return {};
-    point mid = C1.c + vec*p, per = point(-vec.y, vec.x) * sqrt(max((ld)0, h2) / d2);
-    if(eq(per.x, 0) and eq(per.y, 0)) return {mid};
+vp inter_circle(circle c1, circle c2){
+    if (c1.c == c2.c) { assert(c1.r != c2.r); return {}; }
+    point vec = c2.c - c1.c;
+    ld d2 = vec * vec, sum = c1.r + c2.r, dif = c1.r - c2.r;
+    ld p = (d2 + c1.r * c1.r - c2.r * c2.r) / (2 * d2);
+    ld h2 = c1.r * c1.r - p * p * d2;
+    if (sum * sum < d2 or dif * dif > d2) return {};
+    point mid = c1.c + vec * p, per = point(-vec.y, vec.x) * sqrt(fmax(0, h2) / d2);
+    if (eq(per.x, 0) and eq(per.y, 0)) return {mid};
     return {mid + per, mid - per};
 }
 
