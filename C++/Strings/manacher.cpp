@@ -1,5 +1,5 @@
 // O(n), d1 -> palindromo impar, d2 -> palindromo par (centro da direita)
-void manacher(string &s, vi &d1, vi &d2) {
+void manacher(string &s, vector<int> &d1, vector<int> &d2) {
     int n = s.size();
     for(int i = 0, l = 0, r = -1; i < n; i++) {
         int k = (i > r) ? 1 : min(d1[l + r - i], r - i + 1);
