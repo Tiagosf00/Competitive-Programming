@@ -1,5 +1,5 @@
 vector<int> suffix_array(string s) {
-    s += "$";
+    s += "!";
     int n = s.size(), N = max(n, 260);
     vector<int> sa(n), ra(n);
     for (int i = 0; i < n; i++) sa[i] = i, ra[i] = s[i];
