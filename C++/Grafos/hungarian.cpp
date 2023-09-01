@@ -1,4 +1,13 @@
-template<typename T> struct hungarian {
+// Hungarian Algorithm
+//
+// Assignment problem
+// Put the edges in the 'a' matrix (negative or positive)
+// assignment() returns a pair with the min assignment,
+// and the column choosen by each row
+// assignment() - O(n^3)
+
+template<typename T>
+struct hungarian {
     int n, m;
     vector<vector<T>> a;
     vector<T> u, v;
