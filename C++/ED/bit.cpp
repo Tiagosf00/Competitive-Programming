@@ -2,14 +2,14 @@ struct FT {
     vi bit;  // indexado em 1
     int n;
 
-    FT(int n) {
-        this->n = n+5;
-        bit.assign(n+2, 0);
+    FT(int sz) {
+        this->n = n;
+        bit.assign(n+1, 0);
     }
 
     int sum(int idx) {
         int ret = 0;
-        for(++idx; idx > 0; idx -= idx & -idx)
+        for(; idx >= 1; idx -= idx & -idx)
             ret += bit[idx];
         return ret;
     }
@@ -19,7 +19,7 @@ struct FT {
     }
 
     void add(int idx, int delta) {
-        for(++idx; idx < n; idx += idx & -idx)
+        for(; idx <= n; idx += idx & -idx)
             bit[idx] += delta;
     }
 };
