@@ -7,12 +7,10 @@
 
 # Algorithms
 meet in the middle
-iterative bs
 
 # Grafos
 bfs 01
 bfs
-dijkstra
 floyd warshall
 kruskal
 dfs
@@ -21,12 +19,10 @@ prim
 
 # ED
 trie
-prefixsum2d
 delta encoding
 bit 2d
 bit bigger k
 mergesorttree  # ?
-dsu
 mo
 mochila
 unbounded knapsack
@@ -38,12 +34,10 @@ verif primo
 crivo
 modular exponentiation
 next permutation
-# bitwise      # remover uma parte?
 all subsets
 trie bits
 safe map
 
 # Strings
-pal int
-# hash         # ?
+
 
