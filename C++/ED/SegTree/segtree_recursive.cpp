@@ -6,6 +6,13 @@ inline ll f(ll a, ll b) {
 }
 
 void build(vector<int> &v, int lx=0, int rx=N-1, int x=1) {
+    //
+    lazy[x] = 0;
+    if(lx >= v.size()){
+        t[x] = 0;
+        return;
+    }
+    // Apenas se for reusar
     if (lx == rx) { if (lx < v.size()) t[x] = v[lx]; return; }
     int mid = (lx + rx) / 2;
     build(v, lx, mid, 2*x);
