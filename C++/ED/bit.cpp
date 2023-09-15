@@ -2,7 +2,7 @@ struct FT {
     vi bit;  // indexado em 1
     int n;
 
-    FT(int sz) {
+    FT(int n) {
         this->n = n;
         bit.assign(n+1, 0);
     }
