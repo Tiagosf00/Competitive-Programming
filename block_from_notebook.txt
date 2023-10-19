@@ -8,36 +8,6 @@
 # Algorithms
 meet in the middle
 
-# Grafos
-bfs 01
-bfs
-floyd warshall
-kruskal
-dfs
-topological sort
-prim
-
-# ED
-trie
-delta encoding
-bit 2d
-bit bigger k
-mergesorttree  # ?
-mo
-mochila
-unbounded knapsack
-
 # Math
-# double gcd   # ?
-factorization sqrt
-verif primo
 crivo
-modular exponentiation
-next permutation
-all subsets
-trie bits
-safe map
-
-# Strings
-
 
