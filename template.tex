@@ -1,14 +1,19 @@
-\documentclass{article}
+\documentclass[10pt]{article}
 
 \usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{multicol}
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{soul}
 
-\usepackage[top=2cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
-
+\usepackage[a4paper, landscape, top=0.5cm, bottom=1cm, left=0.5cm, right=0.5cm, bmargin=1cm, footnotesep=0.0cm, footskip=0.5cm]{geometry}
+\setlength{\columnseprule}{0.01cm}
+\setlength{\columnsep}{0.5cm}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -16,25 +21,24 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 \definecolor{ballblue}{rgb}{0.0, 0.0, 0.8}
 
+
 \lstset{
-   language=c++,
-   tabsize=4,
-   commentstyle=\color{gray},
-   keywordstyle=\color{ballblue},
-   numberstyle=\tiny\color{codegray},
-   stringstyle=\color{codepurple},
-   basicstyle=\ttfamily\footnotesize,
-   breakatwhitespace=false,
-   breaklines=true,
-   captionpos=b,
-   keepspaces=true,
-   numbers=left,
-   numbersep=5pt,
-   showspaces=false,
-   showstringspaces=false,
-   showtabs=false,
-   extendedchars=false,
-   inputencoding=utf8,
+  language=C++,
+  tabsize=2,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  extendedchars=false,
+  inputencoding=utf8,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue}\ttfamily,
+  stringstyle=\color{green}\ttfamily,
+  commentstyle=\color{red}\ttfamily,
+  morecomment=[l][\color{magenta}]{\#},
 }
 
 \newcommand\includes[2]{ % Thanks to joseleite19 icpc notebook on github
@@ -53,6 +57,7 @@
 \end{figure}
 \maketitle
 \begin{multicols}{2}
+
 
 \tableofcontents
 
