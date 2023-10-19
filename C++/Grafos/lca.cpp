@@ -1,3 +1,41 @@
+const int LOG = 22;
+vector<vector<int>> g(N);
+int t, n;
+vector<int> in(N), height(N);
+vector<vector<int>> up(LOG, vector<int>(N));
+void dfs(int u, int h=0, int p=-1) {
+    up[0][u] = p;
+    in[u] = t++;
+    height[u] = h;
+    for (auto v: g[u]) if (v != p) dfs(v, h+1, u);
+}
+
+void blift() {
+    up[0][0] = 0;
+    for (int j=1;j<LOG;j++) {
+        for (int i=0;i<n;i++) {
+            up[j][i] = up[j-1][up[j-1][i]];
+        }
+    }
+}
+ 
+int lca(int u, int v) {
+    if (u == v) return u;
+    if (in[u] < in[v]) swap(u, v);
+    for (int i=LOG-1;i>=0;i--) {
+        int u2 = up[i][u];
+        if (in[u2] > in[v])
+            u = u2;
+    }
+    return up[0][u];
+}
+
+t = 0;
+dfs(0);
+blift();
+
+// lca O(1)
+
 template<typename T> struct rmq {
     vector<T> v;
     int n; static const int b = 30;
@@ -29,8 +67,8 @@ template<typename T> struct rmq {
 };
 
 namespace lca {
-    vector<int> g[MAX];
-    int v[2*MAX], pos[MAX], dep[2*MAX];
+    vector<int> g[N];
+    int v[2*N], pos[N], dep[2*N];
     int t;
     rmq<int> RMQ;
 
@@ -54,41 +92,3 @@ namespace lca {
         return dep[pos[a]] + dep[pos[b]] - 2*dep[pos[lca(a, b)]];
     }
 }
-
-// binary lift
-
-const int LOG = 22;
-vector<vector<int>> g(N);
-int t, n;
-vector<int> in(N), height(N);
-vector<vector<int>> up(LOG, vector<int>(N));
-void dfs(int u, int h=0, int p=-1) {
-    up[0][u] = p;
-    in[u] = t++;
-    height[u] = h;
-    for (auto v: g[u]) if (v != p) dfs(v, h+1, u);
-}
-
-void blift() {
-    up[0][0] = 0;
-    for (int i=1;i<LOG;i++) {
-        for (int j=0;j<n;j++) {
-            up[i][j] = up[i-1][up[i-1][j]];
-        }
-    }
-}
- 
-int lca(int u, int v) {
-    if (u == v) return u;
-    if (in[u] < in[v]) swap(u, v);
-    for (int i=LOG-1;i>=0;i--) {
-        int u2 = up[i][u];
-        if (in[u2] > in[v])
-            u = u2;
-    }
-    return up[0][u];
-}
-
-t = 0;
-dfs(0);
-blift();
