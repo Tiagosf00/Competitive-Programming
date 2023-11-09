@@ -13,7 +13,7 @@ int dfs_sz(int u, int p=-1) {
 }
 
 int centroid(int u, int p, int size) {
-    for (int v : g[u]) if (v != p and !rem[v] and sz[v] > size / 2)
+    for (int v : g[u]) if (v != p and !rem[v] and 2 * sz[v] > size)
         return centroid(v, u, size);
     return u;
 }
