@@ -45,7 +45,7 @@ ll rho(ll n) {
     return gcd(prd, n);
 }
 
-vector<ll> fact(ll n) {
+vector<ll> fact(ll n) { // retorna fatoracao em primos
     if (n == 1) return {};
     if (prime(n)) return {n};
     ll d = rho(n);
