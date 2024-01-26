@@ -11,8 +11,8 @@ vp minkowski(vp p, vp q){
     };
 
     reorder(p); reorder(q);
-    p.push_back(p[0]);
-    q.push_back(q[0]);
+    p.push_back(p[0]); p.push_back(p[1]);
+    q.push_back(q[0]); q.push_back(q[1]);
     vp ans; int i = 0, j = 0;
     while(i < n or j < m){
         ans.push_back(p[i] + q[j]);
