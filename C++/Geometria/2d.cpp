@@ -132,17 +132,6 @@ struct line{
         b = p2.x - p1.x;
         c = p1 ^ p2;
     }
-    line(T a=0, T b=0, T c=0): a(a), b(b), c(c){
-        // Gera os pontos p1 p2 dados os coeficientes
-        // isso aqui eh um lixo mas quebra um galho kkkkkk
-        if(b==0){
-            p1 = point(1, -c/a);
-            p2 = point(0, -c/a);
-        }else{
-            p1 = point(1, (-c-a*1)/b);
-            p2 = point(0, -c/b);
-        }
-    }
 
     T eval(point p){
         return a*p.x+b*p.y+c;
