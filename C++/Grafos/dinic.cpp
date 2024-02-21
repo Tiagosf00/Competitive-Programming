@@ -1,7 +1,7 @@
 // Description: Flow algorithm with complexity O(VE log U) where U = max |cap|.
 // O(min(E^{1/2}, V^{2/3})E) if U = 1; O(sqrt(V)E)$ for bipartite matching.
-// testado em https://www.spoj.com/problems/FASTFLOW/ 0.23s
-const int N = 200005;
+// testado em https://www.spoj.com/problems/FASTFLOW/ 0.20s
+const int N = 200003;
 template<typename T> struct Dinic {
     struct Edge {
         int from, to;
@@ -37,6 +37,7 @@ template<typename T> struct Dinic {
             for(auto idx : adj[u]) {
                 auto& e = edges[idx];
                 if(e.f >= e.c or vis[e.to] == tempo) continue;
+                // from[e.to] = idx; pra usar a outra dfs
                 vis[e.to] = tempo;
                 lvl[e.to] = lvl[u]+1;
                 qu[qt++] = e.to;
@@ -65,6 +66,23 @@ template<typename T> struct Dinic {
         }
         return res;
     }
+
+//    dfs boa para grafos pequenos (n <= 500?), ruim para fluxos grandes?
+//    tem que criar o vetor from pra usar e marcar o from na bfs
+//    T dfs(int s, int t) {
+//         T res = INF;
+
+//         for(int u = t; u != s; u = edges[from[u]].from) {
+//             res = min(res, edges[from[u]].c-edges[from[u]].f);
+//         }
+
+//         for(int u = t; u != s; u = edges[from[u]].from) {
+//             edges[from[u]].f += res;
+//             edges[from[u]^1].f -= res;
+//         }
+
+//         return res;
+//     }
 
     T flow(int s, int t) {
         T flow = 0;
