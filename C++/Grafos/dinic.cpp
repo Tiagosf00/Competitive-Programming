@@ -28,6 +28,7 @@ template<typename T> struct Dinic {
         vis[s] = tempo;
         int qt = 0;
         qu[qt++] = s;
+        lvl[s] = 0;
 
         for(int i = 0; i < qt; i++) {
             int u = qu[i];
