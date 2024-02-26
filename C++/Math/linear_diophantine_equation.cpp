@@ -1,31 +1,18 @@
 // Linear Diophantine Equation
-int gcd(int a, int b, int &x, int &y)
-{
-    if (a == 0)
-    {
-        x = 0; y = 1;
-        return b;
-    }
-    int x1, y1;
-    int d = gcd(b%a, a, x1, y1);
-    x = y1 - (b / a) * x1;
-    y = x1;
-    return d;
+array<ll, 3> exgcd(int a, int b) {
+    if (a == 0) return {0, 1, b};
+    auto [x, y, g] = exgcd(b % a, a);
+    return {y - b / a * x , x, g};
 }
 
-bool find_any_solution(int a, int b, int c, int &x0, int &y0, int &g)
-{
-    g = gcd(abs(a), abs(b), x0, y0);
-    if (c % g)
-        return false;
-
-    x0 *= c / g;
-    y0 *= c / g;
-    if (a < 0) x0 = -x0;
-    if (b < 0) y0 = -y0;
-    return true;
+array<ll, 4> find_any_solution(ll a, ll b, ll c) {
+    auto[x, y, g] = exgcd(a, b);
+    if (c % g) return {false, 0, 0, 0};
+    x *= c / g;
+    y *= c / g;
+    return {true, x, y, g};
 }
 
 //  All solutions
-//  x = x0 + k*b/g
-//  y = y0 - k*a/g
+//  x' = x + k*b/g
+//  y' = y - k*a/g
