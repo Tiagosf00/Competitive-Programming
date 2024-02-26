@@ -32,7 +32,6 @@ template<typename T> struct Dinic {
 
         for(int i = 0; i < qt; i++) {
             int u = qu[i];
-            if(u == t) return 1;
             nxt[u] = 0;
 
             for(auto idx : adj[u]) {
@@ -44,7 +43,7 @@ template<typename T> struct Dinic {
                 qu[qt++] = e.to;
             }
         }
-        return 0;
+        return (vis[sink] == tempo);
     }
 
     T dfs(int s, int t, T f) {
