@@ -16,7 +16,7 @@ template<typename T> struct Dinic {
     T INF = (ll)1e14;
     #warning botar INF certo no dinic
 
-    void addEdge(int a, int b, int c, int rc) {
+    void addEdge(int a, int b, T c, T rc=0) {
         edges.pb({a, b, c, 0});
         adj[a].pb(id++);
         edges.pb({b, a, rc, 0});
