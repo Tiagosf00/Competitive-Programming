@@ -43,7 +43,7 @@ template<typename T> struct Dinic {
                 qu[qt++] = e.to;
             }
         }
-        return (vis[sink] == tempo);
+        return (vis[t] == tempo);
     }
 
     T dfs(int s, int t, T f) {
