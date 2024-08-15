@@ -184,8 +184,8 @@ ld dist_line(point p, line l){ // point - line
 }
 
 line bisector(point a, point b){
-    point d = (b-a)*2;
-    return line(d.x, d.y, a*a - b*b);
+    point d = (a+b)/2;
+    return line(d, d + rot90ccw(a-b));
 }
 
 line perpendicular(line l, point p){ // passes through p
