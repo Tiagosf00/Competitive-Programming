@@ -1,4 +1,4 @@
-// BIT 2D
+// BIT 2D indexado em 1
 
 int bit[MAX][MAX];
 
@@ -18,7 +18,7 @@ void update(int x, int y, int delta) {
 }
 
 int query(int x1, y1, x2, y2) {
-	return sum(x2,y2) - sum(x2,y1) - sum(x1,y2) + sum(x1,y1);
+	return sum(x2,y2) - sum(x2,y1-1) - sum(x1-1,y2) + sum(x1-1,y1-1);
 }
 
 // tfg
